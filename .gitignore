@@ -37,6 +37,12 @@
 # Visual Studio cache directory
 .vs/
 
+# Visual Studio Code cache directory
+.vscode/
+
+# Idea cache directory
+.idea/
+
 # Gradle cache directory
 .gradle/
 
