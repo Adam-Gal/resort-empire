@@ -1,0 +1,650 @@
+fileFormatVersion: 2
+guid: 5511c6448e04940499ab80535244a1cd
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6154437230280374533
+    second: JunglePalms_0
+  - first:
+      213: -2938492027273829855
+    second: JunglePalms_1
+  - first:
+      213: 1958444811446453646
+    second: JunglePalms_2
+  - first:
+      213: 6395428519534569005
+    second: JunglePalms_3
+  - first:
+      213: 7276518298810639272
+    second: JunglePalms_4
+  - first:
+      213: 547666639292406883
+    second: JunglePalms_5
+  - first:
+      213: -1674410173199043947
+    second: JunglePalms_6
+  - first:
+      213: 2648488664291271167
+    second: JunglePalms_7
+  - first:
+      213: -7779424652249873159
+    second: JunglePalms_8
+  - first:
+      213: 6161121865525963665
+    second: JunglePalms_9
+  - first:
+      213: -6501781456318271954
+    second: JunglePalms_10
+  - first:
+      213: -6799168473187895113
+    second: JunglePalms_11
+  - first:
+      213: -8208598076860659980
+    second: JunglePalms_12
+  - first:
+      213: -3681704803221204913
+    second: JunglePalms_13
+  - first:
+      213: 5802163699224578372
+    second: JunglePalms_14
+  - first:
+      213: -8267719682596283224
+    second: JunglePalms_15
+  - first:
+      213: 206305258174763984
+    second: JunglePalms_16
+  - first:
+      213: 2883422659428104143
+    second: JunglePalms_17
+  - first:
+      213: -4989253757272201256
+    second: JunglePalms_18
+  - first:
+      213: -7117110252040196853
+    second: JunglePalms_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 9
+  spritePivot: {x: 0.5016276, y: 0.035703126}
+  spritePixelsToUnits: 256
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: JunglePalms_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1515
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf603b852fb079aa0800000000000000
+      internalID: -6154437230280374533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunglePalms_1
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 836
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 122a60be1116837d0800000000000000
+      internalID: -2938492027273829855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunglePalms_2
+      rect:
+        serializedVersion: 2
+        x: 1282
+        y: 672
+        width: 33
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8509720e2bcd2b10800000000000000
+      internalID: 1958444811446453646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunglePalms_3
+      rect:
+        serializedVersion: 2
+        x: 1314
+        y: 635
+        width: 7
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d26a245aa5021c850800000000000000
+      internalID: 6395428519534569005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunglePalms_4
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 639
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a3ec3217d26bf460800000000000000
+      internalID: 7276518298810639272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunglePalms_5
+      rect:
+        serializedVersion: 2
+        x: 1334
+        y: 629
+        width: 16
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36c1b5228e3b99700800000000000000
+      internalID: 547666639292406883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunglePalms_6
+      rect:
+        serializedVersion: 2
+        x: 1349
+        y: 581
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 592bb22a1dc43c8e0800000000000000
+      internalID: -1674410173199043947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunglePalms_7
+      rect:
+        serializedVersion: 2
+        x: 1351
+        y: 577
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff1eaba686251c420800000000000000
+      internalID: 2648488664291271167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunglePalms_8
+      rect:
+        serializedVersion: 2
+        x: 1364
+        y: 577
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f4cab5fe7ee90490800000000000000
+      internalID: -7779424652249873159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunglePalms_9
+      rect:
+        serializedVersion: 2
+        x: 1358
+        y: 517
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19b219491b3b08550800000000000000
+      internalID: 6161121865525963665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunglePalms_10
+      rect:
+        serializedVersion: 2
+        x: 1430
+        y: 494
+        width: 21
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2e6de0a63805c5a0800000000000000
+      internalID: -6501781456318271954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunglePalms_11
+      rect:
+        serializedVersion: 2
+        x: 1432
+        y: 425
+        width: 39
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b8b9931c4084a1a0800000000000000
+      internalID: -6799168473187895113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunglePalms_12
+      rect:
+        serializedVersion: 2
+        x: 1436
+        y: 375
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f604c44a83351e80800000000000000
+      internalID: -8208598076860659980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunglePalms_13
+      rect:
+        serializedVersion: 2
+        x: 1376
+        y: 258
+        width: 7
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f40962cecf4f7ecc0800000000000000
+      internalID: -3681704803221204913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunglePalms_14
+      rect:
+        serializedVersion: 2
+        x: 1334
+        y: 159
+        width: 17
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44982fca42d658050800000000000000
+      internalID: 5802163699224578372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunglePalms_15
+      rect:
+        serializedVersion: 2
+        x: 1294
+        y: 127
+        width: 13
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8acd750c0c8234d80800000000000000
+      internalID: -8267719682596283224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunglePalms_16
+      rect:
+        serializedVersion: 2
+        x: 1304
+        y: 134
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d35dcc0a81fcd200800000000000000
+      internalID: 206305258174763984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunglePalms_17
+      rect:
+        serializedVersion: 2
+        x: 1308
+        y: 133
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc73688b1a9f30820800000000000000
+      internalID: 2883422659428104143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunglePalms_18
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 122
+        width: 17
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d7e187542c92cab0800000000000000
+      internalID: -4989253757272201256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunglePalms_19
+      rect:
+        serializedVersion: 2
+        x: 1300
+        y: 99
+        width: 19
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0d6adf0fe1fa3d90800000000000000
+      internalID: -7117110252040196853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      JunglePalms_0: -6154437230280374533
+      JunglePalms_1: -2938492027273829855
+      JunglePalms_10: -6501781456318271954
+      JunglePalms_11: -6799168473187895113
+      JunglePalms_12: -8208598076860659980
+      JunglePalms_13: -3681704803221204913
+      JunglePalms_14: 5802163699224578372
+      JunglePalms_15: -8267719682596283224
+      JunglePalms_16: 206305258174763984
+      JunglePalms_17: 2883422659428104143
+      JunglePalms_18: -4989253757272201256
+      JunglePalms_19: -7117110252040196853
+      JunglePalms_2: 1958444811446453646
+      JunglePalms_3: 6395428519534569005
+      JunglePalms_4: 7276518298810639272
+      JunglePalms_5: 547666639292406883
+      JunglePalms_6: -1674410173199043947
+      JunglePalms_7: 2648488664291271167
+      JunglePalms_8: -7779424652249873159
+      JunglePalms_9: 6161121865525963665
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

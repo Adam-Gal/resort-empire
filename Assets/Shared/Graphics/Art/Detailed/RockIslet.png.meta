@@ -1,0 +1,832 @@
+fileFormatVersion: 2
+guid: 666cc9473790db745a5d1aed8c151c98
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4331318810938183987
+    second: RockIslet_0
+  - first:
+      213: -7553110034453189741
+    second: RockIslet_1
+  - first:
+      213: -8849971910816438112
+    second: RockIslet_2
+  - first:
+      213: -1336360390173934656
+    second: RockIslet_3
+  - first:
+      213: -1030944272959459277
+    second: RockIslet_4
+  - first:
+      213: 5016713464641252529
+    second: RockIslet_5
+  - first:
+      213: 3482672955155363772
+    second: RockIslet_6
+  - first:
+      213: -5589312668437421470
+    second: RockIslet_7
+  - first:
+      213: 4280766339105261400
+    second: RockIslet_8
+  - first:
+      213: 3683212171238018858
+    second: RockIslet_9
+  - first:
+      213: -3017400175740255766
+    second: RockIslet_10
+  - first:
+      213: 6263831709521944540
+    second: RockIslet_11
+  - first:
+      213: -1957185305250973638
+    second: RockIslet_12
+  - first:
+      213: 1719848837535463522
+    second: RockIslet_13
+  - first:
+      213: -4318649683202783561
+    second: RockIslet_14
+  - first:
+      213: -5903787174372184590
+    second: RockIslet_15
+  - first:
+      213: 1472284208964741908
+    second: RockIslet_16
+  - first:
+      213: 6437254931694241975
+    second: RockIslet_17
+  - first:
+      213: -5588402893644680698
+    second: RockIslet_18
+  - first:
+      213: -2519641342184813860
+    second: RockIslet_19
+  - first:
+      213: 471891829395190710
+    second: RockIslet_20
+  - first:
+      213: -4919127363549805854
+    second: RockIslet_21
+  - first:
+      213: -1194216102295739137
+    second: RockIslet_22
+  - first:
+      213: 8178484961680822756
+    second: RockIslet_23
+  - first:
+      213: 3690975166918399855
+    second: RockIslet_24
+  - first:
+      213: -7797030219397021475
+    second: RockIslet_25
+  - first:
+      213: -9139133224203507660
+    second: RockIslet_26
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 9
+  spritePivot: {x: 0.5, y: 0.12}
+  spritePixelsToUnits: 256
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: RockIslet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1241
+        height: 1254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dceef016d7014e3c0800000000000000
+      internalID: -4331318810938183987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RockIslet_1
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 1207
+        width: 11
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39baaf61176fd2790800000000000000
+      internalID: -7553110034453189741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RockIslet_2
+      rect:
+        serializedVersion: 2
+        x: 711
+        y: 1219
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a8e99faf659e2580800000000000000
+      internalID: -8849971910816438112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RockIslet_3
+      rect:
+        serializedVersion: 2
+        x: 866
+        y: 1223
+        width: 20
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cbb7c33e4b447de0800000000000000
+      internalID: -1336360390173934656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RockIslet_4
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 1207
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 330370b55a951b1f0800000000000000
+      internalID: -1030944272959459277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RockIslet_5
+      rect:
+        serializedVersion: 2
+        x: 713
+        y: 1189
+        width: 17
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bc6cdff052fe9540800000000000000
+      internalID: 5016713464641252529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RockIslet_6
+      rect:
+        serializedVersion: 2
+        x: 918
+        y: 1201
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb735e8c990f45030800000000000000
+      internalID: 3482672955155363772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RockIslet_7
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 1199
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2626233ddb5ce62b0800000000000000
+      internalID: -5589312668437421470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RockIslet_8
+      rect:
+        serializedVersion: 2
+        x: 838
+        y: 1191
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85781d01e46586b30800000000000000
+      internalID: 4280766339105261400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RockIslet_9
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 1156
+        width: 53
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2f890b84f56d1330800000000000000
+      internalID: 3683212171238018858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RockIslet_10
+      rect:
+        serializedVersion: 2
+        x: 932
+        y: 1197
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae10dcbe68a0026d0800000000000000
+      internalID: -3017400175740255766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RockIslet_11
+      rect:
+        serializedVersion: 2
+        x: 779
+        y: 1171
+        width: 8
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cdf12eaa0c99de650800000000000000
+      internalID: 6263831709521944540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RockIslet_12
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 1180
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a38b6e0a55ea6d4e0800000000000000
+      internalID: -1957185305250973638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RockIslet_13
+      rect:
+        serializedVersion: 2
+        x: 914
+        y: 1162
+        width: 9
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2687ba4d7612ed710800000000000000
+      internalID: 1719848837535463522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RockIslet_14
+      rect:
+        serializedVersion: 2
+        x: 922
+        y: 1158
+        width: 12
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b6485b8ef21114c0800000000000000
+      internalID: -4318649683202783561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RockIslet_15
+      rect:
+        serializedVersion: 2
+        x: 691
+        y: 1145
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fde90238d8811ea0800000000000000
+      internalID: -5903787174372184590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RockIslet_16
+      rect:
+        serializedVersion: 2
+        x: 822
+        y: 1134
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41ba2c300ba9e6410800000000000000
+      internalID: 1472284208964741908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RockIslet_17
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 1137
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b8444c1149b55950800000000000000
+      internalID: 6437254931694241975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RockIslet_18
+      rect:
+        serializedVersion: 2
+        x: 932
+        y: 1125
+        width: 16
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6023b864d210272b0800000000000000
+      internalID: -5588402893644680698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RockIslet_19
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 1130
+        width: 7
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cda8fa58c8f680dd0800000000000000
+      internalID: -2519641342184813860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RockIslet_20
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 1128
+        width: 7
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b3728f5e1f7c8600800000000000000
+      internalID: 471891829395190710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RockIslet_21
+      rect:
+        serializedVersion: 2
+        x: 892
+        y: 1134
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e2c5bab9bfbbbbb0800000000000000
+      internalID: -4919127363549805854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RockIslet_22
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 1132
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff46c9d38ca4d6fe0800000000000000
+      internalID: -1194216102295739137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RockIslet_23
+      rect:
+        serializedVersion: 2
+        x: 938
+        y: 1058
+        width: 82
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e11cddbdb0df7170800000000000000
+      internalID: 8178484961680822756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RockIslet_24
+      rect:
+        serializedVersion: 2
+        x: 926
+        y: 1108
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6795f2db5af83330800000000000000
+      internalID: 3690975166918399855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RockIslet_25
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 691
+        width: 19
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd0cadd63526bc390800000000000000
+      internalID: -7797030219397021475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RockIslet_26
+      rect:
+        serializedVersion: 2
+        x: 1222
+        y: 626
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4382168f0c64b2180800000000000000
+      internalID: -9139133224203507660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      RockIslet_0: -4331318810938183987
+      RockIslet_1: -7553110034453189741
+      RockIslet_10: -3017400175740255766
+      RockIslet_11: 6263831709521944540
+      RockIslet_12: -1957185305250973638
+      RockIslet_13: 1719848837535463522
+      RockIslet_14: -4318649683202783561
+      RockIslet_15: -5903787174372184590
+      RockIslet_16: 1472284208964741908
+      RockIslet_17: 6437254931694241975
+      RockIslet_18: -5588402893644680698
+      RockIslet_19: -2519641342184813860
+      RockIslet_2: -8849971910816438112
+      RockIslet_20: 471891829395190710
+      RockIslet_21: -4919127363549805854
+      RockIslet_22: -1194216102295739137
+      RockIslet_23: 8178484961680822756
+      RockIslet_24: 3690975166918399855
+      RockIslet_25: -7797030219397021475
+      RockIslet_26: -9139133224203507660
+      RockIslet_3: -1336360390173934656
+      RockIslet_4: -1030944272959459277
+      RockIslet_5: 5016713464641252529
+      RockIslet_6: 3482672955155363772
+      RockIslet_7: -5589312668437421470
+      RockIslet_8: 4280766339105261400
+      RockIslet_9: 3683212171238018858
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
