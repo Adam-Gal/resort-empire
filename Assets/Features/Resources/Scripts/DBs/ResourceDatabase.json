@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "resources": [
+    {
+      "id": "Money",
+      "displayName": "Money",
+      "startAmount": 0,
+      "maxAmount": 0
+    },
+    {
+      "id": "Energy",
+      "displayName": "Energy",
+      "startAmount": 0,
+      "maxAmount": 0
+    }
+  ],
+  "energySettings": {
+    "secondsPerEnergy": 120,
+    "minSpeedUpCost": 1
+  },
+  "starterGift": {
+    "enabled": true,
+    "title": "Welcome to Paradise Tycoon!",
+    "message": "Here's a little gift to help with your resort's development!'.",
+    "rewards": [
+      {
+        "resourceId": "Money",
+        "amount": 5000
+      },
+      {
+        "resourceId": "Energy",
+        "amount": 20
+      }
+    ]
+  }
+}
