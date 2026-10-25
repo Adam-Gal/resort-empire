@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 873fa7d4550494a4fb401534943526df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: ResortEmpire.Presentation::ResortEmpire.Presentation.ResortLoading
-  TargetScene: ResortUIDemo
+  TargetScene: Game
   Fill: {fileID: 1803593356}
   MinimumDuration: 3
 --- !u!114 &180207815

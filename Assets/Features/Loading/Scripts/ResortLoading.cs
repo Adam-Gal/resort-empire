@@ -6,7 +6,7 @@ namespace ResortEmpire.Presentation
 {
     public sealed class ResortLoading : MonoBehaviour
     {
-        public string TargetScene = "ResortUIDemo";
+        public string TargetScene = "Game";
         public RectTransform Fill;
         [Min(3f)] public float MinimumDuration = 3f;
 
