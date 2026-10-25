@@ -8,8 +8,8 @@ using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 namespace ResortEmpire.Presentation
 {
     // Moves the Cinemachine follow target by finger drag and zooms the lens by pinch.
-    // The target is clamped to the same area the CinemachineConfiner2D uses, so the
-    // view never leaves the island and dragging never gets "stuck" past the edge.
+    // The target is clamped to the Bounds area, so the view never leaves the island
+    // and dragging never gets "stuck" past the edge.
     [DisallowMultipleComponent]
     public sealed class IslandCameraController : MonoBehaviour
     {
@@ -21,13 +21,13 @@ namespace ResortEmpire.Presentation
         [Min(0f)] public float ScrollZoomStep = .1f;
         [Range(0f, 20f)] public float Inertia = 6f;
 
-        private CinemachineConfiner2D confiner;
         private Vector2 velocity;
         private Vector2 lastSinglePosition;
         private float lastPinchDistance;
         private Vector2 lastPinchCenter;
         private int activeFingers;
         private bool pointerOverUi;
+        private bool mouseDragging;
 
         private float Zoom
         {
@@ -40,9 +40,6 @@ namespace ResortEmpire.Presentation
                     return;
                 lens.OrthographicSize = size;
                 VirtualCamera.Lens = lens;
-                // The confiner caches its area per lens size; without this a zoomed-in view stays centred.
-                if (confiner)
-                    confiner.InvalidateLensCache();
             }
         }
 
@@ -59,7 +56,6 @@ namespace ResortEmpire.Presentation
                 return;
             }
 
-            confiner = VirtualCamera.GetComponent<CinemachineConfiner2D>();
             Zoom = Zoom;
             Target.position = Clamp(Target.position);
         }
@@ -71,7 +67,8 @@ namespace ResortEmpire.Presentation
             else
                 HandleMouse();
 
-            if (activeFingers == 0 && velocity.sqrMagnitude > .0001f)
+            // Inertia only after release; while dragging it would push the map ahead of the pointer.
+            if (activeFingers == 0 && !mouseDragging && velocity.sqrMagnitude > .0001f)
             {
                 Move(velocity * Time.unscaledDeltaTime);
                 velocity = Vector2.Lerp(velocity, Vector2.zero, Inertia * Time.unscaledDeltaTime);
@@ -91,7 +88,9 @@ namespace ResortEmpire.Presentation
             {
                 // Finger count changed: restart the gesture so the map does not jump.
                 activeFingers = touches.Count;
-                pointerOverUi = IsOverUi(touches[0].touchId);
+                pointerOverUi = false;
+                for (int i = 0; i < touches.Count; i++)
+                    pointerOverUi |= IsOverUi(touches[i].touchId);
                 lastSinglePosition = touches[0].screenPosition;
                 if (touches.Count >= 2)
                 {
@@ -129,16 +128,22 @@ namespace ResortEmpire.Presentation
                 return;
 
             Vector2 position = mouse.position.ReadValue();
-            if (mouse.leftButton.wasPressedThisFrame || mouse.rightButton.wasPressedThisFrame)
+            bool leftPressed = mouse.leftButton.wasPressedThisFrame;
+            if (leftPressed || mouse.rightButton.wasPressedThisFrame)
             {
-                pointerOverUi = IsOverUi(PointerInputModule.kMouseLeftId);
+                pointerOverUi = IsOverUi(leftPressed ? PointerInputModule.kMouseLeftId : PointerInputModule.kMouseRightId);
+                mouseDragging = !pointerOverUi;
                 lastSinglePosition = position;
                 velocity = Vector2.zero;
             }
-            else if (!pointerOverUi && (mouse.leftButton.isPressed || mouse.rightButton.isPressed))
+            else if (mouseDragging && (mouse.leftButton.isPressed || mouse.rightButton.isPressed))
             {
                 Drag(lastSinglePosition, position);
                 lastSinglePosition = position;
+            }
+            else
+            {
+                mouseDragging = false;
             }
 
             float scroll = mouse.scroll.ReadValue().y;
