@@ -218,3 +218,17 @@ Renamed the sprite folder `Upgrades` to `Buildings` through Unity AssetDatabase,
 - `Assets/Shared/Graphics/Art/Detailed/Buildings/BeachBar/BeachBarLevel2.png` through `BeachBarLevel5.png`
 
 Existing Level 1 images remain in `Assets/Shared/Graphics/Art/Detailed/`. Prefab locations are unchanged. Verified all 12 moved sprite assets, their prefab references and their BuildingsTest scene instances in Unity.
+
+## Current foundation pivot alignment (2026-10-31)
+
+Supersedes previous pivot-alignment offsets and scene placement notes. Kept each building type’s Level 1 pivot unchanged. For L2–L5, recomputed the vertical pivot from the current PNG alpha edge at the shared reference column (alpha > 128), preserving the Level 1 offset between this edge and the anchor. Pixel images, horizontal pivots, sprite rects, pixels per unit and prefab scales are unchanged. Metadata was updated through the Unity sprite editor data provider after verifying EditPivot capability. Sprite GUIDs and local IDs were verified unchanged.
+
+Removed duplicate compensation in BuildingsTest by setting each type’s L2–L5 world Y to its L1 Y. X/Z and local scales remain unchanged. Verified all 15 prefab instances in a temporary preview scene at the same world position: their measured foundation reference points coincide (error below 0.00001 world units). This verifies the selected reference point, not identical foundation shapes across generated images. All 15 PNG hashes remain unchanged.
+
+| Building | L1 | L2 | L3 | L4 | L5 |
+|---|---:|---:|---:|---:|---:|
+| Hotel | 66 | 63 | 59 | 30 | 64 |
+| Restaurant | 112 | 112 | 111 | 108 | 65 |
+| BeachBar | 34 | 31 | 28 | 37 | 31 |
+
+Pivot Y values above are pixels from the bottom of the full 1536 × 1024 texture. Scene row Y: Hotel `1.2610676`, Restaurant `-2.5958335`, BeachBar `-6.358073`.
