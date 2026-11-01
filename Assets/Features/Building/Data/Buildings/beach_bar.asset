@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59679652b6873fa47acb52e6ddfdaf02, type: 3}
+  m_Name: beach_bar
+  m_EditorClassIdentifier: Assembly-CSharp::BuildingDefinition
+  id: beach_bar
+  displayName: "Pl\xE1\u017Eov\xFD bar"
+  category: 2
+  icon: {fileID: 0}
+  prefab: {fileID: 4906415222736530140, guid: 174213bd0a5cdde41b61b8986b391db5, type: 3}
+  size: {x: 3, y: 4}
+  cost:
+  - type: 0
+    amount: 500
+  allowedTiles:
+  - {fileID: 11400000, guid: a2f5dd8ac37a82846b67eb21c4da5bcb, type: 2}
+  - {fileID: 11400000, guid: 2ae37d1c5f242eb40a19851a30db39d1, type: 2}
+  - {fileID: 11400000, guid: ce85a1b31eb128f4a818771862b34381, type: 2}
+  refundRatio: 0.5
+  spriteOffset: {x: 0.26191077, y: -0.8705729}
+  visualHeight: 2.1582031

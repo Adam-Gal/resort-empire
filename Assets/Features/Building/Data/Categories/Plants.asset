@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb94c97f991dbf74f8fa62a96f42058d, type: 3}
+  m_Name: Plants
+  m_EditorClassIdentifier: Assembly-CSharp::TileCategory
+  displayName: "Palmy a kr\xEDky"
+  tiles:
+  - {fileID: 11400000, guid: 953aae207fd949c439d57a7a040b15b2, type: 2}
+  - {fileID: 11400000, guid: 4e670d66e54195c4b80e0ef783d2adeb, type: 2}
+  clearCost:
+  - type: 0
+    amount: 50
+  obstacleSizes:
+  - tile: {fileID: 11400000, guid: 953aae207fd949c439d57a7a040b15b2, type: 2}
+    size: {x: 1, y: 1}
+  - tile: {fileID: 11400000, guid: 4e670d66e54195c4b80e0ef783d2adeb, type: 2}
+    size: {x: 1, y: 1}

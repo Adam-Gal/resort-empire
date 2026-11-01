@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb94c97f991dbf74f8fa62a96f42058d, type: 3}
+  m_Name: Shore
+  m_EditorClassIdentifier: Assembly-CSharp::TileCategory
+  displayName: "Pobre\u017Eie"
+  tiles:
+  - {fileID: 11400000, guid: 510924df8efd49443a4fdfd3d6424603, type: 2}
+  - {fileID: 11400000, guid: de3cb3d6f849fb24f826c65f7a411d2c, type: 2}
+  - {fileID: 11400000, guid: 009259f0e84530148bfd985a325601d9, type: 2}
+  - {fileID: 11400000, guid: 152fa424b8bb1024f9245fe314ed29b4, type: 2}
+  - {fileID: 11400000, guid: 0f9ce28ac5f61e146b3163728f8f080c, type: 2}
+  - {fileID: 11400000, guid: cb8d2b405343d25448c35acc9cfacc00, type: 2}
+  - {fileID: 11400000, guid: 00498f26b53c60e4ebe984982b6e5e1c, type: 2}
+  - {fileID: 11400000, guid: 4064e6fbc23293e4bb503e1870246512, type: 2}
+  - {fileID: 11400000, guid: f9ea21da7f498f9498a8ba848fc142e2, type: 2}
+  - {fileID: 11400000, guid: b991b28d034e4124488d87a50a6e2eea, type: 2}
+  - {fileID: 11400000, guid: 19546c38852a4a946a24612553099242, type: 2}
+  - {fileID: 11400000, guid: ca6d3a116266e9b4f8a083f98cea9770, type: 2}
+  - {fileID: 11400000, guid: 5fd36b295f02e6e488959295a15f4eb5, type: 2}
+  - {fileID: 11400000, guid: 13f88815c0a751b459dbcdad4eaa769b, type: 2}
+  - {fileID: 11400000, guid: 12b85d0db990f1b439da851ec3128434, type: 2}
+  - {fileID: 11400000, guid: 82ea0c59656c42a4a8b87b9eca5dfd8f, type: 2}
+  clearCost: []
