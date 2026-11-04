@@ -20,8 +20,8 @@
   },
   "starterGift": {
     "enabled": true,
-    "title": "Welcome to Paradise Tycoon!",
-    "message": "Here's a little gift to help with your resort's development!'.",
+    "title": "Vitaj v Paradise Tycoon!",
+    "message": "Malý darček na rozbeh tvojho rezortu.",
     "rewards": [
       {
         "resourceId": "Money",

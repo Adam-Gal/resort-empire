@@ -29,6 +29,9 @@ namespace ResortEmpire.Presentation
         private bool pointerOverUi;
         private bool mouseDragging;
 
+        // Something else owns the pointer, such as dragging a building.
+        public bool InputLocked { get; set; }
+
         private float Zoom
         {
             get => VirtualCamera.Lens.OrthographicSize;
@@ -62,6 +65,14 @@ namespace ResortEmpire.Presentation
 
         private void LateUpdate()
         {
+            if (InputLocked)
+            {
+                activeFingers = 0;
+                mouseDragging = false;
+                velocity = Vector2.zero;
+                return;
+            }
+
             if (Touch.activeTouches.Count > 0 || activeFingers > 0)
                 HandleTouches();
             else

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59679652b6873fa47acb52e6ddfdaf02, type: 3}
+  m_Name: palm_garden
+  m_EditorClassIdentifier: Assembly-CSharp::BuildingDefinition
+  id: palm_garden
+  displayName: "Palmov\xE1 z\xE1hrada"
+  category: 4
+  icon: {fileID: 0}
+  prefab: {fileID: 6242916645903821963, guid: 554fdbdb9bd0cc84d94f018f59138af5, type: 3}
+  size: {x: 2, y: 2}
+  cost:
+  - type: 0
+    amount: 400
+  allowedTiles:
+  - {fileID: 11400000, guid: a2f5dd8ac37a82846b67eb21c4da5bcb, type: 2}
+  - {fileID: 11400000, guid: 2ae37d1c5f242eb40a19851a30db39d1, type: 2}
+  - {fileID: 11400000, guid: ce85a1b31eb128f4a818771862b34381, type: 2}
+  refundRatio: 0.5
+  spriteOffset: {x: -0.02795713, y: -0.2448897}
+  spriteScale: 1.2498482
+  visualHeight: 1.9454874

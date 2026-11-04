@@ -15,22 +15,22 @@ MonoBehaviour:
   m_Sprite: {fileID: 21300000, guid: 5511c6448e04940499ab80535244a1cd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
-    e00: 0.7932394
+    e00: 0.48396096
     e01: 0
     e02: 0
-    e03: 0
+    e03: -0
     e10: 0
-    e11: 0.7932394
+    e11: 0.48396096
     e12: 0
-    e13: 0
+    e13: -0.1027748
     e20: 0
     e21: 0
-    e22: 0.7932394
+    e22: 0.48396096
     e23: 0
     e30: 0
     e31: 0
     e32: 0
     e33: 1
   m_InstancedGameObject: {fileID: 0}
-  m_Flags: 1
+  m_Flags: 3
   m_ColliderType: 0
