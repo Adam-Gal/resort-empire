@@ -44,6 +44,13 @@ public class BuildMenuUI : MonoBehaviour
     [SerializeField] private Button confirmButton;
     [SerializeField] private Button cancelButton;
 
+    [Header("Demolish dialog")]
+    [SerializeField] private GameObject demolishDialog;
+    [SerializeField] private TMP_Text demolishTitle;
+    [SerializeField] private TMP_Text demolishRefund;
+    [SerializeField] private Button demolishConfirm;
+    [SerializeField] private Button[] demolishCancel;
+
     private readonly List<BuildActionButton> actions = new List<BuildActionButton>();
     private readonly List<BuildShopCard> cards = new List<BuildShopCard>();
     private int usedActions;
@@ -67,6 +74,10 @@ public class BuildMenuUI : MonoBehaviour
 
         placement.CanConfirmChanged += value => confirmButton.interactable = value;
         placement.Tapped += ShowSelection;
+
+        foreach (Button cancel in demolishCancel)
+            cancel.onClick.AddListener(() => demolishDialog.SetActive(false));
+        demolishDialog.SetActive(false);
 
         actionTemplate.gameObject.SetActive(false);
         cardTemplate.gameObject.SetActive(false);
@@ -105,11 +116,33 @@ public class BuildMenuUI : MonoBehaviour
             BeginPlacing(building.Definition, null);
             placement.BeginMove(building);
         });
-        AddAction("Zbúrať +" + FormatCost(manager.GetRefund(building.Definition)), demolishIcon, destructiveColor, true, () =>
+        if (building.Definition.IsDecoration)
         {
-            manager.Demolish(building);
+            // Cleared like jungle, nothing is paid back.
+            AddAction("Cost: 0", clearIcon, primaryColor, true, () =>
+            {
+                manager.Remove(building);
+                CloseAll();
+            }, true);
+            return;
+        }
+
+        AddAction("Zbúrať", demolishIcon, destructiveColor, true, () => OpenDemolishDialog(building));
+    }
+
+    private void OpenDemolishDialog(PlacedBuilding building)
+    {
+        string refund = FormatCost(BuildingManager.Instance.GetRefund(building.Definition), false);
+        demolishTitle.text = $"Zbúrať {building.Definition.displayName}?";
+        demolishRefund.text = $"Získaš späť: {refund}";
+        demolishConfirm.onClick.RemoveAllListeners();
+        demolishConfirm.onClick.AddListener(() =>
+        {
+            demolishDialog.SetActive(false);
+            BuildingManager.Instance.Demolish(building);
             CloseAll();
         });
+        demolishDialog.SetActive(true);
     }
 
     private void ShowRuin(RuinedBuilding ruin)
@@ -122,7 +155,7 @@ public class BuildMenuUI : MonoBehaviour
         {
             BuildingManager.Instance.TryRestore(ruin);
             CloseAll();
-        });
+        }, true);
     }
 
     private void ShowObstacle(Vector2Int cell)
@@ -134,11 +167,11 @@ public class BuildMenuUI : MonoBehaviour
 
         selectionTitle.text = manager.Grid.GetCategory(cell).displayName;
         placement.ShowSelection(origin, size, null, true);
-        AddAction("Odstrániť " + FormatCost(cost), clearIcon, primaryColor, ResourceManager.Instance.CanAfford(cost), () =>
+        AddAction("Cost: " + FormatCost(cost), clearIcon, primaryColor, ResourceManager.Instance.CanAfford(cost), () =>
         {
             manager.TryClear(cell);
             CloseAll();
-        });
+        }, true);
     }
 
     private void ShowGround(Vector2Int cell, Vector3 world)
@@ -238,11 +271,11 @@ public class BuildMenuUI : MonoBehaviour
         foreach (BuildActionButton action in actions) action.gameObject.SetActive(false);
     }
 
-    private void AddAction(string text, Sprite icon, Color color, bool interactable, Action onClick)
+    private void AddAction(string text, Sprite icon, Color color, bool interactable, Action onClick, bool showCoin = false)
     {
         if (usedActions == actions.Count)
             actions.Add(Instantiate(actionTemplate, actionTemplate.transform.parent));
-        actions[usedActions++].Show(text, icon, color, interactable, onClick);
+        actions[usedActions++].Show(text, icon, color, interactable, onClick, showCoin);
     }
 
     private void CloseAll()
@@ -265,13 +298,14 @@ public class BuildMenuUI : MonoBehaviour
         placementBar.SetActive(false);
     }
 
-    private static string FormatCost(ResourceCost[] costs)
+    // abbreviate keeps short labels short, full numbers read better in sentences.
+    private static string FormatCost(ResourceCost[] costs, bool abbreviate = true)
     {
         var text = new StringBuilder();
         foreach (ResourceCost cost in costs)
         {
             if (text.Length > 0) text.Append(", ");
-            text.Append(ResourceCounterUI.Abbreviate(cost.amount));
+            text.Append(abbreviate ? ResourceCounterUI.Abbreviate(cost.amount) : cost.amount.ToString("N0"));
         }
         return text.ToString();
     }
