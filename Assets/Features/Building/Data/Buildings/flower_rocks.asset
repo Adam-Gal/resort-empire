@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BuildingDefinition
   id: flower_rocks
   displayName: Kamene s kvetmi
-  category: 3
+  category: 4
   icon: {fileID: 0}
   prefab: {fileID: 3080534704291942928, guid: c2e4c7120f5ad924ca6958cdee834d9c, type: 3}
   size: {x: 2, y: 2}

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BuildingDefinition
   id: single_palm
   displayName: Palma
-  category: 3
+  category: 4
   icon: {fileID: 0}
   prefab: {fileID: 4048000502828994781, guid: a10396310f99f6a4ca983e0bba185d6a, type: 3}
   size: {x: 1, y: 1}

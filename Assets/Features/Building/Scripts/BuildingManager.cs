@@ -13,7 +13,13 @@ public class BuildingManager : MonoBehaviour
     [SerializeField] private Transform buildingsRoot;
     [SerializeField] private BuildingDefinition[] buildings;
     [SerializeField] private RuinedBuilding[] ruins;
+
+    //Decorations the island starts with, they behave like bought ones
+    [SerializeField] private PlacedBuildingSaveData[] startingBuildings;
     [SerializeField] private string saveFileName = "buildings_save.json";
+
+    //Smoke when a building is demolished or jungle is cleared
+    [SerializeField] private RemovalEffect removalEffect;
 
     //Sorts together with the clearable tiles, which use the same order
     [SerializeField] private int sortingOrder = 200;
@@ -103,11 +109,32 @@ public class BuildingManager : MonoBehaviour
         {
             if (refund.amount > 0) ResourceManager.Instance.Add(refund.type, refund.amount);
         }
+        Remove(building);
+    }
 
-        grid.SetOccupant(building.Origin, building.Definition.size, null);
+    // Takes the building away without paying anything back.
+    public void Remove(PlacedBuilding building)
+    {
+        Vector2Int origin = building.Origin;
+        Vector2Int size = building.Definition.size;
+        GameObject visual = building.gameObject;
+        grid.SetOccupant(origin, size, null);
         placed.Remove(building);
-        Destroy(building.gameObject);
+
+        // The effect sinks the art and destroys it, nothing can pick it any more.
+        Destroy(building);
+        PlayRemoval(origin, size, visual);
         WriteBuildings();
+    }
+
+    private void PlayRemoval(Vector2Int origin, Vector2Int size, GameObject visual)
+    {
+        if (removalEffect == null)
+        {
+            Destroy(visual);
+            return;
+        }
+        Instantiate(removalEffect).Play(grid.FootprintCenter(origin, size), size, visual);
     }
 
     public ResourceCost[] GetClearCost(Vector2Int cell)
@@ -132,7 +159,10 @@ public class BuildingManager : MonoBehaviour
         if (cost == null || !ResourceManager.Instance.TrySpend(cost)) return false;
 
         grid.TryGetObstacle(cell, out Vector2Int origin);
+        Vector2Int size = grid.GetObstacleSize(origin);
+        GameObject visual = grid.CopyObstacleVisual(origin);
         grid.RemoveObstacle(origin);
+        PlayRemoval(origin, size, visual);
         saveData.clearedCells.Add(origin);
         MarkChanged();
         return true;
@@ -244,7 +274,24 @@ public class BuildingManager : MonoBehaviour
                 Debug.LogWarning($"[BuildingManager] Save has unknown building '{entry.id}'.");
         }
 
+        if (!saveData.startingBuildingsPlaced)
+            PlaceStartingBuildings();
+
         Changed?.Invoke();
+    }
+
+    // Once per save, so moved or demolished decorations do not come back.
+    private void PlaceStartingBuildings()
+    {
+        foreach (PlacedBuildingSaveData entry in startingBuildings)
+        {
+            BuildingDefinition definition = Array.Find(buildings, b => b.id == entry.id);
+            if (definition == null || saveData.clearedCells.Contains(entry.origin)) continue;
+            if (grid.CanPlace(definition, entry.origin)) Spawn(definition, entry.origin);
+        }
+
+        saveData.startingBuildingsPlaced = true;
+        WriteBuildings();
     }
 
     private void WriteBuildings()

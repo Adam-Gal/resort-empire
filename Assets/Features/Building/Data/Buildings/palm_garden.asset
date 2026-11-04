@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BuildingDefinition
   id: palm_garden
   displayName: "Palmov\xE1 z\xE1hrada"
-  category: 3
+  category: 4
   icon: {fileID: 0}
   prefab: {fileID: 6242916645903821963, guid: 554fdbdb9bd0cc84d94f018f59138af5, type: 3}
   size: {x: 2, y: 2}

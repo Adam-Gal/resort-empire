@@ -5,6 +5,7 @@ public enum BuildingCategory
     Rooms,
     Food,
     Drinks,
+    Activities,
     Decorations
 }
 
@@ -24,6 +25,9 @@ public class BuildingDefinition : ScriptableObject
 
     //Part of the price returned on demolish
     [Range(0f, 1f)] public float refundRatio = .5f;
+
+    // Decorations are cleared like obstacles, other buildings are demolished for a refund.
+    public bool IsDecoration => category == BuildingCategory.Decorations;
 
     //From the footprint centre to the sprite pivot, so the art sits on its cells
     public Vector2 spriteOffset;

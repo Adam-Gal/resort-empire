@@ -18,4 +18,7 @@ public class BuildingSaveData
     public List<PlacedBuildingSaveData> buildings = new List<PlacedBuildingSaveData>();
     public List<Vector2Int> clearedCells = new List<Vector2Int>();
     public List<string> restoredRuins = new List<string>();
+
+    //The island's starting decorations were turned into buildings once
+    public bool startingBuildingsPlaced;
 }

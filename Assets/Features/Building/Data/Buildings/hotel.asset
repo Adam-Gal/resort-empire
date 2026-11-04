@@ -25,5 +25,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a2f5dd8ac37a82846b67eb21c4da5bcb, type: 2}
   - {fileID: 11400000, guid: 2ae37d1c5f242eb40a19851a30db39d1, type: 2}
   refundRatio: 0.5
-  spriteOffset: {x: 0.77418524, y: -1.3646485}
+  spriteOffset: {x: 0.889, y: -1.145}
+  spriteScale: 1
   visualHeight: 3.11237

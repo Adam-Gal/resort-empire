@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BuildingDefinition
   id: small_shrub
   displayName: "Kr\xEDk"
-  category: 3
+  category: 4
   icon: {fileID: 0}
   prefab: {fileID: 7430656042612662886, guid: e9ae9f7df689dbe4c814bf4cd20723ec, type: 3}
   size: {x: 1, y: 1}
