@@ -63,6 +63,28 @@ public class BuildGrid : MonoBehaviour
             : Vector2Int.one;
     }
 
+    // A sprite that looks like the obstacle tile, so it can be animated after the tile is gone.
+    public GameObject CopyObstacleVisual(Vector2Int origin)
+    {
+        var position = (Vector3Int)origin;
+        Sprite sprite = obstacleLayer.GetSprite(position);
+        if (sprite == null) return null;
+
+        var copy = new GameObject("ClearedObstacle");
+        Matrix4x4 matrix = obstacleLayer.GetTransformMatrix(position);
+        copy.transform.SetPositionAndRotation(obstacleLayer.GetCellCenterWorld(position) + (Vector3)matrix.GetColumn(3), matrix.rotation);
+        copy.transform.localScale = matrix.lossyScale;
+
+        var tileRenderer = obstacleLayer.GetComponent<TilemapRenderer>();
+        SpriteRenderer spriteRenderer = copy.AddComponent<SpriteRenderer>();
+        spriteRenderer.sprite = sprite;
+        spriteRenderer.color = obstacleLayer.GetColor(position) * obstacleLayer.color;
+        spriteRenderer.sharedMaterial = tileRenderer.sharedMaterial;
+        spriteRenderer.sortingLayerID = tileRenderer.sortingLayerID;
+        spriteRenderer.sortingOrder = tileRenderer.sortingOrder;
+        return copy;
+    }
+
     public void RemoveObstacle(Vector2Int origin)
     {
         foreach (Vector2Int cell in Footprint(origin, GetObstacleSize(origin)))
