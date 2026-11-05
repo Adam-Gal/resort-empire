@@ -28,3 +28,32 @@ MonoBehaviour:
   spriteOffset: {x: 0.889, y: -1.145}
   spriteScale: 1
   visualHeight: 3.11237
+  levels:
+  - prefab: {fileID: 7707044882422822165, guid: b6725d9cbc510212884d955d7048a31f, type: 3}
+    capacity: 3
+    upgradeCost: []
+    visualHeight: 3.11237
+  - prefab: {fileID: 3842977650366248447, guid: 16a5d38060a19244680e8648fa3321af, type: 3}
+    capacity: 5
+    upgradeCost:
+    - type: 0
+      amount: 500
+    visualHeight: 3.1710289
+  - prefab: {fileID: 109478910993115434, guid: ba192f403cd15bf569accd75f3f0fc1c, type: 3}
+    capacity: 7
+    upgradeCost:
+    - type: 0
+      amount: 1200
+    visualHeight: 3.2952476
+  - prefab: {fileID: 6225261638547913266, guid: f9ae9e87fa8e7a19e8fb1f5612e1a440, type: 3}
+    capacity: 8
+    upgradeCost:
+    - type: 0
+      amount: 2500
+    visualHeight: 3.4160159
+  - prefab: {fileID: 5329338358267541847, guid: b336502e91ee1f8e19889875eaebc636, type: 3}
+    capacity: 10
+    upgradeCost:
+    - type: 0
+      amount: 5000
+    visualHeight: 3.2641928

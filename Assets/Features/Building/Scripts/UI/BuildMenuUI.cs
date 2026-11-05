@@ -51,6 +51,12 @@ public class BuildMenuUI : MonoBehaviour
     [SerializeField] private Button demolishConfirm;
     [SerializeField] private Button[] demolishCancel;
 
+    [Header("Upgrade")]
+    [SerializeField] private BuildingUpgradePopup upgradePopup;
+
+    //Buildings are only upgraded between waves
+    [SerializeField] private WaveHud waveHud;
+
     private readonly List<BuildActionButton> actions = new List<BuildActionButton>();
     private readonly List<BuildShopCard> cards = new List<BuildShopCard>();
     private int usedActions;
@@ -107,8 +113,13 @@ public class BuildMenuUI : MonoBehaviour
     private void ShowBuilding(PlacedBuilding building)
     {
         BuildingManager manager = BuildingManager.Instance;
-        selectionTitle.text = building.Definition.displayName;
+        selectionTitle.text = building.Definition.HasLevel(building.Level)
+            ? $"{building.Definition.displayName} · Level {building.Level + 1}"
+            : building.Definition.displayName;
         placement.ShowSelection(building.Origin, building.Definition.size, building.transform.GetChild(0));
+
+        if (manager.CanUpgrade(building) && !waveHud.IsWaveActive)
+            AddAction("Vylepšiť", buildIcon, primaryColor, true, () => upgradePopup.Show(building, () => ShowUpgraded(building)));
 
         AddAction("Presunúť", moveIcon, secondaryColor, true, () =>
         {
@@ -130,9 +141,16 @@ public class BuildMenuUI : MonoBehaviour
         AddAction("Zbúrať", demolishIcon, destructiveColor, true, () => OpenDemolishDialog(building));
     }
 
+    // Selecting the new art again pops it, which is the upgrade animation.
+    private void ShowUpgraded(PlacedBuilding building)
+    {
+        BeginActions();
+        ShowBuilding(building);
+    }
+
     private void OpenDemolishDialog(PlacedBuilding building)
     {
-        string refund = FormatCost(BuildingManager.Instance.GetRefund(building.Definition), false);
+        string refund = FormatCost(BuildingManager.Instance.GetRefund(building), false);
         demolishTitle.text = $"Zbúrať {building.Definition.displayName}?";
         demolishRefund.text = $"Získaš späť: {refund}";
         demolishConfirm.onClick.RemoveAllListeners();
@@ -299,7 +317,7 @@ public class BuildMenuUI : MonoBehaviour
     }
 
     // abbreviate keeps short labels short, full numbers read better in sentences.
-    private static string FormatCost(ResourceCost[] costs, bool abbreviate = true)
+    public static string FormatCost(ResourceCost[] costs, bool abbreviate = true)
     {
         var text = new StringBuilder();
         foreach (ResourceCost cost in costs)

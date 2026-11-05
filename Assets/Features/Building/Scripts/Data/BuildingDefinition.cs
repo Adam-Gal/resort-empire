@@ -9,6 +9,21 @@ public enum BuildingCategory
     Decorations
 }
 
+[System.Serializable]
+public class BuildingLevel
+{
+    public GameObject prefab;
+
+    //Guests served at once, 0 hides it in the upgrade popup
+    public int capacity;
+
+    //Price of reaching this level, empty on the first one
+    public ResourceCost[] upgradeCost;
+
+    //Same as BuildingDefinition.visualHeight, higher levels have taller art
+    public float visualHeight;
+}
+
 // One buildable thing. Create a new asset to add a building to the game.
 [CreateAssetMenu(menuName = "Resort Empire/Building/Building Definition", fileName = "BuildingDefinition")]
 public class BuildingDefinition : ScriptableObject
@@ -38,7 +53,18 @@ public class BuildingDefinition : ScriptableObject
     //Height of the visible art from its front corner, used to pick the roof on a tap
     public float visualHeight;
 
+    //First one is what gets built, leave empty if it can't be upgraded
+    public BuildingLevel[] levels;
+
     public Sprite Picture => icon != null ? icon : prefab.GetComponentInChildren<SpriteRenderer>().sprite;
+
+    public bool HasLevel(int level) => levels != null && level >= 0 && level < levels.Length;
+
+    public GameObject PrefabAt(int level) => HasLevel(level) ? levels[level].prefab : prefab;
+
+    public float VisualHeightAt(int level) => HasLevel(level) ? levels[level].visualHeight : visualHeight;
+
+    public Sprite PictureAt(int level) => PrefabAt(level).GetComponentInChildren<SpriteRenderer>().sprite;
 
     public bool CanStandOn(TileCategory category)
     {

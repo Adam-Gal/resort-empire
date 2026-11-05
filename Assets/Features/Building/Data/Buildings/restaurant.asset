@@ -26,4 +26,34 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2ae37d1c5f242eb40a19851a30db39d1, type: 2}
   refundRatio: 0.5
   spriteOffset: {x: -0.043359734, y: -0.99472654}
+  spriteScale: 1
   visualHeight: 2.1067383
+  levels:
+  - prefab: {fileID: 8958491599440796235, guid: 39b3eaf526accdc2e9f707760904bd9b, type: 3}
+    capacity: 3
+    upgradeCost: []
+    visualHeight: 2.1067383
+  - prefab: {fileID: 8023142991378100449, guid: 7c235658febc34271940b4f0a60db5c6, type: 3}
+    capacity: 5
+    upgradeCost:
+    - type: 0
+      amount: 500
+    visualHeight: 2.1278322
+  - prefab: {fileID: 2751282429640465551, guid: 83804682aa2fde386961d246ea147822, type: 3}
+    capacity: 7
+    upgradeCost:
+    - type: 0
+      amount: 1200
+    visualHeight: 2.3229494
+  - prefab: {fileID: 6942835405973575874, guid: 6a2810b5dd6cdf91db9f6fa930ca3a8a, type: 3}
+    capacity: 8
+    upgradeCost:
+    - type: 0
+      amount: 2500
+    visualHeight: 2.391504
+  - prefab: {fileID: 4515715625896994148, guid: 5f84fe8b6b8cc5c34be187029b567d88, type: 3}
+    capacity: 10
+    upgradeCost:
+    - type: 0
+      amount: 5000
+    visualHeight: 2.504883
