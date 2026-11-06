@@ -92,20 +92,49 @@ public class BuildingManager : MonoBehaviour
         return true;
     }
 
-    public ResourceCost[] GetRefund(BuildingDefinition definition)
+    public void SetLevel(PlacedBuilding building, int level)
     {
-        var refund = new ResourceCost[definition.cost.Length];
-        for (int i = 0; i < refund.Length; i++)
+        building.SetLevel(level);
+
+        // Detached first, Destroy waits for the end of the frame and the art must stay the first child.
+        Transform oldVisual = building.transform.GetChild(0);
+        oldVisual.SetParent(null);
+        Destroy(oldVisual.gameObject);
+
+        AddVisual(building);
+        PositionBuilding(building);
+        WriteBuildings();
+    }
+
+    // Part of the price and of every upgrade bought.
+    public ResourceCost[] GetRefund(PlacedBuilding building)
+    {
+        BuildingDefinition definition = building.Definition;
+        var totals = new Dictionary<ResourceType, long>();
+        AddToTotals(totals, definition.cost);
+        for (int level = 1; level <= building.Level && definition.HasLevel(level); level++)
+            AddToTotals(totals, definition.levels[level].upgradeCost);
+
+        var refund = new List<ResourceCost>();
+        foreach (KeyValuePair<ResourceType, long> total in totals)
+            refund.Add(new ResourceCost(total.Key, (long)(total.Value * definition.refundRatio)));
+        return refund.ToArray();
+    }
+
+    private static void AddToTotals(Dictionary<ResourceType, long> totals, ResourceCost[] costs)
+    {
+        if (costs == null) return;
+
+        foreach (ResourceCost cost in costs)
         {
-            ResourceCost cost = definition.cost[i];
-            refund[i] = new ResourceCost(cost.type, (long)(cost.amount * definition.refundRatio));
+            totals.TryGetValue(cost.type, out long current);
+            totals[cost.type] = current + cost.amount;
         }
-        return refund;
     }
 
     public void Demolish(PlacedBuilding building)
     {
-        foreach (ResourceCost refund in GetRefund(building.Definition))
+        foreach (ResourceCost refund in GetRefund(building))
         {
             if (refund.amount > 0) ResourceManager.Instance.Add(refund.type, refund.amount);
         }
@@ -180,7 +209,7 @@ public class BuildingManager : MonoBehaviour
         return true;
     }
 
-    private PlacedBuilding Spawn(BuildingDefinition definition, Vector2Int origin)
+    private PlacedBuilding Spawn(BuildingDefinition definition, Vector2Int origin, int level = 0)
     {
         var root = new GameObject(definition.displayName);
         root.transform.SetParent(buildingsRoot, false);
@@ -190,13 +219,19 @@ public class BuildingManager : MonoBehaviour
         sorting.sortingOrder = sortingOrder;
 
         PlacedBuilding building = root.AddComponent<PlacedBuilding>();
-        building.Initialize(definition, origin);
-        Instantiate(definition.prefab, root.transform).transform.localScale *= definition.spriteScale;
+        building.Initialize(definition, origin, level);
+        AddVisual(building);
 
         PositionBuilding(building);
         grid.SetOccupant(origin, definition.size, building);
         placed.Add(building);
         return building;
+    }
+
+    private static void AddVisual(PlacedBuilding building)
+    {
+        BuildingDefinition definition = building.Definition;
+        Instantiate(definition.PrefabAt(building.Level), building.transform).transform.localScale *= definition.spriteScale;
     }
 
     private void PositionBuilding(PlacedBuilding building)
@@ -219,24 +254,24 @@ public class BuildingManager : MonoBehaviour
 
         foreach (PlacedBuilding building in placed)
         {
-            if (IsOnRoof(world, building.Definition, building.Origin)) return building;
+            if (IsOnRoof(world, building.Definition, building.Origin, building.Level)) return building;
         }
         foreach (RuinedBuilding ruin in ruins)
         {
-            if (ruin != null && IsOnRoof(world, ruin.RestoredBuilding, ruin.Origin)) return ruin;
+            if (ruin != null && IsOnRoof(world, ruin.RestoredBuilding, ruin.Origin, 0)) return ruin;
         }
         return null;
     }
 
     // On the footprint or on the art above it.
-    public bool IsOverBuilding(Vector3 world, BuildingDefinition definition, Vector2Int origin)
+    public bool IsOverBuilding(Vector3 world, BuildingDefinition definition, Vector2Int origin, int level = 0)
     {
         Vector2Int cell = grid.WorldToCell(world) - origin;
         bool onFootprint = cell.x >= 0 && cell.y >= 0 && cell.x < definition.size.x && cell.y < definition.size.y;
-        return onFootprint || IsOnRoof(world, definition, origin);
+        return onFootprint || IsOnRoof(world, definition, origin, level);
     }
 
-    private bool IsOnRoof(Vector3 world, BuildingDefinition definition, Vector2Int origin)
+    private bool IsOnRoof(Vector3 world, BuildingDefinition definition, Vector2Int origin, int level)
     {
         // The footprint outline lifted by how far the art rises above its back corner.
         Vector2Int size = definition.size;
@@ -248,7 +283,7 @@ public class BuildingManager : MonoBehaviour
 
         float edgeSlope = .5f;
         float backEdge = back.y - Mathf.Abs(world.x - back.x) * edgeSlope;
-        float rise = Mathf.Max(0f, definition.visualHeight - (size.x + size.y) * .25f);
+        float rise = Mathf.Max(0f, definition.VisualHeightAt(level) - (size.x + size.y) * .25f);
         return world.y >= center.y && world.y <= backEdge + rise;
     }
 
@@ -269,7 +304,7 @@ public class BuildingManager : MonoBehaviour
         {
             BuildingDefinition definition = Array.Find(buildings, b => b.id == entry.id);
             if (definition != null)
-                Spawn(definition, entry.origin);
+                Spawn(definition, entry.origin, entry.level);
             else
                 Debug.LogWarning($"[BuildingManager] Save has unknown building '{entry.id}'.");
         }
@@ -298,7 +333,7 @@ public class BuildingManager : MonoBehaviour
     {
         saveData.buildings.Clear();
         foreach (PlacedBuilding building in placed)
-            saveData.buildings.Add(new PlacedBuildingSaveData { id = building.Definition.id, origin = building.Origin });
+            saveData.buildings.Add(new PlacedBuildingSaveData { id = building.Definition.id, origin = building.Origin, level = building.Level });
         MarkChanged();
     }
 

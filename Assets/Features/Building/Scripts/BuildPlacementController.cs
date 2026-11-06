@@ -105,7 +105,7 @@ public class BuildPlacementController : MonoBehaviour
 
     private void ShowGhost(Vector2Int startOrigin)
     {
-        ghost = Instantiate(definition.prefab);
+        ghost = Instantiate(moving != null ? definition.PrefabAt(moving.Level) : definition.prefab);
         ghost.transform.localScale *= definition.spriteScale;
         ghostRenderers = ghost.GetComponentsInChildren<SpriteRenderer>();
         foreach (SpriteRenderer spriteRenderer in ghostRenderers)
@@ -148,7 +148,8 @@ public class BuildPlacementController : MonoBehaviour
 
         if (pointer.press.wasPressedThisFrame)
         {
-            if (EventSystem.current.IsPointerOverGameObject() || !manager.IsOverBuilding(world, definition, origin)) return;
+            int level = moving != null ? moving.Level : 0;
+            if (EventSystem.current.IsPointerOverGameObject() || !manager.IsOverBuilding(world, definition, origin, level)) return;
 
             draggingGhost = true;
             cameraController.InputLocked = true;

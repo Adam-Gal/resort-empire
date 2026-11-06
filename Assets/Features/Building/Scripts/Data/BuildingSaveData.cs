@@ -7,6 +7,9 @@ public class PlacedBuildingSaveData
 {
     public string id;
     public Vector2Int origin;
+
+    //Index into BuildingDefinition.levels, older saves load as the first level
+    public int level;
 }
 
 // player's island progress

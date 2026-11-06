@@ -9769,6 +9769,7 @@ GameObject:
   - component: {fileID: 499311814}
   - component: {fileID: 499311813}
   - component: {fileID: 499311812}
+  - component: {fileID: 499311816}
   m_Layer: 0
   m_Name: BuildingManager
   m_TagString: Untagged
@@ -9833,40 +9834,58 @@ MonoBehaviour:
   startingBuildings:
   - id: single_palm
     origin: {x: 3, y: -14}
+    level: 0
   - id: single_palm
     origin: {x: -8, y: -11}
+    level: 0
   - id: single_palm
     origin: {x: 8, y: -11}
+    level: 0
   - id: small_shrub
     origin: {x: -4, y: -7}
+    level: 0
   - id: palm_garden
     origin: {x: 1, y: -6}
+    level: 0
   - id: single_palm
     origin: {x: -10, y: -5}
+    level: 0
   - id: small_shrub
     origin: {x: 0, y: -5}
+    level: 0
   - id: single_palm
     origin: {x: 7, y: -3}
+    level: 0
   - id: single_palm
     origin: {x: -14, y: -2}
+    level: 0
   - id: single_palm
     origin: {x: 10, y: -2}
+    level: 0
   - id: flower_rocks
     origin: {x: 1, y: 1}
+    level: 0
   - id: small_shrub
     origin: {x: 8, y: 1}
+    level: 0
   - id: flower_rocks
     origin: {x: 2, y: 5}
+    level: 0
   - id: palm_garden
     origin: {x: 4, y: 7}
+    level: 0
   - id: flower_rocks
     origin: {x: -6, y: 9}
+    level: 0
   - id: single_palm
     origin: {x: -9, y: 10}
+    level: 0
   - id: single_palm
     origin: {x: 4, y: 10}
+    level: 0
   - id: single_palm
     origin: {x: 7, y: 12}
+    level: 0
   saveFileName: buildings_save.json
   removalEffect: {fileID: 3860974670339859394, guid: 7669cee9c4555774abe2d8e30299590c, type: 3}
   sortingOrder: 200
@@ -9913,6 +9932,19 @@ Transform:
   - {fileID: 898853314}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &499311816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499311811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e51ce7cb1972cf398a8c6226bca69b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BuildingUpgrade
+  upgradeEffect: {fileID: 3860974670339859394, guid: 7669cee9c4555774abe2d8e30299590c, type: 3}
 --- !u!1 &504214045
 GameObject:
   m_ObjectHideFlags: 0
