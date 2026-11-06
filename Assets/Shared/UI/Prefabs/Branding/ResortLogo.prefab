@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3785139740726336514}
   - component: {fileID: 4677659525545055490}
   - component: {fileID: 2256510780567572128}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ResortLogo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 8104746103790043298}
   - component: {fileID: 7110360610535974248}
   - component: {fileID: 3573395171617148793}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LogoMark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 9219530551130149473}
   - component: {fileID: 1853613603044001935}
   - component: {fileID: 2669500353477397751}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Tagline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -301,7 +301,7 @@ GameObject:
   - component: {fileID: 3651145250860205481}
   - component: {fileID: 5963128475830700373}
   - component: {fileID: 6804876923382193195}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LogoType
   m_TagString: Untagged
   m_Icon: {fileID: 0}

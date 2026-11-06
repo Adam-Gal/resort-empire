@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2654400084880457117}
   - component: {fileID: 8282532762770179805}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SafeArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64,7 +64,7 @@ GameObject:
   - component: {fileID: 4539383891535283740}
   - component: {fileID: 2325733944662359175}
   - component: {fileID: 729283260500242363}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ResortHUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3552117008858963138}
   - component: {fileID: 5778021412307820174}
   - component: {fileID: 1562266790399727717}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 1396660918587659963}
   - component: {fileID: 8351345589175681166}
   - component: {fileID: 8923829470266404112}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ReferenceFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 5813939809166886738}
   - component: {fileID: 1555833185653049718}
   - component: {fileID: 2450846387468397384}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CoinGold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 5118249847163600107}
   - component: {fileID: 585141882199919015}
   - component: {fileID: 8480271583677551913}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -373,7 +373,7 @@ GameObject:
   - component: {fileID: 6503146994067883561}
   - component: {fileID: 4253700708623823532}
   - component: {fileID: 4778088215444654596}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ResourceCounterCoins
   m_TagString: Untagged
   m_Icon: {fileID: 0}

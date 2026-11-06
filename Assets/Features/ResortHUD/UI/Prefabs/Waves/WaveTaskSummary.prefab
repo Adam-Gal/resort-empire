@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1816920198706578255}
   - component: {fileID: 6748524983765565640}
   - component: {fileID: 94714965174680732}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CompletedCaption
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 3770831553559745301}
   - component: {fileID: 3251952022131501742}
   - component: {fileID: 6989003746349236497}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: WaveTaskSummary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 965563509444348817}
   - component: {fileID: 5853902382228854954}
   - component: {fileID: 3872724505328645454}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Caption
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -363,7 +363,7 @@ GameObject:
   - component: {fileID: 3831555369819230880}
   - component: {fileID: 7949433249095202343}
   - component: {fileID: 5179097022081255108}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Requests
   m_TagString: Untagged
   m_Icon: {fileID: 0}
