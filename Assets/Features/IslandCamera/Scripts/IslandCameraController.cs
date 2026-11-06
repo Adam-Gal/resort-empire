@@ -18,6 +18,10 @@ namespace ResortEmpire.Presentation
         public Collider2D Bounds;
         [Min(.5f)] public float MinZoom = 3.5f;
         [Min(.5f)] public float MaxZoom = 8.5f;
+
+        // Zooming out goes past MaxZoom until this whole area fits on screen, whatever the aspect ratio.
+        public Collider2D ZoomOutToFit;
+        [Min(0f)] public float FitMargin = 1f;
         [Min(0f)] public float ScrollZoomStep = .1f;
         [Range(0f, 20f)] public float Inertia = 6f;
 
@@ -198,10 +202,16 @@ namespace ResortEmpire.Presentation
 
         private float EffectiveMaxZoom()
         {
+            float max = MaxZoom;
+            if (ZoomOutToFit)
+            {
+                var fit = ZoomOutToFit.bounds.extents;
+                max = Mathf.Max(max, fit.y + FitMargin, (fit.x + FitMargin) / Aspect());
+            }
             if (!Bounds)
-                return MaxZoom;
+                return max;
             var size = Bounds.bounds.size;
-            return Mathf.Max(MinZoom, Mathf.Min(MaxZoom, size.y * .5f, size.x * .5f / Aspect()));
+            return Mathf.Max(MinZoom, Mathf.Min(max, size.y * .5f, size.x * .5f / Aspect()));
         }
 
         private Vector2 ScreenToWorld(Vector2 screenPoint)
