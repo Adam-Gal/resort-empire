@@ -3281,6 +3281,7 @@ GameObject:
   - component: {fileID: 3254526938744303964}
   - component: {fileID: 8520430046588032368}
   - component: {fileID: 764968244475471694}
+  - component: {fileID: 7642770777325187406}
   m_Layer: 0
   m_Name: DialogPanel
   m_TagString: Untagged
@@ -3350,6 +3351,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 0.4
+--- !u!114 &7642770777325187406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3748610328919169903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
+  m_EffectColor: {r: 0.08627451, g: 0.24313726, b: 0.27450982, a: 1}
+  m_EffectDistance: {x: 4, y: -4}
+  m_UseGraphicAlpha: 1
 --- !u!1 &3790061585436802070
 GameObject:
   m_ObjectHideFlags: 0
