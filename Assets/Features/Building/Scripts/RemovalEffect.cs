@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-// Smoke when something is demolished or cleared, the art sinks into it.
+// Smoke when something is demolished, cleared or upgraded, removed art sinks into it.
 public class RemovalEffect : MonoBehaviour
 {
     [SerializeField] private ParticleSystem[] particles;
@@ -11,7 +11,7 @@ public class RemovalEffect : MonoBehaviour
     [SerializeField] private int baseCells = 4;
     [SerializeField] private int maxCountMultiplier = 4;
 
-    // visual is taken over and destroyed when it has sunk.
+    // visual is taken over and destroyed when it has sunk, without one only the smoke plays.
     public void Play(Vector3 footprintCenter, Vector2Int size, GameObject visual)
     {
         transform.position = footprintCenter;

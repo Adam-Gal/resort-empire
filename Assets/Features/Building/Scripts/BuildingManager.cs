@@ -18,7 +18,7 @@ public class BuildingManager : MonoBehaviour
     [SerializeField] private PlacedBuildingSaveData[] startingBuildings;
     [SerializeField] private string saveFileName = "buildings_save.json";
 
-    //Smoke when a building is demolished or jungle is cleared
+    //Smoke when a building is demolished or upgraded or jungle is cleared
     [SerializeField] private RemovalEffect removalEffect;
 
     //Sorts together with the clearable tiles, which use the same order
@@ -113,8 +113,17 @@ public class BuildingManager : MonoBehaviour
 
         AddVisual(building);
         PositionBuilding(building);
+        PlayUpgradeSmoke(building);
         WriteBuildings();
         return true;
+    }
+
+    private void PlayUpgradeSmoke(PlacedBuilding building)
+    {
+        if (removalEffect == null) return;
+
+        Vector2Int size = building.Definition.size;
+        Instantiate(removalEffect).Play(grid.FootprintCenter(building.Origin, size), size, null);
     }
 
     // Part of the price and of every upgrade bought.
