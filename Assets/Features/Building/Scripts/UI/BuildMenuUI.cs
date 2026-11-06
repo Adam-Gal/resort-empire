@@ -95,11 +95,24 @@ public class BuildMenuUI : MonoBehaviour
     public void ShowSelection(Vector2Int cell, UnityEngine.Object occupant, Vector3 world)
     {
         BuildingManager manager = BuildingManager.Instance;
+        IslandProgress islands = IslandProgress.Instance;
         shopPanel.SetActive(false);
         placeAt = null;
         BeginActions();
 
-        if (occupant is PlacedBuilding building)
+        IslandProgress.Bridge bridge = islands != null ? islands.PickBridge(world) : null;
+        IslandProgress.Island locked = islands != null ? islands.GetLockedIsland(world) : null;
+        Harbor harbor = HarborManager.Instance != null ? HarborManager.Instance.Pick(world) : null;
+        if (bridge != null)
+            ShowBridge(bridge);
+        else if (harbor != null)
+            ShowHarbor(harbor);
+        else if (locked != null)
+        {
+            placement.ClearSelection();
+            islands.OnLockedIslandTapped(locked);
+        }
+        else if (occupant is PlacedBuilding building)
             ShowBuilding(building);
         else if (occupant is RuinedBuilding ruin)
             ShowRuin(ruin);
@@ -128,6 +141,8 @@ public class BuildMenuUI : MonoBehaviour
             BeginPlacing(building.Definition, null);
             placement.BeginMove(building);
         });
+        if (!building.Definition.canRemove) return;
+
         if (building.Definition.IsDecoration)
         {
             // Cleared like jungle, nothing is paid back.
@@ -177,6 +192,71 @@ public class BuildMenuUI : MonoBehaviour
         }, true);
     }
 
+    private void ShowBridge(IslandProgress.Bridge bridge)
+    {
+        IslandProgress islands = IslandProgress.Instance;
+        placement.ClearSelection();
+
+        // The island the bridge stands on has to be open first.
+        string problem = islands.GetBridgeProblem(bridge);
+        if (problem != null)
+        {
+            islands.ShowBridgeProblem(bridge);
+            return;
+        }
+
+        selectionTitle.text = bridge.displayName + " · zničený";
+        // Stays tappable without the coins, so the player learns what is missing.
+        AddAction("Opraviť " + FormatCost(bridge.repairCost), buildIcon, primaryColor, true, () =>
+        {
+            if (!islands.CanAffordRepair(bridge)) islands.ShowMissingForRepair(bridge);
+            else islands.TryRepair(bridge);
+            CloseAll();
+        }, true);
+    }
+
+    // Harbors are off the grid, they can only be upgraded.
+    private void ShowHarbor(Harbor harbor)
+    {
+        HarborManager harbors = HarborManager.Instance;
+        ShowHarborSelection(harbor, harbors.Definition.size);
+        selectionTitle.text = $"{harbors.Definition.displayName} · Level {harbor.Level + 1}";
+
+        if (harbors.CanUpgrade(harbor) && !waveHud.IsWaveActive)
+            AddAction("Vylepšiť", upgradeIcon, primaryColor, true, () =>
+                upgradePopup.Show(harbors.Definition, harbor.Level, () => harbors.TryUpgrade(harbor), () =>
+                {
+                    BeginActions();
+                    ShowHarbor(harbor);
+                    selectionBar.SetActive(usedActions > 0);
+                }));
+        else if (!harbors.CanUpgrade(harbor))
+            AddAction("Max. level", upgradeIcon, secondaryColor, false, () => { });
+    }
+
+    // Outline and pop like a building, on the cells nearest to the harbor's middle.
+    private void ShowHarborSelection(Harbor harbor, Vector2Int size)
+    {
+        BuildGrid grid = BuildingManager.Instance.Grid;
+        if (harbor.Mirrored) size = new Vector2Int(size.y, size.x);
+
+        Vector2Int guess = grid.WorldToCell(harbor.Center) - size / 2;
+        Vector2Int best = guess;
+        float bestDistance = float.MaxValue;
+        for (int x = -2; x <= 2; x++)
+        {
+            for (int y = -2; y <= 2; y++)
+            {
+                Vector2Int origin = guess + new Vector2Int(x, y);
+                float distance = Vector2.Distance(grid.FootprintCenter(origin, size), harbor.Center);
+                if (distance >= bestDistance) continue;
+                best = origin;
+                bestDistance = distance;
+            }
+        }
+        placement.ShowSelection(best, size, harbor.Art);
+    }
+
     private void ShowObstacle(Vector2Int cell)
     {
         BuildingManager manager = BuildingManager.Instance;
@@ -198,10 +278,11 @@ public class BuildMenuUI : MonoBehaviour
         BuildingManager manager = BuildingManager.Instance;
         TileCategory category = manager.Grid.GetCategory(cell);
         placement.ShowSelection(cell, Vector2Int.one);
+        if (manager.Grid.IsBlocked(cell)) return;
 
         foreach (BuildingDefinition definition in manager.Buildings)
         {
-            if (!definition.CanStandOn(category)) continue;
+            if (!definition.showInShop || !definition.CanStandOn(category)) continue;
 
             placeAt = world;
             PulseOpenButton();
@@ -252,7 +333,7 @@ public class BuildMenuUI : MonoBehaviour
         int used = 0;
         foreach (BuildingDefinition definition in BuildingManager.Instance.Buildings)
         {
-            if (filter != null && definition.category != filter) continue;
+            if (!definition.showInShop || (filter != null && definition.category != filter)) continue;
 
             if (used == cards.Count)
                 cards.Add(Instantiate(cardTemplate, cardTemplate.transform.parent));

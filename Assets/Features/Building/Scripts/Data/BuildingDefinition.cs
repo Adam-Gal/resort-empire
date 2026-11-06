@@ -41,6 +41,12 @@ public class BuildingDefinition : ScriptableObject
     //Part of the price returned on demolish
     [Range(0f, 1f)] public float refundRatio = .5f;
 
+    //Off for landmarks the island starts with, they can't be bought
+    public bool showInShop = true;
+
+    //Off for landmarks that can only be moved, never cleared or demolished
+    public bool canRemove = true;
+
     // Decorations are cleared like obstacles, other buildings are demolished for a refund.
     public bool IsDecoration => category == BuildingCategory.Decorations;
 
