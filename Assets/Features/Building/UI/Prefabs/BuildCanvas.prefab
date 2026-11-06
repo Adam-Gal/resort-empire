@@ -873,6 +873,7 @@ MonoBehaviour:
   selectionTitle: {fileID: 2531683003723483299}
   actionTemplate: {fileID: 7033861477768901998}
   buildIcon: {fileID: 21300000, guid: 7d51b6682cc55fe4bbd9da0f44d28b8c, type: 3}
+  upgradeIcon: {fileID: 21300000, guid: 0cb44fcfc927c70c18431cd7debda606, type: 3}
   moveIcon: {fileID: 21300000, guid: f2a675a85e62f4b4e9067f3153dfa30d, type: 3}
   demolishIcon: {fileID: 21300000, guid: 9c64e828ad737b24d805c417783719e8, type: 3}
   clearIcon: {fileID: 21300000, guid: 0757ea6e526fc824ca2742331bdee81b, type: 3}

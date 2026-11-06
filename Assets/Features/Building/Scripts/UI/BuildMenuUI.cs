@@ -21,6 +21,7 @@ public class BuildMenuUI : MonoBehaviour
     [SerializeField] private TMP_Text selectionTitle;
     [SerializeField] private BuildActionButton actionTemplate;
     [SerializeField] private Sprite buildIcon;
+    [SerializeField] private Sprite upgradeIcon;
     [SerializeField] private Sprite moveIcon;
     [SerializeField] private Sprite demolishIcon;
     [SerializeField] private Sprite clearIcon;
@@ -119,7 +120,7 @@ public class BuildMenuUI : MonoBehaviour
         placement.ShowSelection(building.Origin, building.Definition.size, building.transform.GetChild(0));
 
         if (manager.CanUpgrade(building) && !waveHud.IsWaveActive)
-            AddAction("Vylepšiť", buildIcon, primaryColor, true, () => upgradePopup.Show(building, () => ShowUpgraded(building)));
+            AddAction("Vylepšiť", upgradeIcon, primaryColor, true, () => upgradePopup.Show(building, () => ShowUpgraded(building)));
 
         AddAction("Presunúť", moveIcon, secondaryColor, true, () =>
         {
