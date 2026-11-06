@@ -119,7 +119,7 @@ public class BuildMenuUI : MonoBehaviour
             : building.Definition.displayName;
         placement.ShowSelection(building.Origin, building.Definition.size, building.transform.GetChild(0));
 
-        if (manager.CanUpgrade(building) && !waveHud.IsWaveActive)
+        if (BuildingUpgrade.Instance.CanUpgrade(building) && !waveHud.IsWaveActive)
             AddAction("Vylepšiť", upgradeIcon, primaryColor, true, () => upgradePopup.Show(building, () => ShowUpgraded(building)));
 
         AddAction("Presunúť", moveIcon, secondaryColor, true, () =>

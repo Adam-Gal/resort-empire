@@ -18,7 +18,7 @@ public class BuildingManager : MonoBehaviour
     [SerializeField] private PlacedBuildingSaveData[] startingBuildings;
     [SerializeField] private string saveFileName = "buildings_save.json";
 
-    //Smoke when a building is demolished or upgraded or jungle is cleared
+    //Smoke when a building is demolished or jungle is cleared
     [SerializeField] private RemovalEffect removalEffect;
 
     //Sorts together with the clearable tiles, which use the same order
@@ -92,19 +92,9 @@ public class BuildingManager : MonoBehaviour
         return true;
     }
 
-    public bool CanUpgrade(PlacedBuilding building)
+    public void SetLevel(PlacedBuilding building, int level)
     {
-        return building.Definition.HasLevel(building.Level + 1);
-    }
-
-    public bool TryUpgrade(PlacedBuilding building)
-    {
-        if (!CanUpgrade(building)) return false;
-
-        BuildingLevel next = building.Definition.levels[building.Level + 1];
-        if (!ResourceManager.Instance.TrySpend(next.upgradeCost)) return false;
-
-        building.SetLevel(building.Level + 1);
+        building.SetLevel(level);
 
         // Detached first, Destroy waits for the end of the frame and the art must stay the first child.
         Transform oldVisual = building.transform.GetChild(0);
@@ -113,17 +103,7 @@ public class BuildingManager : MonoBehaviour
 
         AddVisual(building);
         PositionBuilding(building);
-        PlayUpgradeSmoke(building);
         WriteBuildings();
-        return true;
-    }
-
-    private void PlayUpgradeSmoke(PlacedBuilding building)
-    {
-        if (removalEffect == null) return;
-
-        Vector2Int size = building.Definition.size;
-        Instantiate(removalEffect).Play(grid.FootprintCenter(building.Origin, size), size, null);
     }
 
     // Part of the price and of every upgrade bought.

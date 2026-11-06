@@ -51,6 +51,6 @@ public class BuildingUpgradePopup : MonoBehaviour
         upgradeButton.interactable = false;
         dialog.SetActive(false);
 
-        if (BuildingManager.Instance.TryUpgrade(building)) onUpgraded?.Invoke();
+        if (BuildingUpgrade.Instance.TryUpgrade(building)) onUpgraded?.Invoke();
     }
 }
