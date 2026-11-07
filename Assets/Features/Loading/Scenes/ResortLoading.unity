@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 180207816}
   - component: {fileID: 180207815}
   - component: {fileID: 180207813}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LoadingScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -330,7 +330,7 @@ GameObject:
   - component: {fileID: 317509194}
   - component: {fileID: 317509193}
   - component: {fileID: 317509192}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: IslandIllustration
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -511,7 +511,7 @@ GameObject:
   - component: {fileID: 494006509}
   - component: {fileID: 494006511}
   - component: {fileID: 494006510}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ActualLoadProgress
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -587,7 +587,7 @@ GameObject:
   - component: {fileID: 577133273}
   - component: {fileID: 577133275}
   - component: {fileID: 577133274}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LogoMark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -662,7 +662,7 @@ GameObject:
   - component: {fileID: 703552517}
   - component: {fileID: 703552516}
   - component: {fileID: 703552515}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -800,7 +800,7 @@ GameObject:
   - component: {fileID: 780158770}
   - component: {fileID: 780158769}
   - component: {fileID: 780158768}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Retry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -920,7 +920,7 @@ GameObject:
   - component: {fileID: 780614507}
   - component: {fileID: 780614509}
   - component: {fileID: 780614508}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Logo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -998,7 +998,7 @@ GameObject:
   - component: {fileID: 805452453}
   - component: {fileID: 805452455}
   - component: {fileID: 805452454}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LogoType
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1136,7 +1136,7 @@ GameObject:
   m_Component:
   - component: {fileID: 857343388}
   - component: {fileID: 857343389}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SafeArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1188,7 +1188,7 @@ GameObject:
   - component: {fileID: 995604346}
   - component: {fileID: 995604347}
   - component: {fileID: 995604348}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Message
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1325,7 +1325,7 @@ GameObject:
   - component: {fileID: 1581198807}
   - component: {fileID: 1581198806}
   - component: {fileID: 1581198805}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LoadingStatus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1462,7 +1462,7 @@ GameObject:
   - component: {fileID: 1591245579}
   - component: {fileID: 1591245581}
   - component: {fileID: 1591245580}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Tagline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1599,7 +1599,7 @@ GameObject:
   - component: {fileID: 1803593356}
   - component: {fileID: 1803593358}
   - component: {fileID: 1803593357}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1674,7 +1674,7 @@ GameObject:
   - component: {fileID: 1888292700}
   - component: {fileID: 1888292702}
   - component: {fileID: 1888292701}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LoadingFailure
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1751,7 +1751,7 @@ GameObject:
   - component: {fileID: 2041489511}
   - component: {fileID: 2041489513}
   - component: {fileID: 2041489512}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ProgressPlate
   m_TagString: Untagged
   m_Icon: {fileID: 0}

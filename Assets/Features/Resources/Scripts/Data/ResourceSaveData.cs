@@ -9,6 +9,7 @@ public class ResourceSaveData
     public int version = 1;
     public MoneyResource money = new MoneyResource();
     public EnergyResource energy = new EnergyResource();
+    public ReputationResource reputation = new ReputationResource();
 
     public bool starterGiftClaimed;
 }

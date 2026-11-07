@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7286944814482213303}
   - component: {fileID: 7568706923491311910}
   - component: {fileID: 8725419265132482547}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 4279906911349737300}
   - component: {fileID: 5477615691429940950}
   - component: {fileID: 1042765349765846067}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 5549351080268473122}
   - component: {fileID: 1614509298077519722}
   - component: {fileID: 6460061527832714142}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ReferenceFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -298,7 +298,7 @@ GameObject:
   - component: {fileID: 7287279127063559821}
   - component: {fileID: 7493570376930605455}
   - component: {fileID: 5291984449233560036}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Wave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -377,7 +377,7 @@ GameObject:
   - component: {fileID: 7474090496103942235}
   - component: {fileID: 1602233534096703051}
   - component: {fileID: 3095177957024445990}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: StartWave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -498,7 +498,7 @@ GameObject:
   - component: {fileID: 6787295178003204578}
   - component: {fileID: 7889366660404195114}
   - component: {fileID: 4926469039371309389}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: IdleWavePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -576,7 +576,7 @@ GameObject:
   - component: {fileID: 1442508573215917778}
   - component: {fileID: 2340037422600734491}
   - component: {fileID: 8468365929404792454}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: WaveState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -714,7 +714,7 @@ GameObject:
   - component: {fileID: 1496619486290944083}
   - component: {fileID: 8565014916165128639}
   - component: {fileID: 7598569281887199685}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -809,7 +809,7 @@ GameObject:
   - component: {fileID: 7769850033342923325}
   - component: {fileID: 4450640812950297564}
   - component: {fileID: 7869527948573339080}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Description
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -946,7 +946,7 @@ GameObject:
   - component: {fileID: 1759043780367738938}
   - component: {fileID: 975026738322483675}
   - component: {fileID: 4829509973700477401}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: WaveProgress
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1020,7 +1020,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1058838154606781480}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: WaveStatus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1061,7 +1061,7 @@ GameObject:
   - component: {fileID: 6023235789736727439}
   - component: {fileID: 3786150732371873260}
   - component: {fileID: 1749632904227584119}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}

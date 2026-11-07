@@ -12,6 +12,9 @@ public class BuildGrid : MonoBehaviour
     [SerializeField] private TileCategory[] categories;
     [SerializeField] private Tilemap obstacleLayer;
 
+    //Areas nothing can be built on, whatever the tiles under them
+    [SerializeField] private Collider2D[] blockedAreas = new Collider2D[0];
+
     private readonly Dictionary<TileBase, TileCategory> categoryByTile = new Dictionary<TileBase, TileCategory>();
     private readonly Dictionary<Vector2Int, Object> occupants = new Dictionary<Vector2Int, Object>();
 
@@ -125,11 +128,27 @@ public class BuildGrid : MonoBehaviour
         }
     }
 
+    // Locked islands are not built on until reputation or a bridge opens them.
+    public bool IsLocked(Vector2Int cell) => IslandProgress.Instance != null && IslandProgress.Instance.IsLocked(CellToWorld(cell));
+
+    // Landmarks like the volcano or a lake, never built on.
+    public bool IsBlocked(Vector2Int cell)
+    {
+        Vector3 world = CellToWorld(cell);
+        foreach (Collider2D area in blockedAreas)
+        {
+            if (area != null && area.OverlapPoint(world)) return true;
+        }
+        return false;
+    }
+
     // ignore lets a building being moved overlap its own old cells.
-    public bool CanPlace(BuildingDefinition definition, Vector2Int origin, Object ignore = null)
+    // ignoreLocks lets the starting landmarks sit on islands that are still locked.
+    public bool CanPlace(BuildingDefinition definition, Vector2Int origin, Object ignore = null, bool ignoreLocks = false)
     {
         foreach (Vector2Int cell in Footprint(origin, definition.size))
         {
+            if ((!ignoreLocks && IsLocked(cell)) || IsBlocked(cell)) return false;
             Object occupant = GetOccupant(cell);
             if (occupant != null && occupant != ignore) return false;
             if (!definition.CanStandOn(GetCategory(cell))) return false;

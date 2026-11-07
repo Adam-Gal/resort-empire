@@ -124,7 +124,7 @@ public class BuildPlacementController : MonoBehaviour
             {
                 var cell = (Vector2Int)position;
                 UnityEngine.Object occupant = grid.GetOccupant(cell);
-                if ((occupant == null || occupant == moving) && definition.CanStandOn(grid.GetCategory(cell)))
+                if ((occupant == null || occupant == moving) && !grid.IsLocked(cell) && !grid.IsBlocked(cell) &&definition.CanStandOn(grid.GetCategory(cell)))
                     overlay.SetTile(position, overlayTile);
             }
         }

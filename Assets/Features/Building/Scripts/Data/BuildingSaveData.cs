@@ -24,4 +24,7 @@ public class BuildingSaveData
 
     //The island's starting decorations were turned into buildings once
     public bool startingBuildingsPlaced;
+
+    //Landmarks are placed one by one, so ones added in an update also reach older saves
+    public List<string> placedLandmarks = new List<string>();
 }

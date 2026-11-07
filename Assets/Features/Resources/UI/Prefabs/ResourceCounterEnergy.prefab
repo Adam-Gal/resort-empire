@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8626022094625331648}
   - component: {fileID: 4547273053593401008}
   - component: {fileID: 2955767879463517568}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 6547142547581877011}
   - component: {fileID: 8712241754294872427}
   - component: {fileID: 7498480098180756442}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 175758012433235521}
   - component: {fileID: 2590736550117910248}
   - component: {fileID: 90251959177458994}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ResourceCounterEnergy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -301,7 +301,7 @@ GameObject:
   - component: {fileID: 1408127656617440647}
   - component: {fileID: 6882501831848460659}
   - component: {fileID: 3703345320949812948}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ReferenceFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3439016957799729048}
   - component: {fileID: 560283220822503050}
   - component: {fileID: 1142217354270318725}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 2558709887719604612}
   - component: {fileID: 6314264162945214874}
   - component: {fileID: 8291028142956333935}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ResortButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5352670136196622577}
   - component: {fileID: 3151805926930589703}
   - component: {fileID: 3307037243635175799}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: IconBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 5213467076777735540}
   - component: {fileID: 8567680778974326004}
   - component: {fileID: 7264183749380404505}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: DiamondFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 683220280687964208}
   - component: {fileID: 2878125336601380541}
   - component: {fileID: 8092090436001919337}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -300,7 +300,7 @@ GameObject:
   - component: {fileID: 3660693554797064882}
   - component: {fileID: 5517373613412001363}
   - component: {fileID: 7581409078583624917}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CrossA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -375,7 +375,7 @@ GameObject:
   - component: {fileID: 7077634925516074260}
   - component: {fileID: 1419954890979197836}
   - component: {fileID: 2090779293304475145}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Inset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -450,7 +450,7 @@ GameObject:
   - component: {fileID: 6144067668107104174}
   - component: {fileID: 6855225998100756829}
   - component: {fileID: 8216604965548056255}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Accent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -525,7 +525,7 @@ GameObject:
   - component: {fileID: 3841076302488028796}
   - component: {fileID: 3203913659826900499}
   - component: {fileID: 7349811777756116923}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Symbol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -662,7 +662,7 @@ GameObject:
   - component: {fileID: 8373500106075657988}
   - component: {fileID: 3565087639281402267}
   - component: {fileID: 7911540921682720711}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CrossB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -738,7 +738,7 @@ GameObject:
   - component: {fileID: 3383795747049323468}
   - component: {fileID: 52659704502880346}
   - component: {fileID: 7452159190542950454}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Dismiss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -861,7 +861,7 @@ GameObject:
   - component: {fileID: 6446075588217988194}
   - component: {fileID: 3240049932780815181}
   - component: {fileID: 2347799442949853347}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Message
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -998,7 +998,7 @@ GameObject:
   - component: {fileID: 6301928743132741189}
   - component: {fileID: 2770224148298441852}
   - component: {fileID: 8330476626776057466}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UINoticeWarning
   m_TagString: Untagged
   m_Icon: {fileID: 0}

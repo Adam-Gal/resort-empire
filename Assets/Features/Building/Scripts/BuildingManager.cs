@@ -16,6 +16,10 @@ public class BuildingManager : MonoBehaviour
 
     //Decorations the island starts with, they behave like bought ones
     [SerializeField] private PlacedBuildingSaveData[] startingBuildings;
+
+    //Movable landmarks and decorations on any island, like the waterfall or palms,
+    //placed once each even on a locked island
+    [SerializeField] private PlacedBuildingSaveData[] startingLandmarks = new PlacedBuildingSaveData[0];
     [SerializeField] private string saveFileName = "buildings_save.json";
 
     //Smoke when a building is demolished or jungle is cleared
@@ -311,8 +315,28 @@ public class BuildingManager : MonoBehaviour
 
         if (!saveData.startingBuildingsPlaced)
             PlaceStartingBuildings();
+        PlaceStartingLandmarks();
 
         Changed?.Invoke();
+    }
+
+    private void PlaceStartingLandmarks()
+    {
+        bool any = false;
+        foreach (PlacedBuildingSaveData entry in startingLandmarks)
+        {
+            // Older saves recorded the waterfall by its id alone.
+            string key = $"{entry.id}@{entry.origin.x},{entry.origin.y}";
+            if (saveData.placedLandmarks.Contains(key) || saveData.placedLandmarks.Contains(entry.id)) continue;
+
+            BuildingDefinition definition = Array.Find(buildings, b => b.id == entry.id);
+            if (definition == null || !grid.CanPlace(definition, entry.origin, null, true)) continue;
+
+            Spawn(definition, entry.origin, entry.level);
+            saveData.placedLandmarks.Add(key);
+            any = true;
+        }
+        if (any) WriteBuildings();
     }
 
     // Once per save, so moved or demolished decorations do not come back.

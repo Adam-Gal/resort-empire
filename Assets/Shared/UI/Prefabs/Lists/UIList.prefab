@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3665315856428137751}
   - component: {fileID: 5835753933746418120}
   - component: {fileID: 4972102228873466064}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: EmptyState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 8014685986023037447}
   - component: {fileID: 6504378301314986536}
   - component: {fileID: 6244580556124764254}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6269767019602764914}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UIList
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,7 +200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1187870018762925533}
   - component: {fileID: 3233401451049138121}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Scroll
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 8221479594432149090}
   - component: {fileID: 5121146247981283452}
   - component: {fileID: 2238496766064355924}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Message
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 8877171224096047981}
   - component: {fileID: 4068449416409051724}
   - component: {fileID: 2345298499893807128}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Viewport
   m_TagString: Untagged
   m_Icon: {fileID: 0}

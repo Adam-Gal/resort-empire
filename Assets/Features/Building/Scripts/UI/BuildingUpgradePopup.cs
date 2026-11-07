@@ -14,7 +14,7 @@ public class BuildingUpgradePopup : MonoBehaviour
     [SerializeField] private TMP_Text upgradePrice;
     [SerializeField] private Button closeButton;
 
-    private PlacedBuilding building;
+    private Func<bool> tryUpgrade;
     private Action onUpgraded;
 
     private void Awake()
@@ -24,17 +24,20 @@ public class BuildingUpgradePopup : MonoBehaviour
         dialog.SetActive(false);
     }
 
-    public void Show(PlacedBuilding target, Action upgraded)
+    public void Show(PlacedBuilding target, Action upgraded) =>
+        Show(target.Definition, target.Level, () => BuildingUpgrade.Instance.TryUpgrade(target), upgraded);
+
+    // Anything with levels can use it, like a harbor that is not on the build grid.
+    public void Show(BuildingDefinition definition, int level, Func<bool> upgrade, Action upgraded)
     {
-        building = target;
+        tryUpgrade = upgrade;
         onUpgraded = upgraded;
 
-        BuildingDefinition definition = target.Definition;
-        BuildingLevel current = definition.levels[target.Level];
-        BuildingLevel next = definition.levels[target.Level + 1];
+        BuildingLevel current = definition.levels[level];
+        BuildingLevel next = definition.levels[level + 1];
 
-        title.text = $"{definition.displayName} · Level {target.Level + 2}";
-        picture.sprite = definition.PictureAt(target.Level + 1);
+        title.text = $"{definition.displayName} · Level {level + 2}";
+        picture.sprite = definition.PictureAt(level + 1);
 
         capacity.gameObject.SetActive(next.capacity > 0);
         capacity.text = $"Kapacita: {current.capacity} → {next.capacity}";
@@ -51,6 +54,6 @@ public class BuildingUpgradePopup : MonoBehaviour
         upgradeButton.interactable = false;
         dialog.SetActive(false);
 
-        if (BuildingUpgrade.Instance.TryUpgrade(building)) onUpgraded?.Invoke();
+        if (tryUpgrade != null && tryUpgrade()) onUpgraded?.Invoke();
     }
 }

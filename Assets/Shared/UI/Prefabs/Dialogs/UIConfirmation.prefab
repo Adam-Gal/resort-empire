@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7831282445114779799}
   - component: {fileID: 9216709382685432057}
   - component: {fileID: 7973106849621385788}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 7368809903129073384}
   - component: {fileID: 3663153230748659860}
   - component: {fileID: 8649878122624681837}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: DialogPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 3695626563364585233}
   - component: {fileID: 1072133687207214067}
   - component: {fileID: 434531093952367388}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -364,7 +364,7 @@ GameObject:
   - component: {fileID: 7629910537479444426}
   - component: {fileID: 833960423254967756}
   - component: {fileID: 6799715987058539311}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CrossB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -440,7 +440,7 @@ GameObject:
   - component: {fileID: 449087689593795628}
   - component: {fileID: 3386484338128832808}
   - component: {fileID: 8513952872310859195}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Confirm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -560,7 +560,7 @@ GameObject:
   - component: {fileID: 1731032645924641663}
   - component: {fileID: 6640210046425903960}
   - component: {fileID: 3308220268747138223}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Inset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -635,7 +635,7 @@ GameObject:
   - component: {fileID: 3716908214008457635}
   - component: {fileID: 183702769622273905}
   - component: {fileID: 935550617600522201}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -772,7 +772,7 @@ GameObject:
   - component: {fileID: 1056545152671046792}
   - component: {fileID: 1376490978530193661}
   - component: {fileID: 4713081409883001899}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -909,7 +909,7 @@ GameObject:
   - component: {fileID: 3360751662940600916}
   - component: {fileID: 5197468614565460425}
   - component: {fileID: 6212682397894820657}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: DiamondFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -985,7 +985,7 @@ GameObject:
   - component: {fileID: 699002794509125843}
   - component: {fileID: 6120528772400476621}
   - component: {fileID: 506199759438077852}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UIConfirmation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1059,7 +1059,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3283106235099820336}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: DialogSafeArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1098,7 +1098,7 @@ GameObject:
   - component: {fileID: 4551506246335731123}
   - component: {fileID: 8248845178753618459}
   - component: {fileID: 3467656953110421917}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Cancel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1219,7 +1219,7 @@ GameObject:
   - component: {fileID: 8202330615256257046}
   - component: {fileID: 5925415666804532098}
   - component: {fileID: 5416648495371542474}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Close
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1340,7 +1340,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6984849388915523998}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ConfirmationActions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1379,7 +1379,7 @@ GameObject:
   - component: {fileID: 130651375486286066}
   - component: {fileID: 8854819721762999020}
   - component: {fileID: 4741153083867153535}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CrossA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1454,7 +1454,7 @@ GameObject:
   - component: {fileID: 3430945835017313341}
   - component: {fileID: 6981054793238312755}
   - component: {fileID: 2450659682380459126}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
