@@ -65,6 +65,9 @@ public class BuildMenuUI : MonoBehaviour
     private BuildingCategory? shopFilter;
     private Coroutine openPulse;
 
+    // The building the selection bar is showing, refreshed when its upgrade finishes.
+    private PlacedBuilding selectedBuilding;
+
     private void Start()
     {
         openButton.onClick.AddListener(() => OpenShop(placeAt));
@@ -81,6 +84,7 @@ public class BuildMenuUI : MonoBehaviour
 
         placement.CanConfirmChanged += value => confirmButton.interactable = value;
         placement.Tapped += ShowSelection;
+        BuildingUpgrade.Instance.UpgradeFinished += OnUpgradeFinished;
 
         foreach (Button cancel in demolishCancel)
             cancel.onClick.AddListener(() => demolishDialog.SetActive(false));
@@ -92,8 +96,15 @@ public class BuildMenuUI : MonoBehaviour
         placementBar.SetActive(false);
     }
 
+    private void OnDestroy()
+    {
+        if (BuildingUpgrade.Instance != null) BuildingUpgrade.Instance.UpgradeFinished -= OnUpgradeFinished;
+    }
+
     public void ShowSelection(Vector2Int cell, UnityEngine.Object occupant, Vector3 world)
     {
+        selectedBuilding = null;
+        upgradePopup.Hide();
         BuildingManager manager = BuildingManager.Instance;
         IslandProgress islands = IslandProgress.Instance;
         shopPanel.SetActive(false);
@@ -131,9 +142,16 @@ public class BuildMenuUI : MonoBehaviour
             ? $"{building.Definition.displayName} · Level {building.Level + 1}"
             : building.Definition.displayName;
         placement.ShowSelection(building.Origin, building.Definition.size, building.transform.GetChild(0));
+        selectedBuilding = building;
 
-        if (BuildingUpgrade.Instance.CanUpgrade(building) && !waveHud.IsWaveActive)
-            AddAction("Vylepšiť", upgradeIcon, primaryColor, true, () => upgradePopup.Show(building, () => ShowUpgraded(building)));
+        // The next level is being built: a grey button, and the popup with the time left opens by itself.
+        if (building.IsUpgrading)
+        {
+            AddGreyedAction("Vylepšuje sa", upgradeIcon);
+            upgradePopup.ShowUpgrading(building);
+        }
+        else if (BuildingUpgrade.Instance.CanUpgrade(building) && !waveHud.IsWaveActive)
+            AddAction("Vylepšiť", upgradeIcon, primaryColor, true, () => upgradePopup.Show(building, () => OnUpgradeBought(building)));
 
         AddAction("Presunúť", moveIcon, secondaryColor, true, () =>
         {
@@ -157,11 +175,24 @@ public class BuildMenuUI : MonoBehaviour
         AddAction("Zbúrať", demolishIcon, destructiveColor, true, () => OpenDemolishDialog(building));
     }
 
-    // Selecting the new art again pops it, which is the upgrade animation.
+    private void OnUpgradeBought(PlacedBuilding building)
+    {
+            ShowUpgraded(building);
+       //     upgradePopup.Hide();
+    }
+
+    // Shows the building again with its current buttons.
     private void ShowUpgraded(PlacedBuilding building)
     {
         BeginActions();
         ShowBuilding(building);
+        selectionBar.SetActive(usedActions > 0);
+    }
+
+    // Selecting the new art again pops it, which is the upgrade animation.
+    private void OnUpgradeFinished(PlacedBuilding building)
+    {
+        if (building == selectedBuilding && selectionBar.activeSelf) ShowUpgraded(building);
     }
 
     private void OpenDemolishDialog(PlacedBuilding building)
@@ -373,14 +404,25 @@ public class BuildMenuUI : MonoBehaviour
 
     private void AddAction(string text, Sprite icon, Color color, bool interactable, Action onClick, bool showCoin = false)
     {
+        NextAction().Show(text, icon, color, interactable, onClick, showCoin);
+    }
+
+    private void AddGreyedAction(string text, Sprite icon)
+    {
+        NextAction().ShowGreyed(text, icon);
+    }
+
+    private BuildActionButton NextAction()
+    {
         if (usedActions == actions.Count)
             actions.Add(Instantiate(actionTemplate, actionTemplate.transform.parent));
-        actions[usedActions++].Show(text, icon, color, interactable, onClick, showCoin);
+        return actions[usedActions++];
     }
 
     private void CloseAll()
     {
         placeAt = null;
+        selectedBuilding = null;
         selectionBar.SetActive(false);
         shopPanel.SetActive(false);
         placement.ClearSelection();
