@@ -18,6 +18,9 @@ public class BuildingUpgradePopup : MonoBehaviour
     //Optional, an Image set to Filled that shows how far the upgrade is
     [SerializeField] private Image upgradeProgress;
 
+    [SerializeField] private Button skipButton;
+    [SerializeField] private TMP_Text skipPrice;
+
     private Func<bool> tryUpgrade;
     private Action onUpgraded;
 
@@ -29,6 +32,7 @@ public class BuildingUpgradePopup : MonoBehaviour
     {
         upgradeButton.onClick.AddListener(OnUpgradeClicked);
         closeButton.onClick.AddListener(Hide);
+        if (skipButton != null) skipButton.onClick.AddListener(OnSkipClicked);
         dialog.SetActive(false);
     }
 
@@ -94,6 +98,20 @@ public class BuildingUpgradePopup : MonoBehaviour
     {
         upgradePrice.text = $"Vylepšuje sa · {BuildingUpgrade.Format(upgrading.UpgradeRemaining)}";
         if (upgradeProgress != null) upgradeProgress.fillAmount = upgrading.UpgradeProgress;
+        RefreshSkip();
+    }
+
+    // The price drops as the upgrade goes on, so refresh is needed
+    private void RefreshSkip()
+    {
+        if (skipButton == null) return;
+
+        ResourceCost[] cost = BuildingUpgrade.Instance.GetSkipCost(upgrading);
+        skipButton.gameObject.SetActive(cost != null);
+        if (cost == null) return;
+
+        if (skipPrice != null) skipPrice.text = $"Dokončiť · {BuildMenuUI.FormatCost(cost)}";
+        skipButton.interactable = ResourceManager.Instance.CanAfford(cost);
     }
 
     private void StopTimer()
@@ -101,6 +119,20 @@ public class BuildingUpgradePopup : MonoBehaviour
         upgrading = null;
         showingUpgrade = false;
         if (upgradeProgress != null) upgradeProgress.gameObject.SetActive(false);
+        if (skipButton != null) skipButton.gameObject.SetActive(false);
+    }
+
+    private void OnSkipClicked()
+    {
+        PlacedBuilding building = upgrading;
+        if (building == null) return;
+
+        // Guard against double taps.
+        skipButton.interactable = false;
+        if (BuildingUpgrade.Instance.TrySkip(building))
+            Hide();
+        else
+            RefreshSkip();
     }
 
     // Title, picture and capacity of the level after this one, returns that level.
