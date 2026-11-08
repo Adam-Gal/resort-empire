@@ -28,30 +28,37 @@ MonoBehaviour:
   visualHeight: 0
   levels:
   - prefab: {fileID: 6206039218218026130, guid: e86dc059643f98aa68b4b886e74db882, type: 3}
-    capacity: 0
-    upgradeCost: []
+    capacity: 1
+    upgradeCost:
+    - type: 0
+      amount: 0
+    upgradeDuration: 0
     visualHeight: 0
   - prefab: {fileID: 715568577444901223, guid: 9d857587bf64ebeae875b5a7bd3b0b5b, type: 3}
-    capacity: 0
+    capacity: 2
+    upgradeCost:
+    - type: 0
+      amount: 500
+    upgradeDuration: 10
+    visualHeight: 0
+  - prefab: {fileID: 8057428143030522263, guid: 4b87e1fa4602742bca685c0f5fdfd666, type: 3}
+    capacity: 5
     upgradeCost:
     - type: 0
       amount: 1000
-    visualHeight: 0
-  - prefab: {fileID: 8057428143030522263, guid: 4b87e1fa4602742bca685c0f5fdfd666, type: 3}
-    capacity: 0
-    upgradeCost:
-    - type: 0
-      amount: 2500
+    upgradeDuration: 15
     visualHeight: 0
   - prefab: {fileID: 9096292167261066514, guid: a3a4edab294a10ee8a48e635afdf6dc8, type: 3}
-    capacity: 0
+    capacity: 8
     upgradeCost:
     - type: 0
-      amount: 5000
+      amount: 1550
+    upgradeDuration: 45
     visualHeight: 0
   - prefab: {fileID: 1513252718335977625, guid: cd0f9976beba695529cc671cf279be49, type: 3}
-    capacity: 0
+    capacity: 10
     upgradeCost:
     - type: 0
-      amount: 10000
+      amount: 2100
+    upgradeDuration: 85
     visualHeight: 0

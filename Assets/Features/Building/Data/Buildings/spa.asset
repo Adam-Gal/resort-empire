@@ -25,35 +25,44 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a2f5dd8ac37a82846b67eb21c4da5bcb, type: 2}
   - {fileID: 11400000, guid: 2ae37d1c5f242eb40a19851a30db39d1, type: 2}
   refundRatio: 0.5
+  showInShop: 1
+  canRemove: 1
   spriteOffset: {x: -0.103, y: -0.78}
   spriteScale: 1
   visualHeight: 2.453
   levels:
   - prefab: {fileID: 9046382339943685697, guid: 9a624ea174fc2e3bf9316034a018ca2b, type: 3}
-    capacity: 0
-    upgradeCost: []
+    capacity: 1
+    upgradeCost:
+    - type: 0
+      amount: 0
+    upgradeDuration: 0
     visualHeight: 2.453
   - prefab: {fileID: 2145354085163842687, guid: 9add8baea47302972ae76af273ecdac3, type: 3}
-    capacity: 0
+    capacity: 2
     upgradeCost:
     - type: 0
       amount: 500
-    visualHeight: 2.458288
+    upgradeDuration: 10
+    visualHeight: 2.453
   - prefab: {fileID: 6880093240961251019, guid: 4eb0eb6b1f0bd33eeb7a65091efcc6c6, type: 3}
-    capacity: 0
+    capacity: 5
     upgradeCost:
     - type: 0
-      amount: 1200
-    visualHeight: 2.3604653
+      amount: 1000
+    upgradeDuration: 15
+    visualHeight: 2.453
   - prefab: {fileID: 4219176066294085277, guid: 1ecde1498b87ca5d58acb1b87491cd3c, type: 3}
-    capacity: 0
+    capacity: 8
     upgradeCost:
     - type: 0
-      amount: 2500
-    visualHeight: 2.550823
+      amount: 1550
+    upgradeDuration: 45
+    visualHeight: 2.453
   - prefab: {fileID: 8407903489822760944, guid: 7ac99290c9c1330ca9f394f8112365ff, type: 3}
-    capacity: 0
+    capacity: 10
     upgradeCost:
     - type: 0
-      amount: 5000
-    visualHeight: 2.564042
+      amount: 2100
+    upgradeDuration: 85
+    visualHeight: 2.453
