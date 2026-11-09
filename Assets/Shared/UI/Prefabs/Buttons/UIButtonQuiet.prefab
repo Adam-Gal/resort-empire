@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7506681857269662438}
   - component: {fileID: 8456511696297610608}
   - component: {fileID: 5825342480350516305}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 873490663464396245}
   - component: {fileID: 8153804899757561844}
   - component: {fileID: 9192932754480848200}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UIButtonQuiet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

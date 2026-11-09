@@ -11,6 +11,9 @@ public class StarterGiftPopup : MonoBehaviour
     {
         public ResourceType resourceType;
         public TMP_Text text;
+
+        //Whole reward card, hidden when the gift has none of this resource
+        public GameObject container;
     }
 
     [SerializeField] private GameObject popupRoot;
@@ -74,7 +77,8 @@ public class StarterGiftPopup : MonoBehaviour
 
             long amount = GetRewardAmount(gift, slot.resourceType);
 
-            slot.text.gameObject.SetActive(amount > 0);
+            GameObject shown = slot.container != null ? slot.container : slot.text.gameObject;
+            shown.SetActive(amount > 0);
             if (amount <= 0) continue;
 
             string text = "+" + amount.ToString("N0");

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7523730492325120700}
   - component: {fileID: 1176103701662396855}
   - component: {fileID: 8763805452278200965}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Inset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 6414162199478684205}
   - component: {fileID: 6360521643353667310}
   - component: {fileID: 8571724247472940568}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 1620456078440916445}
   - component: {fileID: 2783556549796430773}
   - component: {fileID: 6662767118153500730}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,7 +360,7 @@ GameObject:
   - component: {fileID: 7726143450204088081}
   - component: {fileID: 1818268498101243471}
   - component: {fileID: 1313383898341353035}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -498,7 +498,7 @@ GameObject:
   - component: {fileID: 3521047191494328942}
   - component: {fileID: 4346185975195002427}
   - component: {fileID: 5900218869124221676}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Close
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -621,7 +621,7 @@ GameObject:
   - component: {fileID: 5602736215944382856}
   - component: {fileID: 5586935887689336296}
   - component: {fileID: 164269022628075655}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CrossA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -696,7 +696,7 @@ GameObject:
   - component: {fileID: 7963269442679097066}
   - component: {fileID: 6381625890593177532}
   - component: {fileID: 6733739585216948779}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CrossB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -771,7 +771,7 @@ GameObject:
   - component: {fileID: 8089754299935393591}
   - component: {fileID: 4853067348135980137}
   - component: {fileID: 613671144678552511}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: DiamondFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -845,7 +845,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8007098987018998613}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: DialogSafeArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -883,7 +883,7 @@ GameObject:
   - component: {fileID: 7821458084241435095}
   - component: {fileID: 5093316988279298253}
   - component: {fileID: 94811162982778988}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: DialogPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -961,7 +961,7 @@ GameObject:
   - component: {fileID: 4331594096452790772}
   - component: {fileID: 456870277703706249}
   - component: {fileID: 684000511941392069}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: DialogBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}

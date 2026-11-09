@@ -37,6 +37,7 @@ public class ResourceManager : MonoBehaviour
 
     public MoneyResource Money => saveData.money;
     public EnergyResource Energy => saveData.energy;
+    public ReputationResource Reputation => saveData.reputation;
 
     public bool HasPendingStarterGift =>
         IsInitialized &&
@@ -246,6 +247,7 @@ public class ResourceManager : MonoBehaviour
         if (isNewSave) saveData = new ResourceSaveData();
         if (saveData.money == null) saveData.money = new MoneyResource();
         if (saveData.energy == null) saveData.energy = new EnergyResource();
+        if (saveData.reputation == null) saveData.reputation = new ReputationResource();
 
         RegisterResources();
 
@@ -268,6 +270,7 @@ public class ResourceManager : MonoBehaviour
         resources.Clear();
         resources[ResourceType.Money] = saveData.money;
         resources[ResourceType.Energy] = saveData.energy;
+        resources[ResourceType.Reputation] = saveData.reputation;
     }
 
     private ResourceSaveData ReadSaveFile()
@@ -336,7 +339,10 @@ public class ResourceManager : MonoBehaviour
     [ContextMenu("Debug/Add 10 Energy")]
     private void DebugAddEnergy() => Add(ResourceType.Energy, 10, true);
 
-    [ContextMenu("Debug/Delete Save File")]
+    [ContextMenu("Debug/Add 50 Reputation")]
+    private void DebugAddReputation() => Add(ResourceType.Reputation, 50);
+
+    [ContextMenu("Debug/Delete Resources Save File")]
     private void DebugDeleteSave()
     {
         if (File.Exists(SavePath)) File.Delete(SavePath);

@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb94c97f991dbf74f8fa62a96f42058d, type: 3}
+  m_Name: GrassEdge
+  m_EditorClassIdentifier: Assembly-CSharp::TileCategory
+  displayName: "Okraj tr\xE1vy"
+  tiles:
+  - {fileID: 11400000, guid: d80924434b7e79345a7113a305fa0311, type: 2}
+  - {fileID: 11400000, guid: 15312fc6e4601cc4d945bceec8c606c0, type: 2}
+  - {fileID: 11400000, guid: 886166981a36ad1408e5ef06587ff391, type: 2}
+  - {fileID: 11400000, guid: 4334ba597f1e79845b419e892d856530, type: 2}
+  - {fileID: 11400000, guid: d3a5c6c99cd19994fbfc6919aff2b5c1, type: 2}
+  - {fileID: 11400000, guid: e588f965fc3b2244383807322dd89eea, type: 2}
+  - {fileID: 11400000, guid: aef0684e8c0c05041b73e42e6702f842, type: 2}
+  - {fileID: 11400000, guid: c28e09348e4ebc6448f1a1976b447850, type: 2}
+  - {fileID: 11400000, guid: bdb03b00c42633d4ea9ce626993017ec, type: 2}
+  - {fileID: 11400000, guid: 6af87cff653c6ae40b295ca5fe65ef89, type: 2}
+  - {fileID: 11400000, guid: 82a021663b50688429763ff1252be5bd, type: 2}
+  - {fileID: 11400000, guid: 2e66ef249c3e71448bb21969c97599bf, type: 2}
+  - {fileID: 11400000, guid: 322ac9820957aca478de317ab8ef204d, type: 2}
+  - {fileID: 11400000, guid: e59a307c3b72fd0438d9895cbd48f53a, type: 2}
+  - {fileID: 11400000, guid: 3798e0bddaf0d9040b0dac7de33c2940, type: 2}
+  - {fileID: 11400000, guid: b1dbeaa555161244b9e25ce0aaca60a3, type: 2}
+  clearCost: []

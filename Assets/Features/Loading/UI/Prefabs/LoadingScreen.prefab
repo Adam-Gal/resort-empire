@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 760455300504212377}
   - component: {fileID: 3971673315571247661}
   - component: {fileID: 1558103953741641595}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ActualLoadProgress
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 6196598656840170999}
   - component: {fileID: 923954159750259025}
   - component: {fileID: 1737035357450471365}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LogoType
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 7874106352620503733}
   - component: {fileID: 6439794833790426937}
   - component: {fileID: 8715010183669499927}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -301,7 +301,7 @@ GameObject:
   - component: {fileID: 1300985080247006004}
   - component: {fileID: 7080582080342685701}
   - component: {fileID: 6306737096020243246}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LogoMark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -376,7 +376,7 @@ GameObject:
   - component: {fileID: 8778051768947571278}
   - component: {fileID: 2929709644790577896}
   - component: {fileID: 2800291309958395139}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LoadingFailure
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -453,7 +453,7 @@ GameObject:
   - component: {fileID: 1383416650337214588}
   - component: {fileID: 5449377942743876119}
   - component: {fileID: 8196019303413793102}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Logo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -530,7 +530,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4359357773954339864}
   - component: {fileID: 5531858383464232683}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SafeArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -582,7 +582,7 @@ GameObject:
   - component: {fileID: 1914869792762636692}
   - component: {fileID: 7279703156095063145}
   - component: {fileID: 8941576169468831929}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ProgressPlate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -658,7 +658,7 @@ GameObject:
   - component: {fileID: 3789457187049301326}
   - component: {fileID: 6498393715414793220}
   - component: {fileID: 8872301280989511870}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LoadingStatus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -796,7 +796,7 @@ GameObject:
   - component: {fileID: 5019749049633568134}
   - component: {fileID: 3641011899488201594}
   - component: {fileID: 1373162229520632679}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Retry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -916,7 +916,7 @@ GameObject:
   - component: {fileID: 8626323187773400352}
   - component: {fileID: 7328332591457386996}
   - component: {fileID: 7787304591387931395}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Tagline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1055,7 +1055,7 @@ GameObject:
   - component: {fileID: 6604462723995063065}
   - component: {fileID: 4527083857737727927}
   - component: {fileID: 2125719282931370718}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LoadingScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1173,7 +1173,7 @@ GameObject:
   - component: {fileID: 6647514710359688974}
   - component: {fileID: 8226411060078690462}
   - component: {fileID: 5582157359976281116}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Message
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1310,7 +1310,7 @@ GameObject:
   - component: {fileID: 4812256161879982735}
   - component: {fileID: 2637524388176672414}
   - component: {fileID: 8463990872485513217}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1448,7 +1448,7 @@ GameObject:
   - component: {fileID: 6575597809106430061}
   - component: {fileID: 3877072632378611385}
   - component: {fileID: 3421017776655323976}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: IslandIllustration
   m_TagString: Untagged
   m_Icon: {fileID: 0}
