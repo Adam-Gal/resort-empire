@@ -25,6 +25,7 @@ public class BuildMenuUI : MonoBehaviour
     [SerializeField] private Sprite moveIcon;
     [SerializeField] private Sprite demolishIcon;
     [SerializeField] private Sprite clearIcon;
+    [SerializeField] private Sprite hireIcon;
     [SerializeField] private Color primaryColor = new Color32(0x27, 0x8E, 0x89, 0xFF);
     [SerializeField] private Color secondaryColor = new Color32(0x16, 0x3E, 0x46, 0xFF);
     [SerializeField] private Color destructiveColor = new Color32(0xCD, 0x3A, 0x3A, 0xFF);
@@ -57,6 +58,9 @@ public class BuildMenuUI : MonoBehaviour
 
     //Buildings are only upgraded between waves
     [SerializeField] private WaveHud waveHud;
+
+    [Header("Workers")]
+    [SerializeField] private BuildingEmployeesPopup workersPopup;
 
     private readonly List<BuildActionButton> actions = new List<BuildActionButton>();
     private readonly List<BuildShopCard> cards = new List<BuildShopCard>();
@@ -105,6 +109,7 @@ public class BuildMenuUI : MonoBehaviour
     {
         selectedBuilding = null;
         upgradePopup.Hide();
+        workersPopup.Hide();
         BuildingManager manager = BuildingManager.Instance;
         IslandProgress islands = IslandProgress.Instance;
         shopPanel.SetActive(false);
@@ -152,6 +157,13 @@ public class BuildMenuUI : MonoBehaviour
         }
         else if (BuildingUpgrade.Instance.CanUpgrade(building) && !waveHud.IsWaveActive)
             AddAction("Vylepšiť", upgradeIcon, primaryColor, true, () => upgradePopup.Show(building, () => OnUpgradeBought(building)));
+
+        if (building.Definition.isEmploying)
+            AddAction("Najať", hireIcon, secondaryColor, true, () =>
+            {
+                upgradePopup.Hide();
+                workersPopup.Show(building);
+            });
 
         AddAction("Presunúť", moveIcon, secondaryColor, true, () =>
         {

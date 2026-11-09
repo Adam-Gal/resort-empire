@@ -105,6 +105,27 @@ public class BuildingManager : MonoBehaviour
         WriteBuildings();
     }
 
+    public bool TryHire(PlacedBuilding building)
+    {
+        if (building == null || building.Employees >= building.MaxEmployees) return false;
+
+        ResourceCost[] cost = building.Definition.HireCostAt(building.Level);
+        if (cost.Length > 0 && !ResourceManager.Instance.TrySpend(cost)) return false;
+
+        building.SetEmployees(building.Employees + 1);
+        WriteBuildings();
+        return true;
+    }
+
+    public bool TryFire(PlacedBuilding building)
+    {
+        if (building == null || building.Employees <= 0) return false;
+
+        building.SetEmployees(building.Employees - 1);
+        WriteBuildings();
+        return true;
+    }
+
     public void SetLevel(PlacedBuilding building, int level)
     {
         building.SetLevel(level);
@@ -326,6 +347,7 @@ public class BuildingManager : MonoBehaviour
                 // Skipped if the level it was going to was removed from the definition.
                 if (entry.upgradeEndTicks > 0 && definition.HasLevel(entry.level + 1))
                     building.SetUpgrade(entry.upgradeStartTicks, entry.upgradeEndTicks);
+                building.SetEmployees(entry.employees);
             }
             else
                 Debug.LogWarning($"[BuildingManager] Save has unknown building '{entry.id}'.");
@@ -382,7 +404,8 @@ public class BuildingManager : MonoBehaviour
                 origin = building.Origin,
                 level = building.Level,
                 upgradeStartTicks = building.UpgradeStartTicks,
-                upgradeEndTicks = building.UpgradeEndTicks
+                upgradeEndTicks = building.UpgradeEndTicks,
+                employees = building.Employees
             });
         }
         MarkChanged();
