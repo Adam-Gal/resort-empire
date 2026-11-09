@@ -14,6 +14,7 @@ public class BuildingUpgrade : MonoBehaviour
 
     //Smoke over the footprint when a level is finished
     [SerializeField] private RemovalEffect upgradeEffect;
+    private ResourceType skipResource = ResourceType.Energy;
 
     // Paid for, the timer is running.
     public event Action<PlacedBuilding> UpgradeStarted;
@@ -58,6 +59,27 @@ public class BuildingUpgrade : MonoBehaviour
     public void FinishNow(PlacedBuilding building)
     {
         if (building != null && building.IsUpgrading) Finish(building);
+    }
+
+    public ResourceCost[] GetSkipCost(PlacedBuilding building)
+    {
+        if (building == null || !building.IsUpgrading) return null;
+
+        float minutesPerEnergy = building.Definition.minutesPerEnergy;
+        if (minutesPerEnergy <= 0f) return null;
+
+        double minutesLeft = building.UpgradeRemaining.TotalMinutes;
+        long amount = Math.Max(1L, (long)Math.Ceiling(minutesLeft / minutesPerEnergy));
+        return new[] { new ResourceCost(skipResource, amount) };
+    }
+
+    public bool TrySkip(PlacedBuilding building)
+    {
+        ResourceCost[] cost = GetSkipCost(building);
+        if (cost == null || !ResourceManager.Instance.TrySpend(cost)) return false;
+
+        FinishNow(building);
+        return true;
     }
 
     private void Update()

@@ -66,6 +66,9 @@ public class BuildingDefinition : ScriptableObject
     //First one is what gets built, leave empty if it can't be upgraded
     public BuildingLevel[] levels;
 
+    //Upgrade time one point of energy skips on this building. 0 means its upgrades can't be skipped
+    [Min(0f)] public float minutesPerEnergy = 5f;
+
     public Sprite Picture => icon != null ? icon : prefab.GetComponentInChildren<SpriteRenderer>().sprite;
 
     public bool HasLevel(int level) => levels != null && level >= 0 && level < levels.Length;
