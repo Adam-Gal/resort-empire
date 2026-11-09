@@ -342,7 +342,7 @@ public class ResourceManager : MonoBehaviour
     [ContextMenu("Debug/Add 50 Reputation")]
     private void DebugAddReputation() => Add(ResourceType.Reputation, 50);
 
-    [ContextMenu("Debug/Delete Save File")]
+    [ContextMenu("Debug/Delete Resources Save File")]
     private void DebugDeleteSave()
     {
         if (File.Exists(SavePath)) File.Delete(SavePath);

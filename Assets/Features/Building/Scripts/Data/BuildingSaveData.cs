@@ -10,6 +10,10 @@ public class PlacedBuildingSaveData
 
     //Index into BuildingDefinition.levels, older saves load as the first level
     public int level;
+
+    //UTC ticks of an upgrade to the next level that is still being built, 0 when none
+    public long upgradeStartTicks;
+    public long upgradeEndTicks;
 }
 
 // player's island progress

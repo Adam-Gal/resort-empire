@@ -36,6 +36,7 @@ public class BuildingManager : MonoBehaviour
     private bool isChanged;
 
     public IReadOnlyList<BuildingDefinition> Buildings => buildings;
+    public IReadOnlyList<PlacedBuilding> Placed => placed;
     public BuildGrid Grid => grid;
 
     private string SavePath => Path.Combine(Application.persistentDataPath, saveFileName);
@@ -96,9 +97,18 @@ public class BuildingManager : MonoBehaviour
         return true;
     }
 
+    // The next level is paid for, BuildingUpgrade calls SetLevel when the time is up.
+    public void StartUpgrade(PlacedBuilding building, TimeSpan duration)
+    {
+        long now = BuildingUpgrade.Now.Ticks;
+        building.SetUpgrade(now, now + duration.Ticks);
+        WriteBuildings();
+    }
+
     public void SetLevel(PlacedBuilding building, int level)
     {
         building.SetLevel(level);
+        building.ClearUpgrade();
 
         // Detached first, Destroy waits for the end of the frame and the art must stay the first child.
         Transform oldVisual = building.transform.GetChild(0);
@@ -110,13 +120,14 @@ public class BuildingManager : MonoBehaviour
         WriteBuildings();
     }
 
-    // Part of the price and of every upgrade bought.
+    // Part of the price and of every upgrade bought, the one still being built too.
     public ResourceCost[] GetRefund(PlacedBuilding building)
     {
         BuildingDefinition definition = building.Definition;
         var totals = new Dictionary<ResourceType, long>();
         AddToTotals(totals, definition.cost);
-        for (int level = 1; level <= building.Level && definition.HasLevel(level); level++)
+        int paidLevel = building.IsUpgrading ? building.Level + 1 : building.Level;
+        for (int level = 1; level <= paidLevel && definition.HasLevel(level); level++)
             AddToTotals(totals, definition.levels[level].upgradeCost);
 
         var refund = new List<ResourceCost>();
@@ -308,7 +319,14 @@ public class BuildingManager : MonoBehaviour
         {
             BuildingDefinition definition = Array.Find(buildings, b => b.id == entry.id);
             if (definition != null)
-                Spawn(definition, entry.origin, entry.level);
+            {
+                PlacedBuilding building = Spawn(definition, entry.origin, entry.level);
+
+                // An upgrade finished while the game was closed lands on BuildingUpgrade's first Update.
+                // Skipped if the level it was going to was removed from the definition.
+                if (entry.upgradeEndTicks > 0 && definition.HasLevel(entry.level + 1))
+                    building.SetUpgrade(entry.upgradeStartTicks, entry.upgradeEndTicks);
+            }
             else
                 Debug.LogWarning($"[BuildingManager] Save has unknown building '{entry.id}'.");
         }
@@ -357,7 +375,16 @@ public class BuildingManager : MonoBehaviour
     {
         saveData.buildings.Clear();
         foreach (PlacedBuilding building in placed)
-            saveData.buildings.Add(new PlacedBuildingSaveData { id = building.Definition.id, origin = building.Origin, level = building.Level });
+        {
+            saveData.buildings.Add(new PlacedBuildingSaveData
+            {
+                id = building.Definition.id,
+                origin = building.Origin,
+                level = building.Level,
+                upgradeStartTicks = building.UpgradeStartTicks,
+                upgradeEndTicks = building.UpgradeEndTicks
+            });
+        }
         MarkChanged();
     }
 
@@ -400,7 +427,7 @@ public class BuildingManager : MonoBehaviour
         }
     }
 
-    [ContextMenu("Debug/Delete Save File")]
+    [ContextMenu("Debug/Delete Building Save File")]
     private void DebugDeleteSave()
     {
         if (File.Exists(SavePath)) File.Delete(SavePath);

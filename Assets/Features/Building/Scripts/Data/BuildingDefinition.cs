@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public enum BuildingCategory
@@ -19,6 +20,9 @@ public class BuildingLevel
 
     //Price of reaching this level, empty on the first one
     public ResourceCost[] upgradeCost;
+
+    //Seconds from paying for this level until it is built, 0 is instant. Unused on the first one
+    [Min(0f)] public float upgradeDuration;
 
     //Same as BuildingDefinition.visualHeight, higher levels have taller art
     public float visualHeight;
@@ -69,6 +73,9 @@ public class BuildingDefinition : ScriptableObject
     public GameObject PrefabAt(int level) => HasLevel(level) ? levels[level].prefab : prefab;
 
     public float VisualHeightAt(int level) => HasLevel(level) ? levels[level].visualHeight : visualHeight;
+
+    // How long reaching this level takes, for the upgrade popup.
+    public TimeSpan UpgradeDurationTo(int level) => TimeSpan.FromSeconds(HasLevel(level) ? levels[level].upgradeDuration : 0f);
 
     public Sprite PictureAt(int level) => PrefabAt(level).GetComponentInChildren<SpriteRenderer>().sprite;
 

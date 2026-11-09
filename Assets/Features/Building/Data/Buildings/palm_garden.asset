@@ -26,6 +26,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2ae37d1c5f242eb40a19851a30db39d1, type: 2}
   - {fileID: 11400000, guid: ce85a1b31eb128f4a818771862b34381, type: 2}
   refundRatio: 0.5
+  showInShop: 1
+  canRemove: 1
   spriteOffset: {x: -0.02795713, y: -0.2448897}
   spriteScale: 1.2498482
   visualHeight: 1.9454874
+  levels: []
