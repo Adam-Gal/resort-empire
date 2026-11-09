@@ -69,6 +69,33 @@ public class BuildingDefinition : ScriptableObject
     //Upgrade time one point of energy skips on this building. 0 means its upgrades can't be skipped
     [Min(0f)] public float minutesPerEnergy = 5f;
 
+    //Off for buildings nobody works in
+    public bool isEmploying = true;
+
+    //Added to the 1 starting worker with each level
+    [Min(0)] public int EmployeesPerLevel = 1;
+
+    //Starting price of one employee 
+    public ResourceCost[] hireCost;
+
+    //Hire price is multiplied by this with each level
+    [Min(1f)] public float hireCostMultiplier = 1.2f;
+
+    public ResourceCost[] HireCostAt(int level)
+    {
+        if (hireCost == null) return new ResourceCost[0];
+
+        double factor = Math.Pow(hireCostMultiplier, Mathf.Max(0, level));
+        var cost = new ResourceCost[hireCost.Length];
+        for (int i = 0; i < cost.Length; i++)
+            cost[i] = new ResourceCost(hireCost[i].type, (long)Math.Round(hireCost[i].amount * factor));
+        return cost;
+    }
+
+    public bool IsEmploying => isEmploying && !IsDecoration;
+
+    public int MaxEmployeesAt(int level) => IsEmploying ? 1 + EmployeesPerLevel * Mathf.Max(0, level) : 0;
+
     public Sprite Picture => icon != null ? icon : prefab.GetComponentInChildren<SpriteRenderer>().sprite;
 
     public bool HasLevel(int level) => levels != null && level >= 0 && level < levels.Length;

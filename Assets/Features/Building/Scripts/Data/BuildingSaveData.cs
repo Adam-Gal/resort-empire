@@ -14,6 +14,8 @@ public class PlacedBuildingSaveData
     //UTC ticks of an upgrade to the next level that is still being built, 0 when none
     public long upgradeStartTicks;
     public long upgradeEndTicks;
+
+    public int employees;
 }
 
 // player's island progress

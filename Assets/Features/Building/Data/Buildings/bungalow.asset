@@ -67,8 +67,10 @@ MonoBehaviour:
       amount: 2100
     upgradeDuration: 85
     visualHeight: 2.273
-  - prefab: {fileID: 1945231659120923839, guid: e5d5093723cfa984eb3152e8105cb171, type: 3}
-    capacity: 15
-    upgradeCost: []
-    upgradeDuration: 145
-    visualHeight: 2.273
+  minutesPerEnergy: 5
+  isEmploying: 1
+  EmployeesPerLevel: 2
+  hireCost:
+  - type: 0
+    amount: 500
+  hireCostMultiplier: 1.2
