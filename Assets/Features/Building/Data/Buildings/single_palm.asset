@@ -32,3 +32,8 @@ MonoBehaviour:
   spriteScale: 0.61018807
   visualHeight: 1.1737442
   levels: []
+  minutesPerEnergy: 5
+  isEmploying: 0
+  EmployeesPerLevel: 1
+  hireCost: []
+  hireCostMultiplier: 1.2

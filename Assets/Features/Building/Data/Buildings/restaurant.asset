@@ -71,3 +71,10 @@ MonoBehaviour:
     upgradeCost: []
     upgradeDuration: 145
     visualHeight: 2.1067383
+  minutesPerEnergy: 5
+  isEmploying: 1
+  EmployeesPerLevel: 2
+  hireCost:
+  - type: 0
+    amount: 500
+  hireCostMultiplier: 1.2
