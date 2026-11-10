@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb94c97f991dbf74f8fa62a96f42058d, type: 3}
+  m_Name: Jungle
+  m_EditorClassIdentifier: Assembly-CSharp::TileCategory
+  displayName: "D\u017Eung\u013Ea"
+  tiles:
+  - {fileID: 11400000, guid: d868c3406b9e4e94196a6f429aed5a1d, type: 2}
+  - {fileID: 11400000, guid: 05ef1d513ddeae245836b05a280c0cd5, type: 2}
+  - {fileID: 11400000, guid: 7a72ba76b755ba443a326341af19b03a, type: 2}
+  - {fileID: 11400000, guid: ac7e740023245f249b89b557a4f4efc7, type: 2}
+  clearCost:
+  - type: 0
+    amount: 100
+  obstacleSizes:
+  - tile: {fileID: 11400000, guid: 7a72ba76b755ba443a326341af19b03a, type: 2}
+    size: {x: 2, y: 2}
+  - tile: {fileID: 11400000, guid: ac7e740023245f249b89b557a4f4efc7, type: 2}
+    size: {x: 2, y: 2}
+  - tile: {fileID: 11400000, guid: d868c3406b9e4e94196a6f429aed5a1d, type: 2}
+    size: {x: 2, y: 2}
+  - tile: {fileID: 11400000, guid: 05ef1d513ddeae245836b05a280c0cd5, type: 2}
+    size: {x: 2, y: 2}

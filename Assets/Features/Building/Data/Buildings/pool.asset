@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59679652b6873fa47acb52e6ddfdaf02, type: 3}
+  m_Name: pool
+  m_EditorClassIdentifier: Assembly-CSharp::BuildingDefinition
+  id: pool
+  displayName: "Baz\xE9n"
+  category: 3
+  icon: {fileID: 0}
+  prefab: {fileID: 1196602743142021984, guid: 364a7a2c8c484dff183e99a1d9e95f9d, type: 3}
+  size: {x: 4, y: 4}
+  cost:
+  - type: 0
+    amount: 1200
+  allowedTiles:
+  - {fileID: 11400000, guid: a2f5dd8ac37a82846b67eb21c4da5bcb, type: 2}
+  - {fileID: 11400000, guid: 2ae37d1c5f242eb40a19851a30db39d1, type: 2}
+  refundRatio: 0.5
+  showInShop: 1
+  canRemove: 1
+  spriteOffset: {x: 0.01, y: -1}
+  spriteScale: 1
+  visualHeight: 2.181
+  levels:
+  - prefab: {fileID: 1196602743142021984, guid: 364a7a2c8c484dff183e99a1d9e95f9d, type: 3}
+    capacity: 1
+    upgradeCost:
+    - type: 0
+      amount: 0
+    upgradeDuration: 0
+    visualHeight: 2.181
+  - prefab: {fileID: 3797767173446285325, guid: 1f5faf6c04d0998489e4e3c97886a2b4, type: 3}
+    capacity: 2
+    upgradeCost:
+    - type: 0
+      amount: 500
+    upgradeDuration: 10
+    visualHeight: 2.181
+  - prefab: {fileID: 7190117416557922699, guid: e09434688790fc8d1a9bfbaf47ba28f3, type: 3}
+    capacity: 5
+    upgradeCost:
+    - type: 0
+      amount: 1000
+    upgradeDuration: 15
+    visualHeight: 2.181
+  - prefab: {fileID: 3532798098966989148, guid: daa52204c260561e5b981e5f774b39da, type: 3}
+    capacity: 8
+    upgradeCost:
+    - type: 0
+      amount: 1550
+    upgradeDuration: 45
+    visualHeight: 2.181
+  - prefab: {fileID: 4022200930547799892, guid: 4444725c4f432209f960791dc406936d, type: 3}
+    capacity: 10
+    upgradeCost:
+    - type: 0
+      amount: 2100
+    upgradeDuration: 85
+    visualHeight: 2.181
+  minutesPerEnergy: 5
+  isEmploying: 1
+  EmployeesPerLevel: 2
+  hireCost:
+  - type: 0
+    amount: 500
+  hireCostMultiplier: 1.2

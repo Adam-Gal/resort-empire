@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 536380496485908984}
   - component: {fileID: 2425599569818289662}
   - component: {fileID: 2125686200636068928}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 3589340328414342454}
   - component: {fileID: 1071729236274229673}
   - component: {fileID: 3006052339963562992}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ProgressIndicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}

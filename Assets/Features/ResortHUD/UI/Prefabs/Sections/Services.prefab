@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6685666613984775647}
   - component: {fileID: 3236627316400293859}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ServiceCards
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6524739025816123955}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Services
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -13,6 +13,9 @@ public class ResourceCounterUI : MonoBehaviour
     //Show max amount for resources with a cap
     [SerializeField] private bool showCap = false;
 
+    //Written before the amount, like "Reputácia  "
+    [SerializeField] private string prefix = "";
+
     private void OnEnable()
     {
         ResourceManager manager = ResourceManager.Instance;
@@ -44,7 +47,7 @@ public class ResourceCounterUI : MonoBehaviour
         if (showCap && resource != null && resource.HasCap)
             text += "/" + (abbreviate ? Abbreviate(resource.MaxAmount) : resource.MaxAmount.ToString("N0"));
 
-        amountText.text = text;
+        amountText.text = prefix + text;
     }
 
     public static string Abbreviate(long value)

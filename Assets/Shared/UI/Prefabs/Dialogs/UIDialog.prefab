@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6061774346412896786}
   - component: {fileID: 3329010351194347153}
   - component: {fileID: 7296643012127705137}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: DiamondFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 5473078954076230187}
   - component: {fileID: 5076356634704766204}
   - component: {fileID: 4979282560153949593}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 8079550985774066839}
   - component: {fileID: 8215090328691813173}
   - component: {fileID: 1520076872580624188}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CrossB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -299,7 +299,7 @@ GameObject:
   - component: {fileID: 4793710786593591854}
   - component: {fileID: 973892035728038428}
   - component: {fileID: 8116593332650925433}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Inset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -372,7 +372,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7223032079750517109}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ConfirmationActions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -411,7 +411,7 @@ GameObject:
   - component: {fileID: 7210534537804638254}
   - component: {fileID: 5061349748676510161}
   - component: {fileID: 6819769004574112420}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: DialogPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -488,7 +488,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4503738024677828425}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: DialogSafeArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -526,7 +526,7 @@ GameObject:
   - component: {fileID: 6189564132920958937}
   - component: {fileID: 3551674777830077184}
   - component: {fileID: 7648604715380292028}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -664,7 +664,7 @@ GameObject:
   - component: {fileID: 4019451069562616443}
   - component: {fileID: 7229501239197668600}
   - component: {fileID: 6483934237000544947}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Close
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -787,7 +787,7 @@ GameObject:
   - component: {fileID: 651375483966780370}
   - component: {fileID: 3332933860646081180}
   - component: {fileID: 6901804544795928802}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -924,7 +924,7 @@ GameObject:
   - component: {fileID: 123030201311926367}
   - component: {fileID: 8743406136139484075}
   - component: {fileID: 5671755544317813623}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1062,7 +1062,7 @@ GameObject:
   - component: {fileID: 4735861769893648103}
   - component: {fileID: 681462239591487048}
   - component: {fileID: 6217522781360769543}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Cancel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1183,7 +1183,7 @@ GameObject:
   - component: {fileID: 8806925238276271107}
   - component: {fileID: 6127665883651464582}
   - component: {fileID: 8109964472691640990}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Confirm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1303,7 +1303,7 @@ GameObject:
   - component: {fileID: 2119865848133429786}
   - component: {fileID: 7086129080956556920}
   - component: {fileID: 2981690988464197220}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UIDialog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1379,7 +1379,7 @@ GameObject:
   - component: {fileID: 7237012275645968529}
   - component: {fileID: 4933977525952386726}
   - component: {fileID: 4077631131169867795}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1516,7 +1516,7 @@ GameObject:
   - component: {fileID: 2788952024550589740}
   - component: {fileID: 5984371200361506183}
   - component: {fileID: 8491746331125140862}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CrossA
   m_TagString: Untagged
   m_Icon: {fileID: 0}

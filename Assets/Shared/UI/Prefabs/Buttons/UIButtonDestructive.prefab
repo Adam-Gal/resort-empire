@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3974411003320916658}
   - component: {fileID: 1693459523221521254}
   - component: {fileID: 4845383042509409707}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UIButtonDestructive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 3596743251543754786}
   - component: {fileID: 8535395515041495961}
   - component: {fileID: 8871976114892230044}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
