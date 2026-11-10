@@ -1,0 +1,1040 @@
+fileFormatVersion: 2
+guid: a3531566632ae6c4382127f577328a43
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2203645758809964768
+    second: ResortEmpireLogo_0
+  - first:
+      213: 4588777677433647328
+    second: ResortEmpireLogo_1
+  - first:
+      213: 3146435248375604266
+    second: ResortEmpireLogo_2
+  - first:
+      213: -7552284120950899903
+    second: ResortEmpireLogo_3
+  - first:
+      213: 6416630491017739758
+    second: ResortEmpireLogo_4
+  - first:
+      213: -1226928732724469759
+    second: ResortEmpireLogo_5
+  - first:
+      213: 6629329361606071442
+    second: ResortEmpireLogo_6
+  - first:
+      213: -7982775398216495622
+    second: ResortEmpireLogo_7
+  - first:
+      213: -6512831581092126242
+    second: ResortEmpireLogo_8
+  - first:
+      213: 7621141756531117126
+    second: ResortEmpireLogo_9
+  - first:
+      213: -6461458872000570733
+    second: ResortEmpireLogo_10
+  - first:
+      213: -6469230024052969022
+    second: ResortEmpireLogo_11
+  - first:
+      213: -4337170073589358302
+    second: ResortEmpireLogo_12
+  - first:
+      213: -7698093973147315034
+    second: ResortEmpireLogo_13
+  - first:
+      213: 1382002899019243207
+    second: ResortEmpireLogo_14
+  - first:
+      213: -3277272358290416955
+    second: ResortEmpireLogo_15
+  - first:
+      213: 6367965023186241099
+    second: ResortEmpireLogo_16
+  - first:
+      213: -7904198781350454992
+    second: ResortEmpireLogo_17
+  - first:
+      213: -1409446075674747341
+    second: ResortEmpireLogo_18
+  - first:
+      213: 3421882534797970846
+    second: ResortEmpireLogo_19
+  - first:
+      213: -6536843031874870169
+    second: ResortEmpireLogo_20
+  - first:
+      213: 500580741542998085
+    second: ResortEmpireLogo_21
+  - first:
+      213: 6848294807336443171
+    second: ResortEmpireLogo_22
+  - first:
+      213: 7307090937637575281
+    second: ResortEmpireLogo_23
+  - first:
+      213: 2932665669679802057
+    second: ResortEmpireLogo_24
+  - first:
+      213: 7792381523301304026
+    second: ResortEmpireLogo_25
+  - first:
+      213: 8313681348340641166
+    second: ResortEmpireLogo_26
+  - first:
+      213: 1251030162859388693
+    second: ResortEmpireLogo_27
+  - first:
+      213: -1014250728224745537
+    second: ResortEmpireLogo_28
+  - first:
+      213: 4755433699559166073
+    second: ResortEmpireLogo_29
+  - first:
+      213: -1314885926403403450
+    second: ResortEmpireLogo_30
+  - first:
+      213: 3826692934261779766
+    second: ResortEmpireLogo_31
+  - first:
+      213: 4249758395902840780
+    second: ResortEmpireLogo_32
+  - first:
+      213: -8128588595306270391
+    second: ResortEmpireLogo_33
+  - first:
+      213: 1333674200784675947
+    second: ResortEmpireLogo_34
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 256
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ResortEmpireLogo_0
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 542
+        width: 1099
+        height: 435
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02ff5579bd31b61e0800000000000000
+      internalID: -2203645758809964768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ResortEmpireLogo_1
+      rect:
+        serializedVersion: 2
+        x: 1316
+        y: 591
+        width: 71
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e0bca83cfc9eaf30800000000000000
+      internalID: 4588777677433647328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ResortEmpireLogo_2
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 85
+        width: 349
+        height: 474
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a24223810326aab20800000000000000
+      internalID: 3146435248375604266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ResortEmpireLogo_3
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 284
+        width: 205
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14bf5ef0b95e03790800000000000000
+      internalID: -7552284120950899903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ResortEmpireLogo_4
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 281
+        width: 486
+        height: 245
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eed7d005f637c0950800000000000000
+      internalID: 6416630491017739758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ResortEmpireLogo_5
+      rect:
+        serializedVersion: 2
+        x: 1041
+        y: 285
+        width: 222
+        height: 239
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 100ec3171d219fee0800000000000000
+      internalID: -1226928732724469759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ResortEmpireLogo_6
+      rect:
+        serializedVersion: 2
+        x: 1252
+        y: 279
+        width: 237
+        height: 309
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 294d8914eeb100c50800000000000000
+      internalID: 6629329361606071442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ResortEmpireLogo_7
+      rect:
+        serializedVersion: 2
+        x: 1472
+        y: 435
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afd0493e11c773190800000000000000
+      internalID: -7982775398216495622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ResortEmpireLogo_8
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 93
+        width: 232
+        height: 187
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed1ee07fe26cd95a0800000000000000
+      internalID: -6512831581092126242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ResortEmpireLogo_9
+      rect:
+        serializedVersion: 2
+        x: 671
+        y: 93
+        width: 178
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64c0fec8c0cb3c960800000000000000
+      internalID: 7621141756531117126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ResortEmpireLogo_10
+      rect:
+        serializedVersion: 2
+        x: 849
+        y: 93
+        width: 81
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39a1c93e3694456a0800000000000000
+      internalID: -6461458872000570733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ResortEmpireLogo_11
+      rect:
+        serializedVersion: 2
+        x: 944
+        y: 91
+        width: 186
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c1f70e819da836a0800000000000000
+      internalID: -6469230024052969022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ResortEmpireLogo_12
+      rect:
+        serializedVersion: 2
+        x: 1141
+        y: 89
+        width: 174
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22160412cc64fc3c0800000000000000
+      internalID: -4337170073589358302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ResortEmpireLogo_13
+      rect:
+        serializedVersion: 2
+        x: 1376
+        y: 223
+        width: 15
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a49af25150ea2590800000000000000
+      internalID: -7698093973147315034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ResortEmpireLogo_14
+      rect:
+        serializedVersion: 2
+        x: 1411
+        y: 103
+        width: 94
+        height: 171
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ce1a92805cdd2310800000000000000
+      internalID: 1382002899019243207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ResortEmpireLogo_15
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 39
+        width: 162
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ca94e3672ac482d0800000000000000
+      internalID: -3277272358290416955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ResortEmpireLogo_16
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 23
+        width: 51
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b46c02d137e8f5850800000000000000
+      internalID: 6367965023186241099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ResortEmpireLogo_17
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 23
+        width: 61
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 039d78b2615ae4290800000000000000
+      internalID: -7904198781350454992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ResortEmpireLogo_18
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 25
+        width: 50
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33e96510344a07ce0800000000000000
+      internalID: -1409446075674747341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ResortEmpireLogo_19
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 25
+        width: 46
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9d0fb51908fc7f20800000000000000
+      internalID: 3421882534797970846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ResortEmpireLogo_20
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 26
+        width: 37
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7646c9c65e77845a0800000000000000
+      internalID: -6536843031874870169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ResortEmpireLogo_21
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 26
+        width: 25
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5407211488b62f600800000000000000
+      internalID: 500580741542998085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ResortEmpireLogo_22
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 26
+        width: 43
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32dd07ce7d70a0f50800000000000000
+      internalID: 6848294807336443171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ResortEmpireLogo_23
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 26
+        width: 44
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17a1d5f3e70086560800000000000000
+      internalID: 7307090937637575281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ResortEmpireLogo_24
+      rect:
+        serializedVersion: 2
+        x: 722
+        y: 26
+        width: 39
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c66f3e73ebe2b820800000000000000
+      internalID: 2932665669679802057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ResortEmpireLogo_25
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 24
+        width: 47
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad601baa5b9142c60800000000000000
+      internalID: 7792381523301304026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ResortEmpireLogo_26
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 26
+        width: 44
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8d62a77321206370800000000000000
+      internalID: 8313681348340641166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ResortEmpireLogo_27
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 25
+        width: 52
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51f688c0e4d8c5110800000000000000
+      internalID: 1251030162859388693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ResortEmpireLogo_28
+      rect:
+        serializedVersion: 2
+        x: 973
+        y: 26
+        width: 44
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb79bfe1658ace1f0800000000000000
+      internalID: -1014250728224745537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ResortEmpireLogo_29
+      rect:
+        serializedVersion: 2
+        x: 1027
+        y: 23
+        width: 53
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 970552f11c1bef140800000000000000
+      internalID: 4755433699559166073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ResortEmpireLogo_30
+      rect:
+        serializedVersion: 2
+        x: 1090
+        y: 23
+        width: 51
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 641909c673690cde0800000000000000
+      internalID: -1314885926403403450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ResortEmpireLogo_31
+      rect:
+        serializedVersion: 2
+        x: 1151
+        y: 25
+        width: 19
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63dab23f2f42b1530800000000000000
+      internalID: 3826692934261779766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ResortEmpireLogo_32
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 25
+        width: 47
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ccfc501bebc2afa30800000000000000
+      internalID: 4249758395902840780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ResortEmpireLogo_33
+      rect:
+        serializedVersion: 2
+        x: 1241
+        y: 21
+        width: 40
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9417a7b5db3713f80800000000000000
+      internalID: -8128588595306270391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ResortEmpireLogo_34
+      rect:
+        serializedVersion: 2
+        x: 1311
+        y: 39
+        width: 161
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b64afd79e99228210800000000000000
+      internalID: 1333674200784675947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ResortEmpireLogo_0: -2203645758809964768
+      ResortEmpireLogo_1: 4588777677433647328
+      ResortEmpireLogo_10: -6461458872000570733
+      ResortEmpireLogo_11: -6469230024052969022
+      ResortEmpireLogo_12: -4337170073589358302
+      ResortEmpireLogo_13: -7698093973147315034
+      ResortEmpireLogo_14: 1382002899019243207
+      ResortEmpireLogo_15: -3277272358290416955
+      ResortEmpireLogo_16: 6367965023186241099
+      ResortEmpireLogo_17: -7904198781350454992
+      ResortEmpireLogo_18: -1409446075674747341
+      ResortEmpireLogo_19: 3421882534797970846
+      ResortEmpireLogo_2: 3146435248375604266
+      ResortEmpireLogo_20: -6536843031874870169
+      ResortEmpireLogo_21: 500580741542998085
+      ResortEmpireLogo_22: 6848294807336443171
+      ResortEmpireLogo_23: 7307090937637575281
+      ResortEmpireLogo_24: 2932665669679802057
+      ResortEmpireLogo_25: 7792381523301304026
+      ResortEmpireLogo_26: 8313681348340641166
+      ResortEmpireLogo_27: 1251030162859388693
+      ResortEmpireLogo_28: -1014250728224745537
+      ResortEmpireLogo_29: 4755433699559166073
+      ResortEmpireLogo_3: -7552284120950899903
+      ResortEmpireLogo_30: -1314885926403403450
+      ResortEmpireLogo_31: 3826692934261779766
+      ResortEmpireLogo_32: 4249758395902840780
+      ResortEmpireLogo_33: -8128588595306270391
+      ResortEmpireLogo_34: 1333674200784675947
+      ResortEmpireLogo_4: 6416630491017739758
+      ResortEmpireLogo_5: -1226928732724469759
+      ResortEmpireLogo_6: 6629329361606071442
+      ResortEmpireLogo_7: -7982775398216495622
+      ResortEmpireLogo_8: -6512831581092126242
+      ResortEmpireLogo_9: 7621141756531117126
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
