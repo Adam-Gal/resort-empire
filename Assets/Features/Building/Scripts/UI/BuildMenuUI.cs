@@ -105,6 +105,17 @@ public class BuildMenuUI : MonoBehaviour
         if (BuildingUpgrade.Instance != null) BuildingUpgrade.Instance.UpgradeFinished -= OnUpgradeFinished;
     }
 
+    // The bars and the shop sit at the bottom of the screen, where the wave service cards are.
+    private void LateUpdate()
+    {
+        // Nothing new is built on an island while its wave runs.
+        bool wave = waveHud.IsWaveActive;
+        openButton.gameObject.SetActive(!wave);
+        if (wave && shopPanel.activeSelf) CloseAll();
+
+        waveHud.SetCovered(selectionBar.activeSelf || placementBar.activeSelf || shopPanel.activeSelf);
+    }
+
     public void ShowSelection(Vector2Int cell, UnityEngine.Object occupant, Vector3 world)
     {
         selectedBuilding = null;
@@ -321,7 +332,7 @@ public class BuildMenuUI : MonoBehaviour
         BuildingManager manager = BuildingManager.Instance;
         TileCategory category = manager.Grid.GetCategory(cell);
         placement.ShowSelection(cell, Vector2Int.one);
-        if (manager.Grid.IsBlocked(cell)) return;
+        if (manager.Grid.IsBlocked(cell) || waveHud.IsWaveActive) return;
 
         foreach (BuildingDefinition definition in manager.Buildings)
         {
