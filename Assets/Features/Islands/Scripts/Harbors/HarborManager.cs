@@ -39,6 +39,9 @@ public class HarborManager : MonoBehaviour
 
     public BuildingDefinition Definition => definition;
 
+    // Harbors standing now, one per open site.
+    public Dictionary<string, Harbor>.ValueCollection Harbors => harbors.Values;
+
     private string SavePath => Path.Combine(Application.persistentDataPath, saveFileName);
     private string TempSavePath => SavePath + ".tmp";
 

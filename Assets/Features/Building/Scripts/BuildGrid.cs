@@ -95,6 +95,9 @@ public class BuildGrid : MonoBehaviour
         obstacleLayer.SetTile((Vector3Int)origin, null);
     }
 
+    // Only shrinks, so a change means some jungle was cleared.
+    public int ObstacleCellCount => obstacleOrigins.Count;
+
     public TileCategory GetCategory(Vector2Int cell)
     {
         if (obstacleOrigins.TryGetValue(cell, out Vector2Int origin))
@@ -102,7 +105,12 @@ public class BuildGrid : MonoBehaviour
             categoryByTile.TryGetValue(obstacleLayer.GetTile((Vector3Int)origin), out TileCategory obstacle);
             return obstacle;
         }
+        return GetTerrainCategory(cell);
+    }
 
+    // The ground under any obstacle, it never changes during play.
+    public TileCategory GetTerrainCategory(Vector2Int cell)
+    {
         foreach (Tilemap layer in layers)
         {
             TileBase tile = layer.GetTile((Vector3Int)cell);

@@ -10,6 +10,16 @@ public enum BuildingCategory
     Decorations
 }
 
+// Side of the footprint guests walk in from, as seen on screen. Paths are laid to it.
+public enum DoorSide
+{
+    None,
+    NorthEast,
+    NorthWest,
+    SouthWest,
+    SouthEast
+}
+
 [System.Serializable]
 public class BuildingLevel
 {
@@ -62,6 +72,12 @@ public class BuildingDefinition : ScriptableObject
 
     //Height of the visible art from its front corner, used to pick the roof on a tap
     public float visualHeight;
+
+    //Side with the door, None lets the path reach any side
+    public DoorSide doorSide;
+
+    //Cells from the lower end of that side to the door, which is two cells wide
+    [Min(0)] public int doorOffset;
 
     //First one is what gets built, leave empty if it can't be upgraded
     public BuildingLevel[] levels;

@@ -30,6 +30,8 @@ MonoBehaviour:
   spriteOffset: {x: -0.043359734, y: -0.99472654}
   spriteScale: 1
   visualHeight: 2.1067383
+  doorSide: 4
+  doorOffset: 1
   levels:
   - prefab: {fileID: 8958491599440796235, guid: 39b3eaf526accdc2e9f707760904bd9b, type: 3}
     capacity: 1
