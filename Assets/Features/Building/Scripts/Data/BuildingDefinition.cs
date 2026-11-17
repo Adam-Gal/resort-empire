@@ -104,6 +104,9 @@ public class BuildingDefinition : ScriptableObject
 
     public float VisualHeightAt(int level) => HasLevel(level) ? levels[level].visualHeight : visualHeight;
 
+    // Guests served at once on this level.
+    public int CapacityAt(int level) => HasLevel(level) ? levels[level].capacity : 0;
+
     // How long reaching this level takes, for the upgrade popup.
     public TimeSpan UpgradeDurationTo(int level) => TimeSpan.FromSeconds(HasLevel(level) ? levels[level].upgradeDuration : 0f);
 
