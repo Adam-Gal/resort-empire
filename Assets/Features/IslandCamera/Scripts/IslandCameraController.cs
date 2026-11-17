@@ -33,8 +33,26 @@ namespace ResortEmpire.Presentation
         private bool pointerOverUi;
         private bool mouseDragging;
 
+        [Min(.01f)] public float FocusTime = .45f;
+
+        private bool focusing;
+        private Vector3 focusPoint;
+        private Vector3 focusVelocity;
+
         // Something else owns the pointer, such as dragging a building.
         public bool InputLocked { get; set; }
+
+        // Middle of the view in world space.
+        public Vector3 ViewCenter => Target.position;
+
+        // Glides the view to a point, any drag or pinch takes over again.
+        public void FocusOn(Vector3 world)
+        {
+            focusPoint = Clamp(new Vector3(world.x, world.y, Target.position.z));
+            focusVelocity = Vector3.zero;
+            velocity = Vector2.zero;
+            focusing = true;
+        }
 
         private float Zoom
         {
@@ -81,6 +99,21 @@ namespace ResortEmpire.Presentation
                 HandleTouches();
             else
                 HandleMouse();
+
+            if (focusing)
+            {
+                // The player grabbed the map, stop gliding.
+                if (activeFingers > 0 || mouseDragging)
+                {
+                    focusing = false;
+                }
+                else
+                {
+                    Target.position = Clamp(Vector3.SmoothDamp(Target.position, focusPoint, ref focusVelocity, FocusTime, Mathf.Infinity, Time.unscaledDeltaTime));
+                    if ((Target.position - focusPoint).sqrMagnitude < .0004f) focusing = false;
+                    return;
+                }
+            }
 
             // Inertia only after release; while dragging it would push the map ahead of the pointer.
             if (activeFingers == 0 && !mouseDragging && velocity.sqrMagnitude > .0001f)
