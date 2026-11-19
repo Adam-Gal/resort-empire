@@ -48,6 +48,7 @@ public class ServiceCardsUI : MonoBehaviour
         islandId = island;
         sinceRefresh = 0f;
         WaveManager waves = WaveManager.Instance;
+        GuestSimulation guests = GuestManager.Instance != null ? GuestManager.Instance.GetSimulation(islandId) : null;
 
         int used = 0;
         foreach (Service service in services)
@@ -59,11 +60,24 @@ public class ServiceCardsUI : MonoBehaviour
             int capacity = 0;
             foreach (PlacedBuilding building in buildings) capacity += building.Definition.CapacityAt(building.Level);
 
+            // The card shows the busiest building, guests in line are counted over all of them.
+            float load = 0f;
+            int queued = 0;
+            if (guests != null)
+            {
+                foreach (PlacedBuilding building in buildings)
+                {
+                    load = Mathf.Max(load, guests.GetLoad(building));
+                    queued += guests.GetQueued(building);
+                }
+                if (service.category == BuildingCategory.Rooms) queued += guests.WaitingForRoom;
+            }
+
             ServiceState worst = waves.GetWorstState(islandId, buildings);
             bool missing = buildings.Count == 0;
             string detail = missing ? "Chýba budova"
-                : worst == ServiceState.Overloaded ? "Nestíha"
-                : worst == ServiceState.Busy ? "Ledva stíha"
+                : worst == ServiceState.Overloaded ? (queued > 0 ? $"Nestíha · v rade {queued}" : "Nestíha")
+                : worst == ServiceState.Busy ? $"Ledva stíha · {Mathf.RoundToInt(load * 100f)} %"
                 : $"Kapacita {capacity}";
 
             ServiceCardState state = missing ? ServiceCardState.Missing
@@ -72,7 +86,7 @@ public class ServiceCardsUI : MonoBehaviour
                 : ServiceCardState.Normal;
 
             Service shown = service;
-            cards[used++].Show(service.icon, service.displayName, detail, state,
+            cards[used++].Show(service.icon, service.displayName, detail, state, load,
                 () => detailsPopup.Show(islandId, shown.category, shown.displayName, shown.icon, shown.header));
         }
         for (int i = used; i < cards.Count; i++) cards[i].gameObject.SetActive(false);
