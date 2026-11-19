@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-// Shows the resort value in the header and keeps it up to date.
+// Shows the resort value in the header, shortened to K, M and B, and keeps it up to date.
 public class ResortValueUI : MonoBehaviour
 {
     [SerializeField] private TMP_Text valueText;
@@ -20,5 +20,6 @@ public class ResortValueUI : MonoBehaviour
         if (ResortValueManager.Instance != null) ResortValueManager.Instance.ValueChanged -= Show;
     }
 
-    private void Show(long value) => valueText.text = value.ToString("N0");
+    // Short like the other counters: 950, 5.7K, 1.2M, 3B.
+    private void Show(long value) => valueText.text = ResourceCounterUI.Abbreviate(value);
 }
