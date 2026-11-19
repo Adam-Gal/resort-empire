@@ -27,6 +27,9 @@ public class GuestManager : MonoBehaviour
 
     public GuestSettings Settings => settings;
 
+    // A wave's guests all checked out and were paid for. The simulation keeps its final counts.
+    public event Action<GuestSimulation> GuestsFinished;
+
     private string SavePath => Path.Combine(Application.persistentDataPath, saveFileName);
     private string TempSavePath => SavePath + ".tmp";
 
@@ -108,6 +111,7 @@ public class GuestManager : MonoBehaviour
         PayReputation(simulation);
         simulations.Remove(session.IslandId);
         Save();
+        GuestsFinished?.Invoke(simulation);
     }
 
     // The guests of the session, made when it has none yet.

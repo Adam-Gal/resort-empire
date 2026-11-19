@@ -80,6 +80,14 @@ public class GuestSimulation : IWaveRequests
     // Guests on the island right now.
     public int InResort => Data.guests.Count;
 
+    // Arrived guests still without a room.
+    public int WaitingForRoom => waitingForRoom;
+
+    public int GetQueued(PlacedBuilding building) => GetQueued(WaveManager.BuildingKey(building));
+
+    // Guests in line at the building, not yet being served.
+    public int GetQueued(string buildingKey) => inQueue.TryGetValue(buildingKey, out int queued) ? queued : 0;
+
     public bool HasOpenRequests
     {
         get
