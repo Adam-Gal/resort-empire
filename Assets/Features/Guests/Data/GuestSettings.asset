@@ -23,6 +23,6 @@ MonoBehaviour:
   maxBreakSeconds: 8
   queuePatienceSeconds: 25
   roomPatienceSeconds: 60
+  waitSecondsPerStar: 8
   moneyPerRequest: 15
-  reputationPerHappyGuest: 2
-  reputationPerUnhappyGuest: 1
+  reputationByStars: ffffffff00000000010000000200000003000000

@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // Small popup under the wave bar: how many guests of the wave left happy, are staying,
-// wait, left unhappy or are still to come. Follows the guests while open.
+// wait, left unhappy or are still to come, and how they rate the stay. Follows the guests while open.
 public class WaveGuestsPopup : MonoBehaviour
 {
     [SerializeField] private GameObject root;
@@ -14,6 +14,9 @@ public class WaveGuestsPopup : MonoBehaviour
     [SerializeField] private TMP_Text summaryText;
     [SerializeField] private Color happyColor = new Color32(0x08, 0x7F, 0x82, 0xFF);
     [SerializeField, Min(1f)] private float happySize = 46f;
+
+    //Average stars of the guests who left so far
+    [SerializeField] private TMP_Text ratingText;
 
     //Parts of one bar, each spans its share of all the wave's guests
     [SerializeField] private RectTransform happyPart;
@@ -77,11 +80,22 @@ public class WaveGuestsPopup : MonoBehaviour
         {
             // The wave has just started and its guests are not made yet.
             ShowCounts(0, 0, 0, 0, 0, 0);
+            ShowRating(0, 0f);
             return;
         }
 
         int waiting = guests.Waiting;
         ShowCounts(guests.TotalGuests, guests.HappyGuests, guests.InResort - waiting, waiting, guests.UnhappyGuests, guests.StillToCome);
+        ShowRating(guests.RatedGuests, guests.AverageRating);
+    }
+
+    // Written with a decimal comma, a dash until the first guest has left.
+    private void ShowRating(int rated, float average)
+    {
+        string stars = rated > 0
+            ? average.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture).Replace('.', ',')
+            : "–";
+        ratingText.text = $"Hodnotenie {stars} / 5";
     }
 
     private void ShowCounts(int total, int happy, int staying, int waiting, int unhappy, int coming)

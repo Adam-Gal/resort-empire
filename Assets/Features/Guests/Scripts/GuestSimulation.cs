@@ -23,7 +23,8 @@ public struct ServicePoint
 
 // Guests of one wave on one island. They arrive during the request window, wait for a room,
 // then ask for services one by one and queue at the least busy building of each.
-// A guest who waits too long leaves unhappy. Holds no Unity objects, so it runs in tests.
+// A guest who waits too long leaves unhappy. Every guest rates the stay by how long they waited in total.
+// Holds no Unity objects, so it runs in tests.
 public class GuestSimulation : IWaveRequests
 {
     public GuestWaveData Data { get; }
@@ -64,6 +65,13 @@ public class GuestSimulation : IWaveRequests
     public int HappyGuests => Data.happyGuests;
     public int UnhappyGuests => Data.unhappyGuests;
     public int ServedRequests => Data.servedRequests;
+
+    // Average stars of the guests who left so far, 0 before anyone did.
+    public float AverageRating => Data.ratedGuests > 0 ? Data.ratingSum / Data.ratedGuests : 0f;
+    public int RatedGuests => Data.ratedGuests;
+
+    // Reputation the ratings so far are worth, can be negative.
+    public int ReputationChange => Data.reputationChange;
 
     // Guests waiting for a room or in a queue.
     public int Waiting
@@ -197,6 +205,7 @@ public class GuestSimulation : IWaveRequests
             }
 
             guest.timer += seconds;
+            guest.waited += seconds;
             if (guest.timer >= settings.roomPatienceSeconds) Leave(guest, false);
         }
     }
@@ -253,6 +262,7 @@ public class GuestSimulation : IWaveRequests
             }
 
             guest.timer += seconds;
+            guest.waited += seconds;
             if (guest.timer >= settings.queuePatienceSeconds) Leave(guest, false);
         }
     }
@@ -312,10 +322,17 @@ public class GuestSimulation : IWaveRequests
         guest.timer = 0f;
     }
 
+    // Checks the guest out and takes their rating: stars lost to all their waiting, 1 star if they gave up.
     private void Leave(GuestData guest, bool happy)
     {
         if (happy) Data.happyGuests++;
         else Data.unhappyGuests++;
+
+        float stars = happy ? settings.RatingAfterWaiting(guest.waited) : 1f;
+        Data.ratingSum += stars;
+        Data.ratedGuests++;
+        Data.reputationChange += settings.ReputationFor(stars);
+
         guest.state = GuestState.Left;
         guest.building = null;
     }

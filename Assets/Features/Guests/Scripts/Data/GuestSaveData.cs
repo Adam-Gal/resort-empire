@@ -39,6 +39,9 @@ public class GuestData
 
     //Seconds waited, rested or still to be served, depending on the state
     public float timer;
+
+    //All seconds spent waiting so far, for a room and in queues, what the rating is made of
+    public float waited;
 }
 
 // Guests of the wave running on one island.
@@ -61,6 +64,14 @@ public class GuestWaveData
 
     public int happyGuests;
     public int unhappyGuests;
+
+    //Stars of every guest who left, summed, and how many rated
+    public float ratingSum;
+    public int ratedGuests;
+
+    //Reputation the ratings earned so far, given when the wave ends
+    public int reputationChange;
+
     public List<GuestData> guests = new List<GuestData>();
 }
 
