@@ -166,10 +166,10 @@ public class GuestManager : MonoBehaviour
         ResourceManager.Instance.Add(ResourceType.Money, (long)unpaid * settings.moneyPerRequest);
     }
 
+    // Every guest's rating is worth some reputation, the wave gives or takes their sum.
     private void PayReputation(GuestSimulation simulation)
     {
-        long change = (long)simulation.HappyGuests * settings.reputationPerHappyGuest
-                      - (long)simulation.UnhappyGuests * settings.reputationPerUnhappyGuest;
+        long change = simulation.ReputationChange;
         ResourceManager resources = ResourceManager.Instance;
 
         if (change > 0) resources.Add(ResourceType.Reputation, change);

@@ -194,4 +194,68 @@ public class GuestSimulationTests
         Assert.That(settings.GuestsForWave(2), Is.EqualTo(9));
         Assert.That(settings.GuestsForWave(5), Is.EqualTo(10));
     }
+
+    [Test]
+    public void NoWaiting_EveryoneRatesFiveStars()
+    {
+        var simulation = GuestSimulation.Create(settings, "island", 1, 42);
+
+        Run(simulation, Resort(rooms: 5, food: 5, drinks: 5));
+
+        Assert.That(simulation.RatedGuests, Is.EqualTo(2));
+        Assert.That(simulation.AverageRating, Is.EqualTo(5f));
+        Assert.That(simulation.ReputationChange, Is.EqualTo(2 * settings.ReputationFor(5f)));
+    }
+
+    [Test]
+    public void WaitingInQueues_LowersTheRating()
+    {
+        settings.baseGuests = 4;
+        settings.arrivalShare = .01f;
+        settings.serviceSeconds = 5f;
+        settings.queuePatienceSeconds = 60f;
+        var simulation = GuestSimulation.Create(settings, "island", 1, 42);
+
+        Run(simulation, Resort(rooms: 4, food: 1, drinks: 1));
+
+        Assert.That(simulation.UnhappyGuests, Is.EqualTo(0));
+        Assert.That(simulation.AverageRating, Is.LessThan(5f));
+        Assert.That(simulation.AverageRating, Is.GreaterThan(1f));
+    }
+
+    [Test]
+    public void GivingUp_RatesOneStar()
+    {
+        settings.roomPatienceSeconds = 1f;
+        settings.arrivalShare = .01f;
+        var simulation = GuestSimulation.Create(settings, "island", 1, 42);
+
+        Run(simulation, Resort(rooms: 1, food: 5, drinks: 5));
+
+        // One guest got the room without waiting, the other gave up on it.
+        Assert.That(simulation.RatedGuests, Is.EqualTo(2));
+        Assert.That(simulation.AverageRating, Is.EqualTo(3f));
+        Assert.That(simulation.ReputationChange, Is.EqualTo(settings.ReputationFor(5f) + settings.ReputationFor(1f)));
+    }
+
+    [Test]
+    public void Rating_DropsWithTotalWaitingAndStaysBetweenOneAndFive()
+    {
+        settings.waitSecondsPerStar = 8f;
+
+        Assert.That(settings.RatingAfterWaiting(0f), Is.EqualTo(5f));
+        Assert.That(settings.RatingAfterWaiting(8f), Is.EqualTo(4f));
+        Assert.That(settings.RatingAfterWaiting(4f + 4f), Is.EqualTo(settings.RatingAfterWaiting(8f)), "two short waits count like one long");
+        Assert.That(settings.RatingAfterWaiting(1000f), Is.EqualTo(1f));
+    }
+
+    [Test]
+    public void ReputationFor_UsesRoundedStars()
+    {
+        settings.reputationByStars = new[] { -1, 0, 1, 2, 3 };
+
+        Assert.That(settings.ReputationFor(1f), Is.EqualTo(-1));
+        Assert.That(settings.ReputationFor(3.4f), Is.EqualTo(1));
+        Assert.That(settings.ReputationFor(4.6f), Is.EqualTo(3));
+    }
 }

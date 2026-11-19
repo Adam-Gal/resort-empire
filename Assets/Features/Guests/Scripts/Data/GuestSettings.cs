@@ -37,19 +37,28 @@ public class GuestSettings : ScriptableObject
     //Seconds a new guest waits for a free room before leaving unhappy
     [Min(1f)] public float roomPatienceSeconds = 60f;
 
+    [Header("Rating")]
+    //Seconds of waiting, all waits of a guest added up, that cost one star out of five
+    [Min(.1f)] public float waitSecondsPerStar = 8f;
+
     [Header("Rewards")]
     //Money for every request served, paid right away
     [Min(0)] public int moneyPerRequest = 15;
 
-    //Reputation for every guest who left happy, given when the wave ends
-    [Min(0)] public int reputationPerHappyGuest = 2;
-
-    //Reputation taken for every guest who left unhappy, never below zero
-    [Min(0)] public int reputationPerUnhappyGuest = 1;
+    //Reputation a guest gives by their rating, 1 to 5 stars, rounded. Negative takes it, never below zero
+    public int[] reputationByStars = { -1, 0, 1, 2, 3 };
 
     // Guests the given wave brings to an island.
     public int GuestsForWave(int waveNumber) =>
         Mathf.Min(maxGuests, baseGuests + guestsPerWave * Mathf.Max(0, waveNumber - 1));
+
+    // Stars a guest gives after waiting this long in total, 1 to 5.
+    public float RatingAfterWaiting(float waitedSeconds) =>
+        Mathf.Clamp(5f - waitedSeconds / waitSecondsPerStar, 1f, 5f);
+
+    // Reputation one guest's rating is worth.
+    public int ReputationFor(float stars) =>
+        reputationByStars[Mathf.Clamp(Mathf.RoundToInt(stars) - 1, 0, reputationByStars.Length - 1)];
 
     // Problems that make the settings unusable, empty when they are fine.
     public List<string> Validate()
@@ -61,6 +70,7 @@ public class GuestSettings : ScriptableObject
         if (maxRequests < minRequests) problems.Add("Max requests must not be lower than min requests.");
         if (maxBreakSeconds < minBreakSeconds) problems.Add("Max break must not be shorter than min break.");
         if (serviceSeconds <= 0f) problems.Add("Service must take some time.");
+        if (reputationByStars == null || reputationByStars.Length != 5) problems.Add("Reputation by stars needs exactly 5 values, for 1 to 5 stars.");
         return problems;
     }
 
