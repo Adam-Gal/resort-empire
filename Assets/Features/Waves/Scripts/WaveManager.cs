@@ -93,6 +93,13 @@ public class WaveManager : MonoBehaviour
 
     public bool IsWaveRunning(string islandId) => sessions.ContainsKey(islandId);
 
+    // Waves ever started on the island, the running one included.
+    public int GetWaveCount(string islandId)
+    {
+        waveCounts.TryGetValue(islandId, out int count);
+        return count;
+    }
+
     // Waves running now, one per island at most.
     public IEnumerable<WaveSession> Sessions => sessions.Values;
 
