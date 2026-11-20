@@ -161,6 +161,19 @@ public class PathNetwork : MonoBehaviour
     private int lastSignature;
     private bool forceRebuild = true;
 
+    //Guest routes: blocks the laid paths join, where each building's path ends and where each harbor's starts.
+    //Written by every Lay, the last one is the layout on screen
+    private readonly List<Vector2Int> laidLinks = new List<Vector2Int>();
+    private readonly Dictionary<PlacedBuilding, int> buildingEnds = new Dictionary<PlacedBuilding, int>();
+    private readonly Dictionary<Harbor, int> harborRoots = new Dictionary<Harbor, int>();
+    private readonly Dictionary<int, List<int>> linked = new Dictionary<int, List<int>>();
+    private readonly Dictionary<int, float> routeCost = new Dictionary<int, float>();
+    private readonly Dictionary<int, int> routeFrom = new Dictionary<int, int>();
+    private readonly List<int> routeOpen = new List<int>();
+
+    // Goes up every time the paths are laid again, so routes worked out before can be dropped.
+    public int Version { get; private set; }
+
     public bool IsPath(Vector2Int cell)
     {
         int index = IndexOf(cell);
@@ -287,6 +300,7 @@ public class PathNetwork : MonoBehaviour
         }
         if (best != Alignments - 1) Lay(best);
 
+        LinkRoutes();
         Draw();
         UpdateBlocked();
     }
@@ -298,6 +312,9 @@ public class PathNetwork : MonoBehaviour
         network.Clear();
         sources.Clear();
         rankSum = 0;
+        laidLinks.Clear();
+        buildingEnds.Clear();
+        harborRoots.Clear();
 
         AddHarborRoots(alignment);
         CollectTargets();
@@ -408,9 +425,10 @@ public class PathNetwork : MonoBehaviour
             {
                 AddToNetwork(block, true);
                 links[block] |= (byte)(1 << towardsPier);
+                harborRoots[harbor] = block;
             }
             else
-                AddNearestRoot(harbor.Center, alignment);
+                AddNearestRoot(harbor, alignment);
         }
     }
 
@@ -465,8 +483,9 @@ public class PathNetwork : MonoBehaviour
     }
 
     // Fallback for odd harbor art: the free block nearest its middle, moved by the alignment when free.
-    private void AddNearestRoot(Vector3 pier, int alignment)
+    private void AddNearestRoot(Harbor harbor, int alignment)
     {
+        Vector3 pier = harbor.Center;
         Vector2Int center = grid.WorldToCell(pier);
         int best = -1;
         float bestDistance = float.MaxValue;
@@ -491,6 +510,7 @@ public class PathNetwork : MonoBehaviour
         if (moved >= 0) best = moved;
         AddToNetwork(best, true);
         links[best] |= (byte)(1 << DirectionTowards(CellOf(best), pier));
+        harborRoots[harbor] = best;
     }
 
     private Vector3 BlockCenter(Vector2Int cell) => (grid.CellToWorld(cell) + grid.CellToWorld(cell + Vector2Int.one)) * .5f;
@@ -727,12 +747,127 @@ public class PathNetwork : MonoBehaviour
             }
             AddToNetwork(from, true);
             AddToNetwork(to, true);
+            laidLinks.Add(new Vector2Int(from, to));
             links[from] |= (byte)(1 << direction);
             links[to] |= (byte)(1 << ((direction + 2) % 4));
             state = previous[state];
         }
 
-        MarkConnected(TargetOf(approach));
+        int target = TargetOf(approach);
+        buildingEnds[targets[target].building] = end;
+        MarkConnected(target);
+    }
+
+    // Joins the blocks of the laid paths both ways, for routes.
+    private void LinkRoutes()
+    {
+        foreach (List<int> next in linked.Values) next.Clear();
+        foreach (Vector2Int link in laidLinks)
+        {
+            Link(link.x, link.y);
+            Link(link.y, link.x);
+        }
+        Version++;
+    }
+
+    private void Link(int from, int to)
+    {
+        if (!linked.TryGetValue(from, out List<int> next)) linked[from] = next = new List<int>();
+        if (!next.Contains(to)) next.Add(to);
+    }
+
+    // The way a guest walks between two places along the paths, each a building (from the block at its door)
+    // or a harbor (from its pier). Fills points from start to end. False when no path joins them,
+    // the points are then just the two places, for a straight walk.
+    public bool TryGetRoute(Object from, Object to, List<Vector3> points)
+    {
+        points.Clear();
+        Vector3 start = PlaceOf(from, out int startBlock);
+        Vector3 end = PlaceOf(to, out int endBlock);
+        points.Add(start);
+
+        if (!ready || startBlock < 0 || endBlock < 0 || !FindRoute(startBlock, endBlock))
+        {
+            points.Add(end);
+            return false;
+        }
+
+        // Back from the end, then turned around.
+        int first = points.Count;
+        for (int block = endBlock; ; block = routeFrom[block])
+        {
+            points.Add(BlockCenter(CellOf(block)));
+            if (block == startBlock) break;
+        }
+        points.Reverse(first, points.Count - first);
+        points.Add(end);
+        DropRepeats(points);
+        return true;
+    }
+
+    // Where a place stands for walking and the path block it is reached from, -1 when none reaches it.
+    private Vector3 PlaceOf(Object place, out int block)
+    {
+        block = -1;
+        if (place is Harbor harbor)
+        {
+            // Guests step on land where the pier meets the path, they do not walk the pier itself.
+            if (harbor != null && harborRoots.TryGetValue(harbor, out int root))
+            {
+                block = root;
+                return BlockCenter(CellOf(root));
+            }
+            return harbor != null ? harbor.Center : Vector3.zero;
+        }
+        if (place is PlacedBuilding building && building != null)
+        {
+            if (buildingEnds.TryGetValue(building, out int end))
+            {
+                block = end;
+                return BlockCenter(CellOf(end));
+            }
+            return grid.FootprintCenter(building.Origin, building.Definition.size);
+        }
+        return Vector3.zero;
+    }
+
+    // Shortest way over the laid blocks, Dijkstra with a plain list: the network is small and routes are cached.
+    private bool FindRoute(int start, int goal)
+    {
+        routeCost.Clear();
+        routeFrom.Clear();
+        routeOpen.Clear();
+        routeCost[start] = 0f;
+        routeFrom[start] = start;
+        routeOpen.Add(start);
+
+        while (routeOpen.Count > 0)
+        {
+            int bestIndex = 0;
+            for (int i = 1; i < routeOpen.Count; i++)
+                if (routeCost[routeOpen[i]] < routeCost[routeOpen[bestIndex]]) bestIndex = i;
+            int block = routeOpen[bestIndex];
+            routeOpen.RemoveAt(bestIndex);
+            if (block == goal) return true;
+            if (!linked.TryGetValue(block, out List<int> next)) continue;
+
+            Vector3 here = BlockCenter(CellOf(block));
+            foreach (int other in next)
+            {
+                float cost = routeCost[block] + Vector3.Distance(here, BlockCenter(CellOf(other)));
+                if (routeCost.TryGetValue(other, out float known) && known <= cost) continue;
+                if (!routeCost.ContainsKey(other)) routeOpen.Add(other);
+                routeCost[other] = cost;
+                routeFrom[other] = block;
+            }
+        }
+        return false;
+    }
+
+    private static void DropRepeats(List<Vector3> points)
+    {
+        for (int i = points.Count - 1; i > 0; i--)
+            if ((points[i] - points[i - 1]).sqrMagnitude < 1e-6f) points.RemoveAt(i);
     }
 
     // Buildings left without a path this rebuild. Those that got one back lose the tint.
