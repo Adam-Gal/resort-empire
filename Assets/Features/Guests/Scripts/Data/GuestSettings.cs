@@ -18,6 +18,21 @@ public class GuestSettings : ScriptableObject
     //Part of the request window over which guests arrive, the rest lets the last ones finish
     [Range(.1f, 1f)] public float arrivalShare = .75f;
 
+    //Boats bringing the guests of a wave, evenly over the arrival part of the window, the first one right away.
+    //Each brings its share of the guests
+    [Min(1)] public int boatsPerWave = 3;
+
+    //Seconds between two guests stepping off the same boat, so they leave the harbor almost together
+    [Min(0f)] public float disembarkSeconds = .6f;
+
+    //Chance a new arrival is a couple, two guests who share a room and go everywhere together
+    [Range(0f, 1f)] public float coupleChance = .3f;
+
+    [Header("Walking")]
+    //World units a guest walks per second along the paths, on screen and for the simulation alike,
+    //so the layout of the buildings sets how long a walk takes. Walking is not waiting, it costs no stars
+    [Min(.05f)] public float walkSpeed = 1f;
+
     [Header("Requests")]
     //Chance a guest also asks for each optional service the island offers, a pool, a spa or a tennis court.
     //Food and drinks are always asked for, an optional service never while the island has none
@@ -75,6 +90,7 @@ public class GuestSettings : ScriptableObject
         if (maxGuests < baseGuests) problems.Add("Max guests must not be lower than base guests.");
         if (maxBreakSeconds < minBreakSeconds) problems.Add("Max break must not be shorter than min break.");
         if (serviceSeconds <= 0f) problems.Add("Service must take some time.");
+        if (walkSpeed <= 0f) problems.Add("Guests must walk at some speed.");
         if (reputationByStars == null || reputationByStars.Length != 5) problems.Add("Reputation by stars needs exactly 5 values, for 1 to 5 stars.");
         return problems;
     }

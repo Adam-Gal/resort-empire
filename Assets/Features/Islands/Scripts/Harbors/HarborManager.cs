@@ -63,6 +63,17 @@ public class HarborManager : MonoBehaviour
         if (Instance == this) Instance = null;
     }
 
+    // The harbor of the island, where its guests arrive and leave. Null while the island has none.
+    public Harbor GetHarbor(string islandId)
+    {
+        foreach (Site site in sites)
+        {
+            string siteIsland = string.IsNullOrEmpty(site.islandId) ? IslandProgress.StartingIslandId : site.islandId;
+            if (siteIsland == islandId && harbors.TryGetValue(site.id, out Harbor harbor)) return harbor;
+        }
+        return null;
+    }
+
     // A harbor whose art is under the world point.
     public Harbor Pick(Vector3 world)
     {
