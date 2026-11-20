@@ -18,7 +18,8 @@ public class GuestManager : MonoBehaviour
 
     private static readonly BuildingCategory[] ServiceCategories =
     {
-        BuildingCategory.Rooms, BuildingCategory.Food, BuildingCategory.Drinks, BuildingCategory.Activities
+        BuildingCategory.Rooms, BuildingCategory.Food, BuildingCategory.Drinks,
+        BuildingCategory.Pool, BuildingCategory.Spa, BuildingCategory.Tennis, BuildingCategory.Activities
     };
 
     private readonly Dictionary<string, GuestSimulation> simulations = new Dictionary<string, GuestSimulation>();

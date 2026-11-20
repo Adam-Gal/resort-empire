@@ -19,9 +19,9 @@ public class GuestSettings : ScriptableObject
     [Range(.1f, 1f)] public float arrivalShare = .75f;
 
     [Header("Requests")]
-    //Services one guest asks for, food and drinks are always among them
-    [Min(1)] public int minRequests = 2;
-    [Min(1)] public int maxRequests = 3;
+    //Chance a guest also asks for each optional service the island offers, a pool, a spa or a tennis court.
+    //Food and drinks are always asked for, an optional service never while the island has none
+    [Range(0f, 1f)] public float optionalServiceChance = .6f;
 
     //Seconds one guest is served at a building, a speed up divides it
     [Min(.1f)] public float serviceSeconds = 5f;
@@ -41,6 +41,9 @@ public class GuestSettings : ScriptableObject
     //Seconds of waiting, all waits of a guest added up, that cost one star out of five
     [Min(.1f)] public float waitSecondsPerStar = 8f;
 
+    //Stars lost for every basic need, a room, food or drinks, the guest left without
+    [Min(0f)] public float starsPerMissedNeed = 1f;
+
     [Header("Rewards")]
     //Money for every request served, paid right away
     [Min(0)] public int moneyPerRequest = 15;
@@ -56,6 +59,10 @@ public class GuestSettings : ScriptableObject
     public float RatingAfterWaiting(float waitedSeconds) =>
         Mathf.Clamp(5f - waitedSeconds / waitSecondsPerStar, 1f, 5f);
 
+    // Stars of a guest who stayed: waiting costs stars, so does every basic need left unmet.
+    public float RatingFor(float waitedSeconds, int missedNeeds) =>
+        Mathf.Clamp(RatingAfterWaiting(waitedSeconds) - missedNeeds * starsPerMissedNeed, 1f, 5f);
+
     // Reputation one guest's rating is worth.
     public int ReputationFor(float stars) =>
         reputationByStars[Mathf.Clamp(Mathf.RoundToInt(stars) - 1, 0, reputationByStars.Length - 1)];
@@ -66,8 +73,6 @@ public class GuestSettings : ScriptableObject
         var problems = new List<string>();
         if (baseGuests < 1) problems.Add("A wave must bring at least 1 guest.");
         if (maxGuests < baseGuests) problems.Add("Max guests must not be lower than base guests.");
-        if (minRequests < 1) problems.Add("Guests must ask for at least 1 service.");
-        if (maxRequests < minRequests) problems.Add("Max requests must not be lower than min requests.");
         if (maxBreakSeconds < minBreakSeconds) problems.Add("Max break must not be shorter than min break.");
         if (serviceSeconds <= 0f) problems.Add("Service must take some time.");
         if (reputationByStars == null || reputationByStars.Length != 5) problems.Add("Reputation by stars needs exactly 5 values, for 1 to 5 stars.");

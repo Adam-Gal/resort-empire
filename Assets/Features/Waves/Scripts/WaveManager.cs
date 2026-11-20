@@ -144,13 +144,19 @@ public class WaveManager : MonoBehaviour
     private bool HasBuilding(string islandId, BuildingCategory category) => GetBuildings(islandId, category).Count > 0;
 
     // How the building copes with the wave on its island, normal while no wave asks anything of it.
+    // Exactly full with nobody waiting still keeps up, only a guest waiting on top makes it overloaded.
     public ServiceState GetServiceState(string islandId, PlacedBuilding building)
     {
         IWaveRequests requests = GetSession(islandId)?.Requests;
         if (requests == null) return ServiceState.Normal;
 
-        float load = requests.GetLoad(building);
-        if (load >= settings.overloadedLoad) return ServiceState.Overloaded;
+        return StateForLoad(requests.GetLoad(building), settings);
+    }
+
+    // The state a load stands for: busy from busyLoad, overloaded only above overloadedLoad.
+    public static ServiceState StateForLoad(float load, WaveSettings settings)
+    {
+        if (load > settings.overloadedLoad + OverloadMargin) return ServiceState.Overloaded;
         return load >= settings.busyLoad ? ServiceState.Busy : ServiceState.Normal;
     }
 
@@ -195,6 +201,23 @@ public class WaveManager : MonoBehaviour
         WavesChanged?.Invoke();
         return true;
     }
+
+    // Basic services of the island asked for more than they can serve, so guests wait. Empty when all keep up.
+    public List<WaveSettings.Requirement> GetOverloadedServices(string islandId)
+    {
+        var overloaded = new List<WaveSettings.Requirement>();
+        if (GetSession(islandId)?.Requests == null) return overloaded;
+
+        foreach (WaveSettings.Requirement requirement in settings.requirements)
+        {
+            if (GetWorstState(islandId, GetBuildings(islandId, requirement.category)) == ServiceState.Overloaded)
+                overloaded.Add(requirement);
+        }
+        return overloaded;
+    }
+
+    //Loads are fractions, so exactly full can come out a hair above 1
+    private const float OverloadMargin = .001f;
 
     // The worst state among the buildings, what a service card warns about.
     public ServiceState GetWorstState(string islandId, List<PlacedBuilding> buildings)
