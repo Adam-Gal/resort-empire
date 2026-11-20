@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using ResortEmpire.Presentation;
 using TMPro;
 using UnityEngine;
@@ -7,6 +8,8 @@ using UnityEngine.UI;
 // Wave overview at the top of the screen for the island in the middle of the view:
 // which wave it is, how long guests keep coming and how far the wave got.
 // Tapping it shows the wave's guests. Also runs the start button and says why a wave cannot start.
+// During a wave a warning card in the notice stack says when the resort is overloaded,
+// tapping it opens the busiest service.
 public class WaveStatusUI : MonoBehaviour
 {
     [SerializeField] private IslandCameraController cameraController;
@@ -51,6 +54,13 @@ public class WaveStatusUI : MonoBehaviour
     [SerializeField] private GameObject noticeRoot;
     [SerializeField] private TMP_Text noticeText;
 
+    [Header("Overload")]
+    //The notices on the left, the same as the path errors use
+    [SerializeField] private NoticeStack notices;
+
+    //Loads change all the time, the warning checks them this often
+    [SerializeField, Min(.05f)] private float overloadCheckSeconds = .25f;
+
     private string islandId;
     private WavePhase? shownPhase;
     private bool isDirty = true;
@@ -61,10 +71,18 @@ public class WaveStatusUI : MonoBehaviour
     private GuestSimulation endedGuests;
     private float endedLeft;
 
+    private OverloadWarning overloadWarningInstance;
+    private List<WaveSettings.Requirement> overloaded = new List<WaveSettings.Requirement>();
+    private float sinceOverloadCheck;
+
+    //Overload text on screen now, null when none
+    private string overloadNotice;
+
     private void Start()
     {
         startButton.onClick.AddListener(OnStartClicked);
         barButton.onClick.AddListener(OnBarClicked);
+
         WaveManager.Instance.WavesChanged += MarkDirty;
         WaveManager.Instance.WaveEnded += OnWaveEnded;
         if (GuestManager.Instance != null) GuestManager.Instance.GuestsFinished += OnGuestsFinished;
@@ -81,6 +99,20 @@ public class WaveStatusUI : MonoBehaviour
     }
 
     private void MarkDirty() => isDirty = true;
+
+    // Made on first use, so it also exists again after scripts reload during play.
+    private OverloadWarning overloadWarning
+    {
+        get
+        {
+            if (overloadWarningInstance == null)
+            {
+                WaveSettings settings = WaveManager.Instance.Settings;
+                overloadWarningInstance = new OverloadWarning(settings.overloadWarningDelay, settings.overloadWarningHold);
+            }
+            return overloadWarningInstance;
+        }
+    }
 
     // Both end events come in the same frame, in either order, so each keeps what the other set.
     private void OnWaveEnded(WaveSession session)
@@ -120,6 +152,8 @@ public class WaveStatusUI : MonoBehaviour
         WaveSession session = waves.GetSession(viewed);
         WavePhase? phase = session?.Phase;
 
+        if (viewed != islandId) ResetOverload();
+
         if (isDirty || viewed != islandId || phase != shownPhase)
         {
             isDirty = false;
@@ -134,6 +168,55 @@ public class WaveStatusUI : MonoBehaviour
             SetProgress(session.WindowProgress);
             ShowTimeLeft(session);
         }
+
+        if (session != null) CheckOverload(waves);
+        else if (overloadNotice != null) ResetOverload();
+    }
+
+    private void ResetOverload()
+    {
+        overloadWarning.Reset();
+        overloaded.Clear();
+        ShowOverload();
+    }
+
+    // Guests keep asking more than the basic services manage.
+    private void CheckOverload(WaveManager waves)
+    {
+        sinceOverloadCheck += Time.deltaTime;
+        if (sinceOverloadCheck < overloadCheckSeconds) return;
+
+        List<WaveSettings.Requirement> now = waves.GetOverloadedServices(islandId);
+        // While it calms down the warning keeps naming what was overloaded last.
+        if (now.Count > 0) overloaded = now;
+        overloadWarning.Update(now.Count > 0, sinceOverloadCheck);
+        sinceOverloadCheck = 0f;
+        ShowOverload();
+    }
+
+    // A warning card while the overload lasts, a new text replaces the old card.
+    private void ShowOverload()
+    {
+        string text = null;
+        if (overloadWarning.Visible && overloaded.Count > 0)
+        {
+            var names = new List<string>();
+            foreach (WaveSettings.Requirement requirement in overloaded) names.Add(requirement.displayName);
+            text = $"Rezort je preťažený, nestíha: {string.Join(", ", names)}";
+        }
+
+        if (notices == null || text == overloadNotice) return;
+
+        // Shown once per text, so a card the player closed stays closed while the same services lag.
+        if (overloadNotice != null) notices.Hide(overloadNotice);
+        overloadNotice = text;
+        if (text != null) notices.Show(text, NoticeLevel.Warning, OnOverloadClicked, true);
+    }
+
+    private void OnOverloadClicked()
+    {
+        if (overloaded.Count == 0) return;
+        serviceCards.ShowDetails(islandId, overloaded[0].category);
     }
 
     private void Refresh(WaveManager waves, WaveSession session)
@@ -182,8 +265,17 @@ public class WaveStatusUI : MonoBehaviour
 
         string problem = session == null ? waves.GetStartProblem(islandId) : null;
         startButton.interactable = session == null && problem == null;
-        noticeRoot.SetActive(problem != null);
-        if (problem != null) noticeText.text = problem;
+        // Pinned on top of the notices on the left, so it is never hidden under them.
+        if (notices != null)
+        {
+            noticeRoot.SetActive(false);
+            notices.SetPinned(problem);
+        }
+        else
+        {
+            noticeRoot.SetActive(problem != null);
+            if (problem != null) noticeText.text = problem;
+        }
 
         if (switcher != null) switcher.Refresh(islandId);
         if (session != null) serviceCards.Show(islandId);

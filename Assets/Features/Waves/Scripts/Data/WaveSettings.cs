@@ -33,8 +33,15 @@ public class WaveSettings : ScriptableObject
     //Load against capacity from which a building barely keeps up, shown orange
     [Min(0f)] public float busyLoad = .8f;
 
-    //Load from which a building no longer keeps up, shown red
+    //Load above which a building no longer keeps up, shown red. At 1 a full building
+    //with nobody waiting still counts as busy, one more guest asking makes it overloaded
     [Min(0f)] public float overloadedLoad = 1f;
+
+    //Seconds a basic service must be overloaded before the resort warns about it
+    [Min(0f)] public float overloadWarningDelay = 1f;
+
+    //Seconds every basic service must keep up again before the warning goes away
+    [Min(0f)] public float overloadWarningHold = 2f;
 
     [Header("Speed up")]
     //Energy one speed up costs, each building can be sped up once per wave

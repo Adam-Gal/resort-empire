@@ -18,6 +18,9 @@ public class WaveGuestsPopup : MonoBehaviour
     //Average stars of the guests who left so far
     [SerializeField] private TMP_Text ratingText;
 
+    //How many of the arrived guests had each basic need met, optional
+    [SerializeField] private TMP_Text needsText;
+
     //Parts of one bar, each spans its share of all the wave's guests
     [SerializeField] private RectTransform happyPart;
     [SerializeField] private RectTransform stayingPart;
@@ -81,12 +84,29 @@ public class WaveGuestsPopup : MonoBehaviour
             // The wave has just started and its guests are not made yet.
             ShowCounts(0, 0, 0, 0, 0, 0);
             ShowRating(0, 0f);
+            ShowNeeds(null);
             return;
         }
 
         int waiting = guests.Waiting;
         ShowCounts(guests.TotalGuests, guests.HappyGuests, guests.InResort - waiting, waiting, guests.UnhappyGuests, guests.StillToCome);
         ShowRating(guests.RatedGuests, guests.AverageRating);
+        ShowNeeds(guests);
+    }
+
+    // "Ubytovanie 5/8 · Jedlo 4/8 · Nápoje 3/8", out of the guests who arrived so far.
+    private void ShowNeeds(GuestSimulation simulation)
+    {
+        if (needsText == null) return;
+
+        int arrived = simulation != null ? simulation.Arrived : 0;
+        var parts = new System.Collections.Generic.List<string>();
+        foreach (GuestNeeds need in GuestNeedsInfo.Basic)
+        {
+            int met = simulation != null ? simulation.GetMetCount(need) : 0;
+            parts.Add($"{GuestNeedsInfo.DisplayName(need)} {met}/{arrived}");
+        }
+        needsText.text = string.Join("  ·  ", parts);
     }
 
     // Written with a decimal comma, a dash until the first guest has left.
