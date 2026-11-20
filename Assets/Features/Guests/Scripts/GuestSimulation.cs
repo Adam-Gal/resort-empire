@@ -23,7 +23,10 @@ public struct ServicePoint
 
 // Guests of one wave on one island. They arrive during the request window, wait for a room,
 // then ask for services one by one and queue at the least busy building of each.
-// A guest who waits too long leaves unhappy. Every guest rates the stay by how long they waited in total.
+// Every guest has three basic needs: a room, food and drinks. Once the window closes they still
+// finish the basic ones they lack, extras like activities are dropped.
+// A guest who waits too long leaves unhappy. Every guest rates the stay by how long they waited in total
+// and by the basic needs left unmet.
 // Holds no Unity objects, so it runs in tests.
 public class GuestSimulation : IWaveRequests
 {
@@ -36,7 +39,6 @@ public class GuestSimulation : IWaveRequests
     private readonly Dictionary<string, int> roomUse = new Dictionary<string, int>();
     private readonly Dictionary<string, float> loads = new Dictionary<string, float>();
     private readonly List<GuestData> queue = new List<GuestData>();
-    private readonly List<BuildingCategory> pool = new List<BuildingCategory>();
     private int roomCapacity;
     private int waitingForRoom;
 
@@ -65,6 +67,18 @@ public class GuestSimulation : IWaveRequests
     public int HappyGuests => Data.happyGuests;
     public int UnhappyGuests => Data.unhappyGuests;
     public int ServedRequests => Data.servedRequests;
+
+    // Guests who had the basic need met, counted once each.
+    public int GetMetCount(GuestNeeds need)
+    {
+        switch (need)
+        {
+            case GuestNeeds.Accommodation: return Data.housedGuests;
+            case GuestNeeds.Food: return Data.fedGuests;
+            case GuestNeeds.Drinks: return Data.refreshedGuests;
+            default: return 0;
+        }
+    }
 
     // Average stars of the guests who left so far, 0 before anyone did.
     public float AverageRating => Data.ratedGuests > 0 ? Data.ratingSum / Data.ratedGuests : 0f;
@@ -101,8 +115,13 @@ public class GuestSimulation : IWaveRequests
         get
         {
             foreach (GuestData guest in Data.guests)
+            {
                 if (guest.state == GuestState.WaitingForRoom || guest.state == GuestState.Queued || guest.state == GuestState.InService)
                     return true;
+
+                // Resting, but still has a basic need to ask for.
+                if (guest.state == GuestState.Resting && HasPendingNeed(guest)) return true;
+            }
             return false;
         }
     }
@@ -198,6 +217,7 @@ public class GuestSimulation : IWaveRequests
                 Increment(roomUse, room);
                 waitingForRoom--;
                 guest.room = room;
+                Meet(guest, GuestNeeds.Accommodation);
                 guest.state = GuestState.Resting;
                 guest.timer = BreakSeconds();
                 MakeRequests(guest);
@@ -236,6 +256,7 @@ public class GuestSimulation : IWaveRequests
 
                 inService[guest.building]--;
                 Data.servedRequests++;
+                Meet(guest, GuestNeedsInfo.For(guest.current));
                 guest.building = null;
                 guest.state = GuestState.Resting;
                 guest.timer = BreakSeconds();
@@ -267,7 +288,8 @@ public class GuestSimulation : IWaveRequests
         }
     }
 
-    // Rested guests ask for their next service, or check out when there is none or the window closed.
+    // Rested guests ask for their next service, or check out when there is none.
+    // After the window closed they only ask for basic needs they still lack.
     private void Rest(float seconds, bool accepting)
     {
         foreach (GuestData guest in Data.guests)
@@ -277,7 +299,8 @@ public class GuestSimulation : IWaveRequests
             guest.timer -= seconds;
             while (guest.state == GuestState.Resting && guest.timer <= 0f)
             {
-                if (!accepting || guest.requests.Count == 0) { Leave(guest, true); break; }
+                if (!accepting) DropExtras(guest);
+                if (guest.requests.Count == 0) { Leave(guest, true); break; }
 
                 BuildingCategory category = guest.requests[0];
                 guest.requests.RemoveAt(0);
@@ -322,13 +345,48 @@ public class GuestSimulation : IWaveRequests
         guest.timer = 0f;
     }
 
-    // Checks the guest out and takes their rating: stars lost to all their waiting, 1 star if they gave up.
+    private void Meet(GuestData guest, GuestNeeds need)
+    {
+        if (need == GuestNeeds.None || (guest.met & need) != 0) return;
+
+        guest.met |= need;
+        switch (need)
+        {
+            case GuestNeeds.Accommodation: Data.housedGuests++; break;
+            case GuestNeeds.Food: Data.fedGuests++; break;
+            case GuestNeeds.Drinks: Data.refreshedGuests++; break;
+        }
+    }
+
+    // A basic need the guest lacks is still among their requests.
+    private static bool HasPendingNeed(GuestData guest)
+    {
+        foreach (BuildingCategory category in guest.requests)
+        {
+            GuestNeeds need = GuestNeedsInfo.For(category);
+            if (need != GuestNeeds.None && (guest.met & need) == 0) return true;
+        }
+        return false;
+    }
+
+    // Keeps only requests for basic needs the guest still lacks.
+    private static void DropExtras(GuestData guest)
+    {
+        guest.requests.RemoveAll(category =>
+        {
+            GuestNeeds need = GuestNeedsInfo.For(category);
+            return need == GuestNeeds.None || (guest.met & need) != 0;
+        });
+    }
+
+    // Checks the guest out and takes their rating: stars lost to all their waiting and to unmet needs,
+    // 1 star if they gave up.
     private void Leave(GuestData guest, bool happy)
     {
         if (happy) Data.happyGuests++;
         else Data.unhappyGuests++;
 
-        float stars = happy ? settings.RatingAfterWaiting(guest.waited) : 1f;
+        float stars = happy ? settings.RatingFor(guest.waited, GuestNeedsInfo.CountMissing(guest.met)) : 1f;
         Data.ratingSum += stars;
         Data.ratedGuests++;
         Data.reputationChange += settings.ReputationFor(stars);
@@ -337,26 +395,28 @@ public class GuestSimulation : IWaveRequests
         guest.building = null;
     }
 
-    // Food and drinks always, then more picks from what the island offers, in a random order.
+    // Optional services in the order they are rolled for, so a loaded wave rolls the same way.
+    private static readonly BuildingCategory[] OptionalServices =
+    {
+        BuildingCategory.Pool, BuildingCategory.Spa, BuildingCategory.Tennis, BuildingCategory.Activities
+    };
+
+    // Food and drinks always, then each optional service the island offers by chance, in a random order.
     private void MakeRequests(GuestData guest)
     {
-        pool.Clear();
-        pool.Add(BuildingCategory.Food);
-        pool.Add(BuildingCategory.Drinks);
-        if (Offers(BuildingCategory.Activities)) pool.Add(BuildingCategory.Activities);
-
-        int count = Range(settings.minRequests, settings.maxRequests);
         guest.requests.Clear();
         guest.requests.Add(BuildingCategory.Food);
         guest.requests.Add(BuildingCategory.Drinks);
-        while (guest.requests.Count < count) guest.requests.Add(pool[Range(0, pool.Count - 1)]);
+        foreach (BuildingCategory service in OptionalServices)
+        {
+            if (Offers(service) && Next01() < settings.optionalServiceChance) guest.requests.Add(service);
+        }
 
         for (int i = guest.requests.Count - 1; i > 0; i--)
         {
             int j = Range(0, i);
             (guest.requests[i], guest.requests[j]) = (guest.requests[j], guest.requests[i]);
         }
-        if (guest.requests.Count > count) guest.requests.RemoveRange(count, guest.requests.Count - count);
     }
 
     private bool Offers(BuildingCategory category)

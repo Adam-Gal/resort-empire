@@ -17,8 +17,7 @@ public class GuestSimulationTests
         settings.guestsPerWave = 0;
         settings.maxGuests = 10;
         settings.arrivalShare = .5f;
-        settings.minRequests = 2;
-        settings.maxRequests = 2;
+        settings.optionalServiceChance = 1f;
         settings.serviceSeconds = 1f;
         settings.minBreakSeconds = 0f;
         settings.maxBreakSeconds = 0f;
@@ -247,6 +246,121 @@ public class GuestSimulationTests
         Assert.That(settings.RatingAfterWaiting(8f), Is.EqualTo(4f));
         Assert.That(settings.RatingAfterWaiting(4f + 4f), Is.EqualTo(settings.RatingAfterWaiting(8f)), "two short waits count like one long");
         Assert.That(settings.RatingAfterWaiting(1000f), Is.EqualTo(1f));
+    }
+
+    [Test]
+    public void EnoughCapacity_EveryGuestHasAllThreeNeedsMet()
+    {
+        var simulation = GuestSimulation.Create(settings, "island", 1, 42);
+
+        Run(simulation, Resort(rooms: 5, food: 5, drinks: 5));
+
+        foreach (GuestNeeds need in GuestNeedsInfo.Basic)
+            Assert.That(simulation.GetMetCount(need), Is.EqualTo(2), need.ToString());
+    }
+
+    [Test]
+    public void WindowClosed_GuestsStillGetFoodAndDrinksButNoExtras()
+    {
+        settings.arrivalShare = .01f;
+        settings.minBreakSeconds = 1f;
+        settings.maxBreakSeconds = 1f;
+        var simulation = GuestSimulation.Create(settings, "island", 1, 42);
+        var points = Resort(rooms: 5, food: 5, drinks: 5);
+        points.Add(new ServicePoint("pool", BuildingCategory.Pool, 5, 1f));
+
+        // Guests arrive and get rooms, then the window closes while they rest.
+        float elapsed = 0f;
+        for (int i = 0; i < 5; i++, elapsed += Step) simulation.Tick(Step, true, elapsed, Window, points);
+        Assert.That(simulation.Arrived, Is.EqualTo(2));
+        while (elapsed < 60f && simulation.HasOpenRequests)
+        {
+            simulation.Tick(Step, false, elapsed, Window, points);
+            elapsed += Step;
+        }
+
+        Assert.That(simulation.HasOpenRequests, Is.False);
+        Assert.That(simulation.GetMetCount(GuestNeeds.Food), Is.EqualTo(2));
+        Assert.That(simulation.GetMetCount(GuestNeeds.Drinks), Is.EqualTo(2));
+        Assert.That(simulation.ServedRequests, Is.EqualTo(4), "activities are dropped once the window closed");
+
+        // The wave ends like WaveManager ends it, everyone still resting checks out.
+        simulation.CheckOutEveryone();
+        Assert.That(simulation.AverageRating, Is.EqualTo(5f));
+    }
+
+    [Test]
+    public void MissingService_UnmetNeedLowersTheRating()
+    {
+        settings.starsPerMissedNeed = 1f;
+        var simulation = GuestSimulation.Create(settings, "island", 1, 42);
+        var noDrinks = new List<ServicePoint>
+        {
+            new ServicePoint("room", BuildingCategory.Rooms, 5, 1f),
+            new ServicePoint("food", BuildingCategory.Food, 5, 1f)
+        };
+
+        Run(simulation, noDrinks);
+
+        Assert.That(simulation.HappyGuests, Is.EqualTo(2));
+        Assert.That(simulation.GetMetCount(GuestNeeds.Drinks), Is.EqualTo(0));
+        Assert.That(simulation.AverageRating, Is.EqualTo(4f));
+    }
+
+    [Test]
+    public void RatingFor_TakesStarsForUnmetNeedsAndStaysAboveOne()
+    {
+        settings.starsPerMissedNeed = 1f;
+
+        Assert.That(settings.RatingFor(0f, 0), Is.EqualTo(5f));
+        Assert.That(settings.RatingFor(0f, 2), Is.EqualTo(3f));
+        Assert.That(settings.RatingFor(1000f, 3), Is.EqualTo(1f));
+    }
+
+    [Test]
+    public void CountMissing_CountsBasicNeedsOnly()
+    {
+        Assert.That(GuestNeedsInfo.CountMissing(GuestNeeds.None), Is.EqualTo(3));
+        Assert.That(GuestNeedsInfo.CountMissing(GuestNeeds.Accommodation | GuestNeeds.Food), Is.EqualTo(1));
+        Assert.That(GuestNeedsInfo.CountMissing(GuestNeeds.All), Is.EqualTo(0));
+        Assert.That(GuestNeedsInfo.For(BuildingCategory.Activities), Is.EqualTo(GuestNeeds.None));
+    }
+
+    [Test]
+    public void OptionalServices_AreNotAskedForWithoutABuilding()
+    {
+        var simulation = GuestSimulation.Create(settings, "island", 1, 42);
+
+        Run(simulation, Resort(rooms: 5, food: 5, drinks: 5));
+
+        Assert.That(simulation.ServedRequests, Is.EqualTo(4), "only food and drinks for each of the 2 guests");
+    }
+
+    [Test]
+    public void OptionalServices_AreAskedForOnceBuilt()
+    {
+        var simulation = GuestSimulation.Create(settings, "island", 1, 42);
+        var points = Resort(rooms: 5, food: 5, drinks: 5);
+        points.Add(new ServicePoint("pool", BuildingCategory.Pool, 5, 1f));
+        points.Add(new ServicePoint("spa", BuildingCategory.Spa, 5, 1f));
+
+        Run(simulation, points);
+
+        Assert.That(simulation.ServedRequests, Is.EqualTo(8), "food, drinks, pool and spa for each of the 2 guests");
+        Assert.That(simulation.HappyGuests, Is.EqualTo(2));
+    }
+
+    [Test]
+    public void OptionalServices_ChanceZero_NobodyAsks()
+    {
+        settings.optionalServiceChance = 0f;
+        var simulation = GuestSimulation.Create(settings, "island", 1, 42);
+        var points = Resort(rooms: 5, food: 5, drinks: 5);
+        points.Add(new ServicePoint("tennis", BuildingCategory.Tennis, 5, 1f));
+
+        Run(simulation, points);
+
+        Assert.That(simulation.ServedRequests, Is.EqualTo(4));
     }
 
     [Test]
