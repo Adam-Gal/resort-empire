@@ -387,7 +387,7 @@ public class BuildMenuUI : MonoBehaviour
         int used = 0;
         foreach (BuildingDefinition definition in BuildingManager.Instance.Buildings)
         {
-            if (!definition.showInShop || (filter != null && definition.category != filter)) continue;
+            if (!definition.showInShop || (filter != null && definition.ShopCategory != filter)) continue;
 
             if (used == cards.Count)
                 cards.Add(Instantiate(cardTemplate, cardTemplate.transform.parent));

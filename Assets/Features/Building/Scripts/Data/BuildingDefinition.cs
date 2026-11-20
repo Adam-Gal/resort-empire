@@ -1,13 +1,19 @@
 using System;
 using UnityEngine;
 
+// Saved by number, new kinds go at the end.
 public enum BuildingCategory
 {
     Rooms,
     Food,
     Drinks,
     Activities,
-    Decorations
+    Decorations,
+
+    // Optional services, guests ask for them only once the island has one.
+    Pool,
+    Spa,
+    Tennis
 }
 
 // Side of the footprint guests walk in from, as seen on screen. Paths are laid to it.
@@ -63,6 +69,14 @@ public class BuildingDefinition : ScriptableObject
 
     // Decorations are cleared like obstacles, other buildings are demolished for a refund.
     public bool IsDecoration => category == BuildingCategory.Decorations;
+
+    // Pool, spa and tennis are services of their own, but the shop lists them under activities.
+    public BuildingCategory ShopCategory => IsOptionalService(category) ? BuildingCategory.Activities : category;
+
+    // Services guests ask for only when the island offers them, never needed to start a wave.
+    public static bool IsOptionalService(BuildingCategory category) =>
+        category == BuildingCategory.Pool || category == BuildingCategory.Spa ||
+        category == BuildingCategory.Tennis || category == BuildingCategory.Activities;
 
     //From the footprint centre to the sprite pivot, so the art sits on its cells
     public Vector2 spriteOffset;
