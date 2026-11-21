@@ -11,6 +11,9 @@ public class GuestManager : MonoBehaviour
     public static GuestManager Instance { get; private set; }
 
     [SerializeField] private GuestSettings settings;
+
+    //Paths guests walk along between the harbor and the buildings
+    [SerializeField] private PathNetwork paths;
     [SerializeField] private string saveFileName = "guests_save.json";
 
     //How often running waves are written to disk, so a crash loses at most this much
@@ -24,6 +27,7 @@ public class GuestManager : MonoBehaviour
 
     private readonly Dictionary<string, GuestSimulation> simulations = new Dictionary<string, GuestSimulation>();
     private readonly List<ServicePoint> points = new List<ServicePoint>();
+    private readonly Dictionary<string, GuestRoutes> routes = new Dictionary<string, GuestRoutes>();
     private float sinceSave;
 
     public GuestSettings Settings => settings;
@@ -37,6 +41,7 @@ public class GuestManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        if (paths == null) paths = FindFirstObjectByType<PathNetwork>();
         foreach (string problem in settings.Validate())
             Debug.LogError($"[GuestManager] Guest settings: {problem}", settings);
     }
@@ -75,7 +80,8 @@ public class GuestManager : MonoBehaviour
 
             GuestSimulation simulation = Attach(session);
             CollectPoints(waves, session.IslandId);
-            simulation.Tick(seconds, session.IsAcceptingRequests, session.ElapsedSeconds, session.RequestWindowSeconds, points);
+            simulation.Tick(seconds, session.IsAcceptingRequests, session.ElapsedSeconds, session.RequestWindowSeconds, points,
+                GetRoutes(session.IslandId));
             PayRequests(simulation);
         }
 
@@ -95,6 +101,14 @@ public class GuestManager : MonoBehaviour
     {
         simulations.TryGetValue(islandId, out GuestSimulation simulation);
         return simulation;
+    }
+
+    // Walks between the island's harbor and its buildings.
+    public GuestRoutes GetRoutes(string islandId)
+    {
+        if (!routes.TryGetValue(islandId, out GuestRoutes found))
+            routes[islandId] = found = new GuestRoutes(islandId, paths);
+        return found;
     }
 
     private void OnWaveStarted(WaveSession session)
@@ -190,6 +204,11 @@ public class GuestManager : MonoBehaviour
         {
             if (wave == null || string.IsNullOrEmpty(wave.islandId)) continue;
             wave.guests ??= new List<GuestData>();
+
+            // Saves from before parties had ids: number them, so each keeps its own figure.
+            if (wave.nextId == 0 && wave.guests.Count > 0)
+                foreach (GuestData guest in wave.guests) guest.id = wave.nextId++;
+
             simulations[wave.islandId] = new GuestSimulation(settings, wave);
         }
     }

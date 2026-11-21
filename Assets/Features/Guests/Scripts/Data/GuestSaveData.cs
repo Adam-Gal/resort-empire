@@ -64,13 +64,32 @@ public enum GuestState
     InService,
 
     // Checked out, happy or not.
-    Left
+    Left,
+
+    // On the way to their room, from the harbor or after a service.
+    GoingToRoom,
+
+    // On the way to a service building, they join its queue on arrival.
+    GoingToService,
+
+    // Checked out and rated, walking back to the harbor.
+    Leaving
 }
 
-// One guest of a running wave.
+// One party of a running wave, a single guest or a couple. A couple counts as two guests:
+// two beds, two places at a service and two ratings.
 [Serializable]
 public class GuestData
 {
+    //Never reused within a wave, so the party keeps its look on screen
+    public int id;
+
+    //Guests in the party, 1 or 2. Saves from before couples have 0, read as 1
+    public int size = 1;
+
+    //Which figure is drawn for a single guest, 0 a man, 1 a woman
+    public int look;
+
     //Order of arrival, then order of joining the current queue
     public int ticket;
     public GuestState state;
@@ -85,14 +104,20 @@ public class GuestData
     //Services still to ask for, in order
     public List<BuildingCategory> requests = new List<BuildingCategory>();
 
-    //Seconds waited, rested or still to be served, depending on the state
+    //Seconds waited, rested, still to be served or still to walk, depending on the state
     public float timer;
+
+    //Where the current walk started, a building key or the harbor, and how long the whole walk takes
+    public string from;
+    public float walkSeconds;
 
     //All seconds spent waiting so far, for a room and in queues, what the rating is made of
     public float waited;
 
     //Basic needs met so far, a room on arrival, then food and drinks when served
     public GuestNeeds met;
+
+    public int People => size > 1 ? size : 1;
 }
 
 // Guests of the wave running on one island.
@@ -104,6 +129,7 @@ public class GuestWaveData
     public int totalGuests;
     public int arrived;
     public int nextTicket;
+    public int nextId;
 
     //State of the random numbers, so a loaded wave goes on the same way
     public uint random;
