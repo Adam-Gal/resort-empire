@@ -335,6 +335,8 @@ public class ResourceManager : MonoBehaviour
 
     [ContextMenu("Debug/Add 1000 Money")]
     private void DebugAddMoney() => Add(ResourceType.Money, 1000);
+    [ContextMenu("Debug/Add 5000 Money")]
+    private void DebugAddMoreMoney() => Add(ResourceType.Money, 5000);
 
     [ContextMenu("Debug/Add 10 Energy")]
     private void DebugAddEnergy() => Add(ResourceType.Energy, 10, true);
