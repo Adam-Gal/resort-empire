@@ -109,13 +109,13 @@ public class BuildingDefinition : ScriptableObject
     public ResourceCost[] hireCost;
 
     //Hire price is multiplied by this with each level
-    [Min(1f)] public float hireCostMultiplier = 1.2f;
+    [Min(1f)] public float hireCostMultiplierPerLevel = 1.2f;
 
     public ResourceCost[] HireCostAt(int level)
     {
         if (hireCost == null) return new ResourceCost[0];
 
-        double factor = Math.Pow(hireCostMultiplier, Mathf.Max(0, level));
+        double factor = Math.Pow(hireCostMultiplierPerLevel, Mathf.Max(0, level));
         var cost = new ResourceCost[hireCost.Length];
         for (int i = 0; i < cost.Length; i++)
             cost[i] = new ResourceCost(hireCost[i].type, (long)Math.Round(hireCost[i].amount * factor));
