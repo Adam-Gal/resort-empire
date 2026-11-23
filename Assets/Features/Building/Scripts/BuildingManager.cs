@@ -93,6 +93,9 @@ public class BuildingManager : MonoBehaviour
         grid.SetOccupant(origin, size, building);
         building.SetOrigin(origin);
         PositionBuilding(building);
+
+        // The same smoke a finished upgrade gets, over the new spot.
+        if (removalEffect != null) Instantiate(removalEffect).Play(grid.FootprintCenter(origin, size), size, null);
         WriteBuildings();
         return true;
     }

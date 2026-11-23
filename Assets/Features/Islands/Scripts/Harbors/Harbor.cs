@@ -3,8 +3,14 @@ using UnityEngine;
 // One harbor on the shore. HarborManager creates it and swaps its art per level.
 public class Harbor : MonoBehaviour
 {
+    // Child of a level prefab where boats park.
+    public const string BoatAnchorName = "BoatAnchor";
+
     public string Id { get; private set; }
     public int Level { get; private set; }
+
+    // Where boats park at the current level, null when its art has no BoatAnchor.
+    public Transform BoatAnchor { get; private set; }
 
     private Transform anchor;
     private GameObject art;
@@ -33,11 +39,25 @@ public class Harbor : MonoBehaviour
         art = Instantiate(prefab, transform);
         art.name = prefab.name;
         art.transform.localPosition = Vector3.zero;
+        BoatAnchor = FindBoatAnchor(art.transform);
         sprite = art.GetComponentInChildren<SpriteRenderer>();
         if (sprite == null) return;
 
         // The anchor's mirroring comes in through the parent, the art is moved in world space.
         art.transform.position += anchor.position - sprite.transform.position;
+    }
+
+    // The BoatAnchor below the root, also inside a prefab asset.
+    public static Transform FindBoatAnchor(Transform root)
+    {
+        foreach (Transform child in root)
+        {
+            if (!child.gameObject.activeSelf) continue;
+            if (child.name == BoatAnchorName) return child;
+            Transform found = FindBoatAnchor(child);
+            if (found != null) return found;
+        }
+        return null;
     }
 
     public bool Contains(Vector3 world)

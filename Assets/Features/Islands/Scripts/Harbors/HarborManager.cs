@@ -18,8 +18,19 @@ public class HarborManager : MonoBehaviour
         //Empty for the starting island, which is always open
         public string islandId;
 
-        //Where the middle of the art goes, a negative x scale mirrors the harbor
+        //Where the middle of the art goes, a negative x scale mirrors the harbor.
+        //Only places the harbor, boats stop at the BoatAnchor inside the harbor level's art
         public Transform anchor;
+
+        //Out at sea, where boats for this island appear. Empty: no boats come here
+        public Transform boatStart;
+
+        //Points boats pass on their way in, in order, to steer around rocks. They stop at the level's BoatAnchor
+        public Transform[] boatRoute;
+
+        //Points boats pass on their way out from the BoatAnchor, in order. They vanish at the last one.
+        //Empty: they leave the way they came
+        public Transform[] boatLeaveRoute;
     }
 
     public static HarborManager Instance { get; private set; }
@@ -38,6 +49,9 @@ public class HarborManager : MonoBehaviour
     private HarborSaveData saveData;
 
     public BuildingDefinition Definition => definition;
+
+    // Harbors standing now, one per open site.
+    public Dictionary<string, Harbor>.ValueCollection Harbors => harbors.Values;
 
     private string SavePath => Path.Combine(Application.persistentDataPath, saveFileName);
     private string TempSavePath => SavePath + ".tmp";
@@ -58,6 +72,52 @@ public class HarborManager : MonoBehaviour
     {
         if (IslandProgress.Instance != null) IslandProgress.Instance.Changed -= SpawnOpenSites;
         if (Instance == this) Instance = null;
+    }
+
+    // The harbor of the island, where its guests arrive and leave. Null while the island has none.
+    public Harbor GetHarbor(string islandId)
+    {
+        foreach (Site site in sites)
+        {
+            string siteIsland = string.IsNullOrEmpty(site.islandId) ? IslandProgress.StartingIslandId : site.islandId;
+            if (siteIsland == islandId && harbors.TryGetValue(site.id, out Harbor harbor)) return harbor;
+        }
+        return null;
+    }
+
+    // The points boats to the island sail through: in from their start at sea to the BoatAnchor of the harbor's level,
+    // and out from there. The way out holds only the dock when the site has no leave route.
+    // False while the island has no harbor, its site has no boat start or the harbor's level has no BoatAnchor.
+    public bool TryGetBoatPaths(string islandId, List<Vector3> wayIn, List<Vector3> wayOut, out Harbor harbor)
+    {
+        foreach (Site site in sites)
+        {
+            string siteIsland = string.IsNullOrEmpty(site.islandId) ? IslandProgress.StartingIslandId : site.islandId;
+            if (siteIsland != islandId || !harbors.TryGetValue(site.id, out harbor) || harbor == null) continue;
+            if (site.boatStart == null || harbor.BoatAnchor == null) break;
+
+            Vector3 dock = harbor.BoatAnchor.position;
+            AddWayIn(site, wayIn);
+            wayIn.Add(dock);
+            wayOut.Add(dock);
+            AddPoints(site.boatLeaveRoute, wayOut);
+            return true;
+        }
+        harbor = null;
+        return false;
+    }
+
+    private static void AddWayIn(Site site, List<Vector3> path)
+    {
+        path.Add(site.boatStart.position);
+        AddPoints(site.boatRoute, path);
+    }
+
+    private static void AddPoints(Transform[] points, List<Vector3> path)
+    {
+        if (points == null) return;
+        foreach (Transform point in points)
+            if (point != null) path.Add(point.position);
     }
 
     // A harbor whose art is under the world point.
@@ -149,6 +209,84 @@ public class HarborManager : MonoBehaviour
         {
             Debug.LogError($"[HarborManager] Failed to save harbors: {e.Message}");
         }
+    }
+
+    // Each site's boat routes in the scene view: the way in blue, the way out green, orange where boats stop and
+    // the way they point there. Before play the stop comes from the BoatAnchor in the first level's art, placed the way
+    // Harbor.SetArt places it on the site anchor. In play it is the BoatAnchor of the harbor standing there.
+    private void OnDrawGizmos()
+    {
+        if (sites == null) return;
+
+        var path = new List<Vector3>();
+        var wayInColor = new Color(.2f, .8f, 1f, .9f);
+        var wayOutColor = new Color(.3f, 1f, .4f, .9f);
+        foreach (Site site in sites)
+        {
+            if (site == null || site.boatStart == null) continue;
+            bool stops = TryGetBoatStop(site, out Vector3 stop);
+
+            Gizmos.color = wayInColor;
+            Gizmos.DrawWireSphere(site.boatStart.position, .25f);
+            path.Clear();
+            AddWayIn(site, path);
+            if (stops) path.Add(stop);
+            DrawRoute(path, site.boatRoute);
+
+            if (stops && site.boatLeaveRoute != null && site.boatLeaveRoute.Length > 0)
+            {
+                Gizmos.color = wayOutColor;
+                path.Clear();
+                path.Add(stop);
+                AddPoints(site.boatLeaveRoute, path);
+                DrawRoute(path, site.boatLeaveRoute);
+            }
+
+            if (!stops) continue;
+            path.Clear();
+            AddWayIn(site, path);
+            path.Add(stop);
+            BoatRoute wayIn = BoatRoute.Through(path, .1f);
+            if (wayIn == null) continue;
+            wayIn.PointAt(wayIn.Length, out Vector3 ahead);
+            Gizmos.color = new Color(1f, .6f, .1f);
+            Gizmos.DrawWireSphere(stop, .2f);
+            Gizmos.DrawLine(stop, stop + ahead * .6f);
+        }
+    }
+
+    private static void DrawRoute(List<Vector3> path, Transform[] points)
+    {
+        if (points != null)
+            foreach (Transform point in points)
+                if (point != null) Gizmos.DrawWireSphere(point.position, .12f);
+
+        BoatRoute route = BoatRoute.Through(path, .1f);
+        if (route == null) return;
+        for (int i = 1; i < route.points.Count; i++) Gizmos.DrawLine(route.points[i - 1], route.points[i]);
+    }
+
+    // Where boats stop at the site: the BoatAnchor in the harbor level's art, not the site anchor that places the harbor.
+    private bool TryGetBoatStop(Site site, out Vector3 stop)
+    {
+        stop = Vector3.zero;
+        if (harbors.TryGetValue(site.id, out Harbor harbor) && harbor != null && harbor.BoatAnchor != null)
+        {
+            stop = harbor.BoatAnchor.position;
+            return true;
+        }
+        if (site.anchor == null || definition == null || definition.levels == null || definition.levels.Length == 0) return false;
+
+        // Harbor.SetArt puts the art's sprite on the site anchor, mirrored by it. The BoatAnchor keeps its offset
+        // from the sprite, so it lands that far from the site anchor.
+        GameObject prefab = definition.PrefabAt(0);
+        if (prefab == null) return false;
+        Transform boatAnchor = Harbor.FindBoatAnchor(prefab.transform);
+        SpriteRenderer sprite = prefab.GetComponentInChildren<SpriteRenderer>(true);
+        if (boatAnchor == null || sprite == null) return false;
+
+        stop = site.anchor.position + site.anchor.TransformVector(boatAnchor.position - sprite.transform.position);
+        return true;
     }
 
     [ContextMenu("Debug/Delete Save File")]

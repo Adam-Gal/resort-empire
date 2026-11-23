@@ -1,13 +1,29 @@
 using System;
 using UnityEngine;
 
+// Saved by number, new kinds go at the end.
 public enum BuildingCategory
 {
     Rooms,
     Food,
     Drinks,
     Activities,
-    Decorations
+    Decorations,
+
+    // Optional services, guests ask for them only once the island has one.
+    Pool,
+    Spa,
+    Tennis
+}
+
+// Side of the footprint guests walk in from, as seen on screen. Paths are laid to it.
+public enum DoorSide
+{
+    None,
+    NorthEast,
+    NorthWest,
+    SouthWest,
+    SouthEast
 }
 
 [System.Serializable]
@@ -54,6 +70,14 @@ public class BuildingDefinition : ScriptableObject
     // Decorations are cleared like obstacles, other buildings are demolished for a refund.
     public bool IsDecoration => category == BuildingCategory.Decorations;
 
+    // Pool, spa and tennis are services of their own, but the shop lists them under activities.
+    public BuildingCategory ShopCategory => IsOptionalService(category) ? BuildingCategory.Activities : category;
+
+    // Services guests ask for only when the island offers them, never needed to start a wave.
+    public static bool IsOptionalService(BuildingCategory category) =>
+        category == BuildingCategory.Pool || category == BuildingCategory.Spa ||
+        category == BuildingCategory.Tennis || category == BuildingCategory.Activities;
+
     //From the footprint centre to the sprite pivot, so the art sits on its cells
     public Vector2 spriteOffset;
 
@@ -62,6 +86,12 @@ public class BuildingDefinition : ScriptableObject
 
     //Height of the visible art from its front corner, used to pick the roof on a tap
     public float visualHeight;
+
+    //Side with the door, None lets the path reach any side
+    public DoorSide doorSide;
+
+    //Cells from the lower end of that side to the door, which is two cells wide
+    [Min(0)] public int doorOffset;
 
     //First one is what gets built, leave empty if it can't be upgraded
     public BuildingLevel[] levels;
@@ -79,13 +109,13 @@ public class BuildingDefinition : ScriptableObject
     public ResourceCost[] hireCost;
 
     //Hire price is multiplied by this with each level
-    [Min(1f)] public float hireCostMultiplier = 1.2f;
+    [Min(1f)] public float hireCostMultiplierPerLevel = 1.2f;
 
     public ResourceCost[] HireCostAt(int level)
     {
         if (hireCost == null) return new ResourceCost[0];
 
-        double factor = Math.Pow(hireCostMultiplier, Mathf.Max(0, level));
+        double factor = Math.Pow(hireCostMultiplierPerLevel, Mathf.Max(0, level));
         var cost = new ResourceCost[hireCost.Length];
         for (int i = 0; i < cost.Length; i++)
             cost[i] = new ResourceCost(hireCost[i].type, (long)Math.Round(hireCost[i].amount * factor));
@@ -103,6 +133,9 @@ public class BuildingDefinition : ScriptableObject
     public GameObject PrefabAt(int level) => HasLevel(level) ? levels[level].prefab : prefab;
 
     public float VisualHeightAt(int level) => HasLevel(level) ? levels[level].visualHeight : visualHeight;
+
+    // Guests served at once on this level.
+    public int CapacityAt(int level) => HasLevel(level) ? levels[level].capacity : 0;
 
     // How long reaching this level takes, for the upgrade popup.
     public TimeSpan UpgradeDurationTo(int level) => TimeSpan.FromSeconds(HasLevel(level) ? levels[level].upgradeDuration : 0f);

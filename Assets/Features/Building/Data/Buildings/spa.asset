@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BuildingDefinition
   id: spa
   displayName: Spa
-  category: 3
+  category: 6
   icon: {fileID: 0}
   prefab: {fileID: 9046382339943685697, guid: 9a624ea174fc2e3bf9316034a018ca2b, type: 3}
   size: {x: 4, y: 4}
@@ -30,23 +30,25 @@ MonoBehaviour:
   spriteOffset: {x: -0.103, y: -0.78}
   spriteScale: 1
   visualHeight: 2.453
+  doorSide: 4
+  doorOffset: 0
   levels:
   - prefab: {fileID: 9046382339943685697, guid: 9a624ea174fc2e3bf9316034a018ca2b, type: 3}
-    capacity: 1
+    capacity: 2
     upgradeCost:
     - type: 0
       amount: 0
     upgradeDuration: 0
     visualHeight: 2.453
   - prefab: {fileID: 2145354085163842687, guid: 9add8baea47302972ae76af273ecdac3, type: 3}
-    capacity: 2
+    capacity: 4
     upgradeCost:
     - type: 0
       amount: 500
     upgradeDuration: 10
     visualHeight: 2.453
   - prefab: {fileID: 6880093240961251019, guid: 4eb0eb6b1f0bd33eeb7a65091efcc6c6, type: 3}
-    capacity: 5
+    capacity: 6
     upgradeCost:
     - type: 0
       amount: 1000
@@ -72,4 +74,4 @@ MonoBehaviour:
   hireCost:
   - type: 0
     amount: 500
-  hireCostMultiplier: 1.2
+  hireCostMultiplierPerLevel: 1.2
