@@ -240,6 +240,13 @@ public class WaveStatusUI : MonoBehaviour
             progressFillImage.color = runningFill;
             SetTime("Dokončená", doneColor);
         }
+        else if (session != null && session.Phase == WavePhase.Arriving)
+        {
+            // Boats are still on their way, the wave has not begun.
+            SetProgress(0f);
+            progressFillImage.color = runningFill;
+            SetTime("Začína", normalColor);
+        }
         else if (session != null && session.Phase != WavePhase.Running)
         {
             // Guests stopped coming, the bar waits full for the last orders.
@@ -306,7 +313,12 @@ public class WaveStatusUI : MonoBehaviour
     public static string StateLabel(WaveSession session)
     {
         if (session == null) return "Čaká sa na vlnu";
-        return session.Phase == WavePhase.Running ? "Vlna prebieha" : "Vlna sa končí";
+        switch (session.Phase)
+        {
+            case WavePhase.Arriving: return "Vlna začína";
+            case WavePhase.Running: return "Vlna prebieha";
+            default: return "Vlna sa končí";
+        }
     }
 
     private void OnBarClicked()
