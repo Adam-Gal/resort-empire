@@ -30,6 +30,8 @@ MonoBehaviour:
   spriteOffset: {x: -0.47, y: -1.195}
   spriteScale: 1
   visualHeight: 2.386
+  doorSide: 0
+  doorOffset: 0
   levels:
   - prefab: {fileID: 5752533216913167065, guid: 78c26fa7be1e30b98980403c6b84f248, type: 3}
     capacity: 2
@@ -39,28 +41,28 @@ MonoBehaviour:
     upgradeDuration: 0
     visualHeight: 2.386
   - prefab: {fileID: 915331469862994761, guid: f9bb293a225b3697fb427b253c96a8a1, type: 3}
-    capacity: 3
+    capacity: 4
     upgradeCost:
     - type: 0
       amount: 500
     upgradeDuration: 10
     visualHeight: 2.386
   - prefab: {fileID: 4503988426285214116, guid: b9119d2fe702fc40d86baa7139733012, type: 3}
-    capacity: 4
+    capacity: 8
     upgradeCost:
     - type: 0
       amount: 1000
     upgradeDuration: 15
     visualHeight: 2.386
   - prefab: {fileID: 5477848155201506825, guid: f39ccac6d95eb49009735222030e2c7f, type: 3}
-    capacity: 6
+    capacity: 12
     upgradeCost:
     - type: 0
       amount: 1550
     upgradeDuration: 45
     visualHeight: 2.386
   - prefab: {fileID: 3568774235058054827, guid: 8cac473fe247fb0008a9a00532bfc524, type: 3}
-    capacity: 8
+    capacity: 16
     upgradeCost:
     - type: 0
       amount: 2100
@@ -72,4 +74,4 @@ MonoBehaviour:
   hireCost:
   - type: 0
     amount: 500
-  hireCostMultiplier: 1.2
+  hireCostMultiplierPerLevel: 1.2

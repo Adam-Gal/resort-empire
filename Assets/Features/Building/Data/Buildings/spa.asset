@@ -41,28 +41,28 @@ MonoBehaviour:
     upgradeDuration: 0
     visualHeight: 2.453
   - prefab: {fileID: 2145354085163842687, guid: 9add8baea47302972ae76af273ecdac3, type: 3}
-    capacity: 3
+    capacity: 4
     upgradeCost:
     - type: 0
       amount: 500
     upgradeDuration: 10
     visualHeight: 2.453
   - prefab: {fileID: 6880093240961251019, guid: 4eb0eb6b1f0bd33eeb7a65091efcc6c6, type: 3}
-    capacity: 4
+    capacity: 6
     upgradeCost:
     - type: 0
       amount: 1000
     upgradeDuration: 15
     visualHeight: 2.453
   - prefab: {fileID: 4219176066294085277, guid: 1ecde1498b87ca5d58acb1b87491cd3c, type: 3}
-    capacity: 5
+    capacity: 8
     upgradeCost:
     - type: 0
       amount: 1550
     upgradeDuration: 45
     visualHeight: 2.453
   - prefab: {fileID: 8407903489822760944, guid: 7ac99290c9c1330ca9f394f8112365ff, type: 3}
-    capacity: 6
+    capacity: 10
     upgradeCost:
     - type: 0
       amount: 2100
@@ -74,4 +74,4 @@ MonoBehaviour:
   hireCost:
   - type: 0
     amount: 500
-  hireCostMultiplier: 1.2
+  hireCostMultiplierPerLevel: 1.2
