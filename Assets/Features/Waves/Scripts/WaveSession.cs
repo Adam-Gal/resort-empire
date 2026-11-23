@@ -6,7 +6,19 @@ public enum WavePhase
     // Time is up, no new requests are taken, started ones are finished.
     Finishing,
 
-    Ended
+    Ended,
+
+    // The guests' boat is still on its way, the wave has not begun yet.
+    // Last, so phases in older saves keep their numbers.
+    Arriving
+}
+
+// What brings the guests of a wave to the island. BoatManager sets a boat,
+// a wave without one begins right away.
+public interface IWaveArrival
+{
+    // The guests reached the island, the wave can begin.
+    bool HasLanded { get; }
 }
 
 // What the guest requests of a wave report back. The request system implements it,
@@ -47,6 +59,9 @@ public class WaveSession
     // Set by the request system once it exists.
     public IWaveRequests Requests { get; set; }
 
+    // Set by BoatManager while the guests are on their way. Null lets the wave begin at once.
+    public IWaveArrival Arrival { get; set; }
+
     // Buildings sped up in this wave, by key, and the play seconds left on the running speed ups.
     private readonly System.Collections.Generic.HashSet<string> spedUp = new System.Collections.Generic.HashSet<string>();
     private readonly System.Collections.Generic.Dictionary<string, float> boosts = new System.Collections.Generic.Dictionary<string, float>();
@@ -60,7 +75,7 @@ public class WaveSession
     // Once per building per wave.
     public bool TrySpeedUp(string building, float seconds)
     {
-        if (Phase == WavePhase.Ended || !spedUp.Add(building)) return false;
+        if (Phase == WavePhase.Ended || Phase == WavePhase.Arriving || !spedUp.Add(building)) return false;
         boosts[building] = seconds;
         return true;
     }
@@ -93,6 +108,14 @@ public class WaveSession
     public bool Advance(float seconds)
     {
         if (Phase == WavePhase.Ended) return false;
+
+        // Nothing runs until the guests landed, not the window and not the speed ups.
+        if (Phase == WavePhase.Arriving)
+        {
+            if (Arrival != null && !Arrival.HasLanded) return false;
+            Phase = WavePhase.Running;
+            return true;
+        }
 
         WavePhase before = Phase;
         bool boostEnded = TickBoosts(seconds);

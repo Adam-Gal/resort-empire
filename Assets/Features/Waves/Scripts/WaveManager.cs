@@ -5,6 +5,7 @@ using UnityEngine;
 
 // Guest waves, at most one running on each island. The player always starts them,
 // they never start on their own. Waves only advance while the game is played.
+// A new wave first waits in the Arriving phase until its guests' boat docked, see BoatManager.
 [DefaultExecutionOrder(-70)]
 public class WaveManager : MonoBehaviour
 {
@@ -122,7 +123,8 @@ public class WaveManager : MonoBehaviour
         waveCounts.TryGetValue(islandId, out int count);
         waveCounts[islandId] = ++count;
 
-        var session = new WaveSession(islandId, count, settings.requestWindowSeconds);
+        // Begins once the boat landed, right away when the island gets none.
+        var session = new WaveSession(islandId, count, settings.requestWindowSeconds, WavePhase.Arriving, 0f);
         sessions[islandId] = session;
         Save();
         WaveStarted?.Invoke(session);
@@ -171,6 +173,7 @@ public class WaveManager : MonoBehaviour
     {
         WaveSession session = GetSession(islandId);
         if (session == null) return "Vlna neprebieha";
+        if (session.Phase == WavePhase.Arriving) return "Hostia ešte nepriplávali";
         if (session.WasSpedUp(BuildingKey(building))) return "Už použité";
         if (!ResourceManager.Instance.CanAfford(ResourceType.Energy, settings.speedUpEnergy)) return NotEnoughEnergy;
         return null;
