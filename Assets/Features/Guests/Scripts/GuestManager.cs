@@ -76,7 +76,8 @@ public class GuestManager : MonoBehaviour
         float seconds = Time.deltaTime;
         foreach (WaveSession session in waves.Sessions)
         {
-            if (session.Phase == WavePhase.Ended) continue;
+            // Guests only come once their boat landed.
+            if (session.Phase == WavePhase.Ended || session.Phase == WavePhase.Arriving) continue;
 
             GuestSimulation simulation = Attach(session);
             CollectPoints(waves, session.IslandId);
