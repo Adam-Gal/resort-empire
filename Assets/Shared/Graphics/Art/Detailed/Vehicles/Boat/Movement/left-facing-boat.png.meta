@@ -1,0 +1,780 @@
+fileFormatVersion: 2
+guid: 2ab19f4c5dd2a82419b6d447dbf437d0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8165973019803184253
+    second: left-facing-boat_0
+  - first:
+      213: 4230386982964206370
+    second: left-facing-boat_1
+  - first:
+      213: -7943143052284856112
+    second: left-facing-boat_2
+  - first:
+      213: -1536172453978385782
+    second: left-facing-boat_3
+  - first:
+      213: 8424996195378504074
+    second: left-facing-boat_4
+  - first:
+      213: -7295628284757749000
+    second: left-facing-boat_5
+  - first:
+      213: -3289621639373226784
+    second: left-facing-boat_6
+  - first:
+      213: -3450088733964658869
+    second: left-facing-boat_7
+  - first:
+      213: -7661608566328249851
+    second: left-facing-boat_8
+  - first:
+      213: -6177864227461436724
+    second: left-facing-boat_9
+  - first:
+      213: -5217440817591859638
+    second: left-facing-boat_10
+  - first:
+      213: 837695571390096820
+    second: left-facing-boat_11
+  - first:
+      213: -3145926751627420595
+    second: left-facing-boat_12
+  - first:
+      213: 2849675821627745211
+    second: left-facing-boat_13
+  - first:
+      213: 25612606857810433
+    second: left-facing-boat_14
+  - first:
+      213: -916596803781940748
+    second: left-facing-boat_15
+  - first:
+      213: 751200430590219941
+    second: left-facing-boat_16
+  - first:
+      213: -6731672239903443045
+    second: left-facing-boat_17
+  - first:
+      213: 4967985911239769541
+    second: left-facing-boat_18
+  - first:
+      213: 7949041658933207102
+    second: left-facing-boat_19
+  - first:
+      213: -3333606340243662059
+    second: left-facing-boat_20
+  - first:
+      213: -8135517558215764872
+    second: left-facing-boat_21
+  - first:
+      213: -4173327647006281003
+    second: left-facing-boat_22
+  - first:
+      213: 7294428991257371155
+    second: left-facing-boat_23
+  - first:
+      213: 7320936511285759191
+    second: left-facing-boat_24
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: left-facing-boat_0
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 29
+        width: 1477
+        height: 973
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 383153dbdc2acae80800000000000000
+      internalID: -8165973019803184253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left-facing-boat_1
+      rect:
+        serializedVersion: 2
+        x: 894
+        y: 862
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22b94062c8a55ba30800000000000000
+      internalID: 4230386982964206370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left-facing-boat_2
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 833
+        width: 33
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d8f2708a7944c190800000000000000
+      internalID: -7943143052284856112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left-facing-boat_3
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 847
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a82d0e6ca4b6eaae0800000000000000
+      internalID: -1536172453978385782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left-facing-boat_4
+      rect:
+        serializedVersion: 2
+        x: 830
+        y: 849
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a81ad83f6699be470800000000000000
+      internalID: 8424996195378504074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left-facing-boat_5
+      rect:
+        serializedVersion: 2
+        x: 1416
+        y: 775
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f2d8b99ab8b0ca90800000000000000
+      internalID: -7295628284757749000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left-facing-boat_6
+      rect:
+        serializedVersion: 2
+        x: 1422
+        y: 776
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ec78b35c8ae852d0800000000000000
+      internalID: -3289621639373226784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left-facing-boat_7
+      rect:
+        serializedVersion: 2
+        x: 1450
+        y: 766
+        width: 7
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4795786392de10d0800000000000000
+      internalID: -3450088733964658869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left-facing-boat_8
+      rect:
+        serializedVersion: 2
+        x: 1390
+        y: 705
+        width: 25
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5023ae31a9f7ca590800000000000000
+      internalID: -7661608566328249851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left-facing-boat_9
+      rect:
+        serializedVersion: 2
+        x: 1486
+        y: 701
+        width: 9
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cca61938731d34aa0800000000000000
+      internalID: -6177864227461436724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left-facing-boat_10
+      rect:
+        serializedVersion: 2
+        x: 880
+        y: 221
+        width: 25
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4640d6383de797b0800000000000000
+      internalID: -5217440817591859638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left-facing-boat_11
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 231
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b5ef921fa710ab00800000000000000
+      internalID: 837695571390096820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left-facing-boat_12
+      rect:
+        serializedVersion: 2
+        x: 1130
+        y: 225
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4c59d7894c6754d0800000000000000
+      internalID: -3145926751627420595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left-facing-boat_13
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 191
+        width: 7
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb32421cf051c8720800000000000000
+      internalID: 2849675821627745211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left-facing-boat_14
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 191
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 102188db78efa5000800000000000000
+      internalID: 25612606857810433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left-facing-boat_15
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 189
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f9a15430189743f0800000000000000
+      internalID: -916596803781940748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left-facing-boat_16
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 197
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a65374cfcccc6a00800000000000000
+      internalID: 751200430590219941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left-facing-boat_17
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 159
+        width: 15
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b97723483cb4492a0800000000000000
+      internalID: -6731672239903443045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left-facing-boat_18
+      rect:
+        serializedVersion: 2
+        x: 1270
+        y: 157
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5cd77906dd4d1f440800000000000000
+      internalID: 4967985911239769541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left-facing-boat_19
+      rect:
+        serializedVersion: 2
+        x: 1282
+        y: 143
+        width: 23
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e30ee71e54ba05e60800000000000000
+      internalID: 7949041658933207102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left-facing-boat_20
+      rect:
+        serializedVersion: 2
+        x: 1080
+        y: 143
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51b59cc12b6acb1d0800000000000000
+      internalID: -3333606340243662059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left-facing-boat_21
+      rect:
+        serializedVersion: 2
+        x: 806
+        y: 97
+        width: 9
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 874989672e5d81f80800000000000000
+      internalID: -8135517558215764872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left-facing-boat_22
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 111
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d2bfd4cd9c5516c0800000000000000
+      internalID: -4173327647006281003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left-facing-boat_23
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 113
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 312e43f15840b3560800000000000000
+      internalID: 7294428991257371155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: left-facing-boat_24
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 87
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7dc006218f0399560800000000000000
+      internalID: 7320936511285759191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      left-facing-boat_0: -8165973019803184253
+      left-facing-boat_1: 4230386982964206370
+      left-facing-boat_10: -5217440817591859638
+      left-facing-boat_11: 837695571390096820
+      left-facing-boat_12: -3145926751627420595
+      left-facing-boat_13: 2849675821627745211
+      left-facing-boat_14: 25612606857810433
+      left-facing-boat_15: -916596803781940748
+      left-facing-boat_16: 751200430590219941
+      left-facing-boat_17: -6731672239903443045
+      left-facing-boat_18: 4967985911239769541
+      left-facing-boat_19: 7949041658933207102
+      left-facing-boat_2: -7943143052284856112
+      left-facing-boat_20: -3333606340243662059
+      left-facing-boat_21: -8135517558215764872
+      left-facing-boat_22: -4173327647006281003
+      left-facing-boat_23: 7294428991257371155
+      left-facing-boat_24: 7320936511285759191
+      left-facing-boat_3: -1536172453978385782
+      left-facing-boat_4: 8424996195378504074
+      left-facing-boat_5: -7295628284757749000
+      left-facing-boat_6: -3289621639373226784
+      left-facing-boat_7: -3450088733964658869
+      left-facing-boat_8: -7661608566328249851
+      left-facing-boat_9: -6177864227461436724
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

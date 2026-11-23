@@ -46,6 +46,14 @@ public class IslandProgress : MonoBehaviour
 
     public static IslandProgress Instance { get; private set; }
 
+    // The starting island has no entry in islands, it is always open.
+    public const string StartingIslandId = "start";
+
+    [SerializeField] private string startingIslandName = "Hlavný ostrov";
+
+    //Where the camera goes to show the starting island
+    [SerializeField] private Vector2 startingIslandCenter;
+
     [SerializeField] private Island[] islands;
     [SerializeField] private Bridge[] bridges;
     [SerializeField] private TransientNotice notice;
@@ -126,7 +134,43 @@ public class IslandProgress : MonoBehaviour
         if (Instance == this) Instance = null;
     }
 
-    public bool IsUnlocked(string islandId) => saveData.unlockedIslands.Contains(islandId);
+    public bool IsUnlocked(string islandId) =>
+        islandId == StartingIslandId || saveData.unlockedIslands.Contains(islandId);
+
+    // Open islands, the starting one first.
+    public List<string> GetOpenIslandIds()
+    {
+        var ids = new List<string> { StartingIslandId };
+        foreach (Island island in islands)
+        {
+            if (IsUnlocked(island.id)) ids.Add(island.id);
+        }
+        return ids;
+    }
+
+    // Open island under a world point. Anything outside the other islands belongs to the starting one.
+    public string GetOpenIslandIdAt(Vector3 world)
+    {
+        foreach (Island island in islands)
+        {
+            if (island.area != null && IsUnlocked(island.id) && island.area.OverlapPoint(world)) return island.id;
+        }
+        return StartingIslandId;
+    }
+
+    public string GetIslandName(string islandId)
+    {
+        if (islandId == StartingIslandId) return startingIslandName;
+        Island island = Array.Find(islands, i => i.id == islandId);
+        return island != null ? island.displayName : islandId;
+    }
+
+    public Vector3 GetIslandCenter(string islandId)
+    {
+        if (islandId == StartingIslandId) return startingIslandCenter;
+        Island island = Array.Find(islands, i => i.id == islandId);
+        return island != null && island.area != null ? island.area.bounds.center : (Vector3)startingIslandCenter;
+    }
 
     // Locked island under a world point, null on the starting island, open islands and the sea.
     public Island GetLockedIsland(Vector3 world)

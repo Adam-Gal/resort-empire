@@ -162,6 +162,7 @@ GameObject:
   - component: {fileID: 1416375648473551524}
   - component: {fileID: 6784596565638296957}
   - component: {fileID: 7200719707360715783}
+  - component: {fileID: 553159419890712628}
   m_Layer: 5
   m_Name: ResortValue
   m_TagString: Untagged
@@ -246,6 +247,19 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0.12, b: 0.14, a: 0.2}
   m_EffectDistance: {x: 0, y: -4}
   m_UseGraphicAlpha: 1
+--- !u!114 &553159419890712628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2306604701606777503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 757c3d09c4323ef3bb2cf2b8b8404e60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResortValueUI
+  valueText: {fileID: 5569127597353602880}
 --- !u!1 &4116835286866555790
 GameObject:
   m_ObjectHideFlags: 0
